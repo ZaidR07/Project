@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import * as Components from './Components/Login_components/Login_style';
 import axios from 'axios';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-
-
-const Signup = () => {
+const Login_plus_register = () => {
     const [signIn, toggle] = React.useState(true);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    
+    const [loginemail, loginsetEmail] = useState();
+    const [loginpassword, loginsetPassword] = useState();
+
     const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,20 +23,33 @@ const Signup = () => {
                 username: username,
                 email: email,
                 password: password
-            })
+            });
             console.log(response.data);
             if (response.data.status) {
                 navigate('/Home');
             }
-
-
         }
         catch (err) {
             console.log(err);
         }
-    }
+    };
 
-
+    const handleSubmit1 = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:4000/login", {
+                email: loginemail,
+                password: loginpassword,
+            });
+            console.log(response.data);
+            if (response.data.status) {
+                navigate('/Home');
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <Styledloginplusregister>
@@ -51,12 +65,12 @@ const Signup = () => {
                 </Components.SignUpContainer>
 
                 <Components.SignInContainer signinIn={signIn}>
-                    <Components.Form>
+                    <Components.Form onSubmit={handleSubmit1}>
                         <Components.Title>Sign in</Components.Title>
-                        <Components.Input type='email' placeholder='Email' />
-                        <Components.Input type='password' placeholder='Password' />
+                        <Components.Input type='email' placeholder='Email' onChange={(e) => loginsetEmail(e.target.value)} />
+                        <Components.Input type='password' placeholder='Password' onChange={(e) => loginsetPassword(e.target.value)} />
                         <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
-                        <Components.Button>Sigin In</Components.Button>
+                        <Components.Button>Sign In</Components.Button>
                     </Components.Form>
                 </Components.SignInContainer>
 
@@ -79,17 +93,16 @@ const Signup = () => {
                                 Enter Your personal details and start journey with us
                             </Components.Paragraph>
                             <Components.GhostButton onClick={() => toggle(false)}>
-                                Sigin Up
+                                Sign Up
                             </Components.GhostButton>
                         </Components.RightOverlayPanel>
 
                     </Components.Overlay>
-                </Components.OverlayContainer>s
-
+                </Components.OverlayContainer>
             </Components.Container>
         </Styledloginplusregister>
-    )
-}
+    );
+};
 
 const Styledloginplusregister = styled.div`
     background-image: url('../Resorces/loginbg5.PNG');
@@ -99,5 +112,6 @@ const Styledloginplusregister = styled.div`
     height: 90vh;
     display: grid;
     place-items: center;
-`
-export default Signup;
+`;
+
+export default Login_plus_register;
