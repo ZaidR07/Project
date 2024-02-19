@@ -2,11 +2,15 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
+import  { useEffect } from 'react';
 
 
 
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+}, []);
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
 

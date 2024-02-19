@@ -26,7 +26,16 @@ router.post('/signup', async (req, res) => {
         // Save the new user
         await newUser.save();
 
-        return res.json({ message: "User registered successfully" });
+        return res.json({
+            status : true,
+            message: "User registered successfully",
+            user: {
+                _id: newUser._id,
+                username: newUser.username,
+                email: newUser.email
+                
+            }
+        });
     } catch (error) {
         console.error("Error in signup:", error);
         return res.status(500).json({ message: "Internal server error" });
@@ -34,5 +43,5 @@ router.post('/signup', async (req, res) => {
 });
 
 export { router };
-    
+
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as Components from './Components/Login_components/Login_style';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -10,6 +11,9 @@ const Signup = () => {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+
+    
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,6 +24,10 @@ const Signup = () => {
                 password: password
             })
             console.log(response.data);
+            if (response.data.status) {
+                navigate('/Home');
+            }
+
 
         }
         catch (err) {
