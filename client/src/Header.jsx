@@ -17,7 +17,7 @@ const Header = () => {
     <MainHeader>
       <nav className='navbar'>
         <div className="nav1">
-          <NavLink to="/" >
+          <NavLink to="/Home" >
             <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
             <span>FITNESS365</span>
 
@@ -62,7 +62,7 @@ const Header = () => {
         </div>
         <div className="nav3">
           <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
-          <NavLink to="/Loginplusregister" >
+          <NavLink to="/" >
             <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: 'white', marginLeft: '1vw' }} className="profile">
 
             </div>

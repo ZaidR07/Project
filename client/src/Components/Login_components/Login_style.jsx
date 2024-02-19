@@ -9,6 +9,8 @@ overflow: hidden;
 width: 678px;
 max-width: 100%;
 min-height: 400px;
+
+
 `;
 
 export const SignUpContainer = styled.div`

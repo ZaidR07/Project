@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as Components from './Components/Login_components/Login_style';
 import axios from 'axios';
+import styled from 'styled-components';
 
 
 
@@ -10,25 +11,26 @@ const Signup = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const handleSubmit  = async(event)=>{
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        try{
-            const response = await axios.post("http://localhost:4000/signup",{
+        try {
+            const response = await axios.post("http://localhost:4000/signup", {
                 username: username,
                 email: email,
                 password: password
             })
             console.log(response.data);
-            
+
         }
-        catch(err){
+        catch (err) {
             console.log(err);
         }
     }
-   
 
 
-        return (
+
+    return (
+        <Styledloginplusregister>
             <Components.Container>
                 <Components.SignUpContainer signinIn={signIn}>
                     <Components.Form onSubmit={handleSubmit}>
@@ -74,10 +76,20 @@ const Signup = () => {
                         </Components.RightOverlayPanel>
 
                     </Components.Overlay>
-                </Components.OverlayContainer>
+                </Components.OverlayContainer>s
 
             </Components.Container>
-        )
-    }
+        </Styledloginplusregister>
+    )
+}
 
-    export default Signup;
+const Styledloginplusregister = styled.div`
+    background-image: url('../Resorces/loginbg5.PNG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 90vh;
+    display: grid;
+    place-items: center;
+`
+export default Signup;

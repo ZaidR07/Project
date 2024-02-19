@@ -14,11 +14,6 @@ import Login_plus_register from "./Login_plus_register";
 
 
 
-
-
-
-
-
 function App() {
 
   const theme = {
@@ -36,13 +31,13 @@ function App() {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
               <Route path="/About" element={<About />} />
               <Route path="/Workout" element={<Workout />} />
               <Route path="/Diet" element={<Diet />} />
               <Route path="/Shop" element={<Shop/>} />
               <Route path="/Contact" element={<Contact />} />
-              <Route path="/Login_plus_register" element={<Login_plus_register/>} />
+              <Route path="/" element={<Login_plus_register/>} />
             </Routes>
             {<Footer />} 
           </BrowserRouter>
