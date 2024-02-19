@@ -11,15 +11,13 @@ const About = () => {
           </h1>
           <div className="about_text">
             <p>
-              I'm a paragraph. Click here to add your own text
-              <br />
+              I'm a paragraph. Click here to add your own text <br/>
+              
               and edit me. Let your users get to know you.
             </p>
           </div>
         </div>
-        <div className="img">
-          <img src="/Resorces/about_img.png" width="600px" height="700px" />
-        </div>
+       
       </div>
       <div className="about_container2">
         <div className="about_img">
@@ -33,11 +31,11 @@ const About = () => {
         </div>
         <div className="about_text2">
           <p className="about_paragraph">
-            I'm a paragraph. Click here to add your own text <br />
-            and edit me. It’s easy. Just click “Edit Text” or <br />
-            double click me to add your own content and <br />
-            make changes to the font. I’m a great place for <br />
-            you to tell a story and let your users know a <br />
+            I'm a paragraph. Click here to add your own text <br/>
+            and edit me. It’s easy. Just click “Edit Text” or  <br/>
+            double click me to add your own content and  <br/>
+            make changes to the font. I’m a great place for  <br/>
+            you to tell a story and let your users know a  <br/>
             little more about you.
             <br />
             <br />
@@ -59,7 +57,7 @@ const About = () => {
       </div>
       <div className="about_txt3">
         <h1 className="about_paragraph2">
-          “WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE   <br />
+          “WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE <br/>
           THEN IS NOT AN ACT BUT A HABIT.”
         </h1>
       </div>
@@ -81,14 +79,15 @@ const StyledAbout = styled.div`
     box-sizing: border-box;
   }
   .about_container {
-    background-image: linear-gradient(#68717A, #8C8C8B);
+    background-image:url(../Resorces/gallery_img11.jpg);
     width: 100%;
-    height:120vh;
-    display: flex;
-    overflow-x: hidden;
+    height:100vh;
+    overflow-x:hidden;
+    background-size: cover;
+    background-position: center;
   }
   .about_heading {
-    margin-top: 20%;
+    margin-top: 15%;
     place-items: right;
     text-transform: uppercase;
     color: white;
@@ -102,12 +101,7 @@ const StyledAbout = styled.div`
     line-height: 1.5;
     text-transform: lowercase;
   }
-  .img {
-    margin-top:15%;
-    margin-left:-8%;
-    overflow:hidden;
-   
-  } 
+  
   .about_container2 {
     display: flex;
     margin-top: 10%;
@@ -132,7 +126,7 @@ const StyledAbout = styled.div`
   .about_paragraph2 { 
     color: white;
     font-size: 40px;
-    text-indent:-3em;
+    ${'' /* text-indent:-3em; */}
     text-style:Sans-serif;
     
   }
@@ -143,5 +137,64 @@ const StyledAbout = styled.div`
     height: 20vh;
     border-block-end: 1px solid #575757;
   }
+  @media only screen and (max-width: 600px) {
+  .about_container {
+    height:auto;
+    width:100%;
+    text-align: center;
+    background-size:contain; 
+    background-position: top; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    ${'' /* background-repeat:no-repeat; */}
+    ${'' /* overflow-x:hidden; */}
+  }
+
+  .about_heading h1 {
+    margin-top:10%;
+    font-size: 1.2em;
+    margin-left:-20%;
+  }
+  .about_text{
+    font-size:0.7em;
+  }
+.about_container2{
+  flex-direction: column;
+    text-align: center;
+}
+  .about_text p,
+  .about_text2 .about_paragraph {
+    font-size: 1.0em; 
+  }
+  .about_img img {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    margin-left:-22%;
+  }
+  .about_text2 input {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .about_text2{
+    margin-top: 10%;
+    margin-left:-45%;
+  }
+  .about_paragraph2 {
+    font-size: 1.9em;
+    
+  }
+  .about_txt3{
+   padding:80px;
+   text-indent:0em;
+  }
+  
+  .about_txt4 p {
+    font-size: 1.0em;
+    padding:5%;
+  }
+}
 `;
 export default About;
