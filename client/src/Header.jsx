@@ -17,7 +17,7 @@ const Header = () => {
     <MainHeader>
       <nav className='navbar'>
         <div className="nav1">
-          <NavLink to="/Home" >
+          <NavLink to="/" >
             <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
             <span>FITNESS365</span>
 
@@ -62,11 +62,11 @@ const Header = () => {
         </div>
         <div className="nav3">
           <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
-          <NavLink to="/" >
-            <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: 'white', marginLeft: '1vw' }} className="profile">
 
-            </div>
-          </NavLink>
+          <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: 'white', marginLeft: '1vw' }} className="profile">
+
+          </div>
+
           <div className="dropdown-container">
             <button className="dropdown-button" onClick={handleToggle}>
               <FontAwesomeIcon icon={faAngleDown} className='awesomeicons' />
@@ -74,7 +74,7 @@ const Header = () => {
             {isOpen && (
               <div className="dropdown-content">
                 <p>Profile</p>
-                <p>Item 2</p>
+                <p>Log out</p>
                 <p>Item 3</p>
               </div>
             )}

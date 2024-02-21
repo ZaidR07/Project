@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import * as Components from './Components/Login_components/Login_style';
 import axios from 'axios';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-const Login_plus_register = () => {
+const Login_plus_register = ({ setIsLoggedIn }) => {
     const [signIn, toggle] = React.useState(true);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
@@ -26,7 +26,9 @@ const Login_plus_register = () => {
             });
             console.log(response.data);
             if (response.data.status) {
-                navigate('/Home');
+                alert(` Welcome ${response.data.user.username}`)
+                setIsLoggedIn(true);
+                navigate('/')
             }
         }
         catch (err) {
@@ -43,7 +45,8 @@ const Login_plus_register = () => {
             });
             console.log(response.data);
             if (response.data.status) {
-                navigate('/Home');
+                setIsLoggedIn(true);
+                navigate('/');
             }
         }
         catch (err) {
@@ -68,8 +71,10 @@ const Login_plus_register = () => {
                     <Components.Form onSubmit={handleSubmit1}>
                         <Components.Title>Sign in</Components.Title>
                         <Components.Input type='email' placeholder='Email' onChange={(e) => loginsetEmail(e.target.value)} />
-                        <Components.Input type='password' placeholder='Password' onChange={(e) => loginsetPassword(e.target.value)} />
-                        <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
+                        <Components.Input type='password' placeholder='Password' onChange={(e) => loginsetPassword(e.target.value)} /> <br />
+                        <NavLink to={'/Forgot_password'}>
+                            Forgot your password?
+                        </NavLink><br />
                         <Components.Button>Sign In</Components.Button>
                     </Components.Form>
                 </Components.SignInContainer>
