@@ -4,6 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 
+
 const Login_plus_register = ({ setIsLoggedIn }) => {
     const [signIn, toggle] = React.useState(true);
     const [username, setUsername] = useState();
@@ -28,7 +29,8 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
             if (response.data.status) {
                 alert(` Welcome ${response.data.user.username}`)
                 setIsLoggedIn(true);
-                navigate('/')
+                localStorage.setItem('isLoggedIn', 'true');
+                navigate('/');
             }
         }
         catch (err) {
@@ -46,6 +48,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
             console.log(response.data);
             if (response.data.status) {
                 setIsLoggedIn(true);
+                localStorage.setItem('isLoggedIn', 'true'); 
                 navigate('/');
             }
         }

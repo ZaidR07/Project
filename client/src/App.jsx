@@ -14,9 +14,9 @@ import Login_plus_register from "./Login_plus_register";
 import Forgot_password from "./Components/Login_components/Forgot_password";
 
 
-
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+
 
   const theme = {
     colors: {
@@ -43,7 +43,7 @@ function App() {
                 <Route path="/Shop" element={<Shop />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/Login_plus_register" element={<Login_plus_register />} />
-                <Route path="/Forgot_password" element={<Forgot_password />} />
+                <Route path="/Forgot_password" element={<Forgot_password/>} />
               </Routes>
               <Footer />
             </>

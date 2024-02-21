@@ -19,8 +19,6 @@ const Slidesdata = photos.map((photo, index) => {
     return {
         id: `00${index + 1}`,
         img: imgUrl,
-        // title: `Slide ${index + 1}`,
-        // cta: "SHOP NOW",
     };
 });
 
