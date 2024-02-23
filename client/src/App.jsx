@@ -17,41 +17,41 @@ import Forgot_password from "./Components/Login_components/Forgot_password";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
-
   const theme = {
     colors: {
       heading: "",
       navbg: "#242426"
     }
+  };
 
-  }
   return (
-
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <BrowserRouter>
-          {!isLoggedIn && <Login_plus_register setIsLoggedIn={setIsLoggedIn} />}
-          {isLoggedIn && (
-            <>
-              <Header />
-              <Routes>
+          <Routes>
+            {!isLoggedIn && (
+              <>
+                <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
+                <Route path="/Forgot_password" element={<Forgot_password />} />
+              </>
+            )}
+            {isLoggedIn && (
+              <>
+                <Header />
                 <Route path="/" element={<Home />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/Workout" element={<Workout />} />
                 <Route path="/Diet" element={<Diet />} />
                 <Route path="/Shop" element={<Shop />} />
                 <Route path="/Contact" element={<Contact />} />
-                <Route path="/Login_plus_register" element={<Login_plus_register />} />
-                <Route path="/Forgot_password" element={<Forgot_password/>} />
-              </Routes>
-              <Footer />
-            </>
-          )}
+                <Footer />
+              </>
+            )}
+          </Routes>
         </BrowserRouter>
       </ThemeProvider>
     </>
-
   );
 }
 

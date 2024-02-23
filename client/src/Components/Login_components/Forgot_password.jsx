@@ -6,4 +6,4 @@ const Forgot_password = () => {
   )
 }
 
-export default Forgot_password
+export default Forgot_password;
