@@ -30,26 +30,28 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <BrowserRouter>
-          <Routes>
-            {!isLoggedIn && (
-              <>
-                <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
-                <Route path="/Forgot_password" element={<Forgot_password />} />
-              </>
-            )}
-            {isLoggedIn && (
-              <>
-                <Header />
-                <Route path="/" element={<Home />} />
-                <Route path="/About" element={<About />} />
-                <Route path="/Workout" element={<Workout />} />
-                <Route path="/Diet" element={<Diet />} />
-                <Route path="/Shop" element={<Shop />} />
-                <Route path="/Contact" element={<Contact />} />
-                <Footer />
-              </>
-            )}
-          </Routes>
+          <>
+            {isLoggedIn && <Header />}
+            <Routes>
+              {!isLoggedIn && (
+                <>
+                  <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
+                  <Route path="/Forgot_password" element={<Forgot_password />} />
+                </>
+              )}
+              {isLoggedIn && (
+                <>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/About" element={<About />} />
+                  <Route path="/Workout" element={<Workout />} />
+                  <Route path="/Diet" element={<Diet />} />
+                  <Route path="/Shop" element={<Shop />} />
+                  <Route path="/Contact" element={<Contact />} />
+                </>
+              )}
+            </Routes>
+            {isLoggedIn && <Footer />}
+          </>
         </BrowserRouter>
       </ThemeProvider>
     </>
@@ -57,3 +59,4 @@ function App() {
 }
 
 export default App;
+
