@@ -79,7 +79,7 @@ const StyledAbout = styled.div`
     box-sizing: border-box;
   }
   .about_container {
-    background-image:url(../Resorces/gallery_img11.jpg);
+    background-image:url(../Resorces/aboutimgmain.webp);
     width: 100%;
     height:100vh;
     overflow-x:hidden;
