@@ -2,15 +2,15 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 
 
 
 
 const Home = () => {
   useEffect(() => {
-    window.scrollTo(0, 0); 
-}, []);
+    window.scrollTo(0, 0);
+  }, []);
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -51,7 +51,7 @@ const Home = () => {
       </div>
       <div className="blog">
         <div className="left">
-          <img className='blogimg' src="..//Resorces/blogimg2.jpg" alt="" />
+          <img className='blogimg' src="..//Resorces/blogimg2.webp" alt="" />
         </div>
         <div className="right">
           <div className="text">
@@ -157,15 +157,15 @@ const Home = () => {
       <div className="gallery">
         <h1 className='gallery_heading'>FOLLOW @FITNESS365</h1><br /><br />
         <div className="gallery_item">
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img1.jpg" alt="img1" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img3.jpg" alt="img2" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img11.jpg" alt="img3" /></div>
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img7.jpg" alt="img4" /></div>
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img5.jpg" alt="img5" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img9.jpg" alt="img6" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img10.jpg" alt="img7" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img12.jpg" alt="8" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img13.jpg" alt="img9" /></div>
+          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img1.webp" alt="img1" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img3.webp" alt="img2" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img11.webp" alt="img3" /></div>
+          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img7.webp" alt="img4" /></div>
+          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img5.webp" alt="img5" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img9.webp" alt="img6" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img10.webp" alt="img7" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img12.webp" alt="8" /></div>
+          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img13.webp" alt="img9" /></div>
 
 
 
@@ -178,46 +178,67 @@ const Home = () => {
         </div>
 
       </div>
-
-
-
       <div className="contact-container">
         <div className="contactleft">
-          <h1 className='Contact-heading'>GET IN TOUCH</h1><br /><br />
-          {isSuccess && (
-            alert("Message sent successfully! Thank you for reaching out.")
-
-          )}
-          <form className='contact-form' ref={form} onSubmit={sendEmail}>
-            <div>
-              <label htmlFor="">First Name*</label><br /><br />
-              <input name='first_name' className='contact-inputs' type="text" /><br /><br />
+          <h1 className="Contact-heading">GET IN TOUCH</h1>
+          <br />
+          <br />
+          <form className="contact-form" ref={form} onSubmit={sendEmail}>
+            <div className='contact-fields '>
+              <label htmlFor="first_name">First Name*</label>
+              <br />
+              <br />
+              <input name="first_name" id="first_name" className="contact-inputs" type="text" required />
+              <br />
+              <br />
             </div>
-            <div style={{ marginLeft: '1.5rem' }}>
-              <label htmlFor="">Last Name</label><br /><br />
-              <input name='last_name' className='contact-inputs' type="text" /><br /><br />
+            <div className='contact-fields lastname'>
+              <label htmlFor="last_name">Last Name</label>
+              <br />
+              <br />
+              <input name="last_name" id="last_name" className="contact-inputs" type="text" />
+              <br />
+              <br />
             </div>
-            <div>
-              <label htmlFor="">Email*</label><br /><br />
-              <input name='from_email' className='contact-inputs' type="text" /><br /><br />
-
+            <div className='contact-fields'>
+              <label htmlFor="from_email">Email*</label>
+              <br />
+              <br />
+              <input name="from_email" id="from_email" className="contact-inputs" type="email" required />
+              <br />
+              <br />
             </div>
-            <div style={{ marginLeft: '1.5rem' }}>
-              <label htmlFor="">Subject</label><br /><br />
-              <input name='from_subject' className='contact-inputs' type="text" />
+            <div className='contact-fields subject'>
+              <label htmlFor="from_subject">Subject</label>
+              <br />
+              <br />
+              <input name="from_subject" id="from_subject" className="contact-inputs" type="text" />
             </div>
-            <div>
-              <label htmlFor="">Message</label><br /><br />
-              <textarea style={{ width: '500px' }} name="" id="" cols="66" rows="10"></textarea><br /><br />
-
-            </div><br />
-            <input style={{ width: '8rem', height: '3rem', backgroundColor: '#CC3D00', border: '0px', color: '#fff' }} type="submit" value="Send" />
+            <div className='contact-fields message'>
+              <label htmlFor="message">Message</label>
+              <br />
+              <br />
+              <textarea name="message" id="message"></textarea>
+              <br />
+              <br />
+            </div>
+            <br />
+            <input
+              className="contact_btn"
+              style={{ width: '30%', height: '8vh', backgroundColor: '#CC3D00', border: '0px', color: '#fff' }}
+              type="submit"
+              value="Send"
+            />
           </form>
         </div>
         <div className="contactright">
-          <img src="/Resorces/contactimg.webp" alt="" />
+          <img className="contact_img" src="/Resorces/contactimg.webp" alt="" />
         </div>
       </div>
+
+
+
+
 
     </StyledHome>
 
