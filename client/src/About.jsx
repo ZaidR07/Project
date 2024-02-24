@@ -139,10 +139,11 @@ const StyledAbout = styled.div`
   }
   @media only screen and (max-width: 600px) {
   .about_container {
-    height:auto;
+    background-image:url(../Resorces/aboutimg.webp);
+    /* height:auto; */
     width:100%;
     text-align: center;
-    background-size:contain; 
+    /* background-size:contain;  */
     background-position: top; 
     flex-direction: column;
     justify-content: center;
@@ -153,20 +154,25 @@ const StyledAbout = styled.div`
   }
 
   .about_heading h1 {
-    margin-top:10%;
-    font-size: 1.2em;
+    margin-top:90%;
+    font-size: 1.5em;
     margin-left:-20%;
+    color: black;
   }
   .about_text{
-    font-size:0.7em;
+    font-size:0.9em;
+    color: #000;
   }
 .about_container2{
-  flex-direction: column;
-    text-align: center;
+  flex-direction: column-reverse;
+    align-items: center;
 }
   .about_text p,
   .about_text2 .about_paragraph {
     font-size: 1.0em; 
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left:12%;
   }
   .about_img img {
     width: 100%; 
@@ -175,7 +181,9 @@ const StyledAbout = styled.div`
     margin-left:-22%;
   }
   .about_text2 input {
+    margin-top:20%;
     width: 100%;
+    height: auto;
     margin-top: 10px;
   }
   .about_text2{
@@ -192,8 +200,10 @@ const StyledAbout = styled.div`
   }
   
   .about_txt4 p {
-    font-size: 1.0em;
+    font-size: .8em;
     padding:5%;
+   margin-left:2%;
+   font-weight: 400;
   }
 }
 `;
