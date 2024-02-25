@@ -26,8 +26,8 @@ export const SignUpContainer = styled.div`
    transform: translateX(100%);
    opacity: 1;
    z-index: 5;
- ` 
- : null}
+ `
+    : null}
 `;
 
 
@@ -69,8 +69,8 @@ width: 100%;
 
 export const Button = styled.button`
    border-radius: 20px;
-   border: 1px solid #ff4b2b;
-   background-color: #ff4b2b;
+   border: 1px solid #d04e17;
+   background-color: #d04e17;
    color: #ffffff;
    font-size: 12px;
    font-weight: bold;
@@ -106,13 +106,11 @@ overflow: hidden;
 transition: transform 0.6s ease-in-out;
 z-index: 100;
 ${props =>
- props.signinIn !== true ? `transform: translateX(-100%);` : null}
+    props.signinIn !== true ? `transform: translateX(-100%);` : null}
 `;
 
 export const Overlay = styled.div`
-background: #ff416c;
-background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-background: linear-gradient(to right, #ff4b2b, #ff416c);
+background-color: #d04e17;
 background-repeat: no-repeat;
 background-size: cover;
 background-position: 0 0;

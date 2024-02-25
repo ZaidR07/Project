@@ -157,7 +157,7 @@ router.post('/SetNewpassword', async (req, res) => {
     } 
     else 
     {
-        return res.status(400).json({ message: "Invalid OTP" });
+        return res.json({ message: "Invalid OTP" });
     }
 });
 
