@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import Admin_panel from './Admin_panel';
 
 
 const Header = () => {
@@ -75,7 +76,9 @@ const Header = () => {
               <div className="dropdown-content">
                 <p>Profile</p>
                 <p>Log out</p>
-                <p>Item 3</p>
+                <NavLink to = '/Admin_panel'>
+                  <p>Admin Panel</p>
+                </NavLink>
               </div>
             )}
           </div>
@@ -93,7 +96,6 @@ const MainHeader = styled.header`
     font-family: 'Times New Roman', Times, serif;
     background-image: url(../Resorces/nav_img2.jpg);
     
-    /* background-color: ${({ theme }) => theme.colors.navbg}; */
   
   }
   .nav1{

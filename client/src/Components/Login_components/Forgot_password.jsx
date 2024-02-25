@@ -13,7 +13,7 @@ const Forgot_password = () => {
     try {
       await axios.post("http://localhost:4000/Forgot_password", {
         email,
-        
+
       });
       setOtpSent(true);
     } catch (err) {
@@ -52,7 +52,7 @@ const Forgot_password = () => {
             type="text"
             placeholder="Enter OTP"
             className="forget-otp"
-            disabled={!otpSent} // Disable if OTP not sent
+            disabled={!otpSent} 
             required
           />
           <br />
@@ -60,13 +60,13 @@ const Forgot_password = () => {
             type="text"
             placeholder="New Password"
             className="new-password"
-            disabled={!otpSent} // Disable if OTP not sent
+            disabled={!otpSent} 
           />
           <input
             type="button"
             value="Submit"
             className="Submit-btn"
-            disabled={!otpSent} // Disable if OTP not sent
+            disabled={!otpSent} 
           />
           <br />
           <br />

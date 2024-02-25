@@ -12,6 +12,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Login_plus_register from "./Login_plus_register";
 import Forgot_password from "./Components/Login_components/Forgot_password";
+import Admin_panel from './Admin_panel';
 
 
 
@@ -47,6 +48,7 @@ function App() {
                   <Route path="/Diet" element={<Diet />} />
                   <Route path="/Shop" element={<Shop />} />
                   <Route path="/Contact" element={<Contact />} />
+                  <Route path="/Admin_panel" element={<Admin_panel />} />
                 </>
               )}
             </Routes>
