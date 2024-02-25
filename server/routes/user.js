@@ -2,7 +2,8 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.js';
 import jwt from 'jsonwebtoken';
-import { randomInt } from 'crypto'
+import { randomInt } from 'crypto';
+import nodemailer from 'nodemailer';
 
 
 
@@ -71,16 +72,45 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/Forgot_password', (req, res) => {
+router.post('/Forgot_password', async (req, res) => {
+    const { email } = req.body;
+    const otp = randomInt(100000, 1000000)
     try {
-        const { email } = req.body;
-        const otp = randomInt(100000, 1000000)
-    }
-    catch{
+        const user = await UserModel.findOne({ email });
+        if (!user) {
+            return res.json({ message: "Invalid User" })
+        }
+
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'zaidstudy342@gmail.com',
+                pass: 'uist aurq lwod izrb',
+            }
+        });
+
+        var mailOptions = {
+            from: 'zaidstudy342@gmail.com',
+            to: email,
+            subject: 'Reset Password',
+            text: 'That was easy!'
+        };
+
         
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     }
-    
-    
+    catch (err) {
+        console.log(err);
+    }
+
+
 
 })
 
