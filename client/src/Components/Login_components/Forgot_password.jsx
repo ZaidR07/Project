@@ -1,42 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useState } from "react";
-
-
-
-
-
+import { NavLink } from "react-router-dom";
 
 const Forgot_password = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try{
-      axios.post('http://localhost:4000/Forgot_password',{
+    try {
+      await axios.post("http://localhost:4000/Forgot_password", {
         email,
-      })
-      
-    }
-    catch(err){
+        
+      });
+      setOtpSent(true);
+    } catch (err) {
       console.log(err);
     }
-    
-  }
+  };
+
   return (
     <StyledForget>
       <div className="container">
         <div className="box">
-          <h1>Forget Password</h1><br />
-          <h3 className="Email_label" htmlFor="Email">Email:</h3>
+          <h1>Forget Password</h1>
+          <br />
+          <h3 className="Email_label" htmlFor="Email">
+            Email:
+          </h3>
           <input
             type="text"
             placeholder="Your email here"
             className="forget-inputs"
             required
-            onChange={(e)=>setEmail(e.target.value)} />
-          <input className="forget_btn" type="submit" value="Send" onClick={handleSubmit} />
-          <label htmlFor="email">Back To Login Page </label>
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="forget_btn"
+            type="submit"
+            value="Send OTP"
+            onClick={handleSubmit}
+          />
+          <br />
+          <br />
+          <label htmlFor="Reset password">
+            <h3> Reset Password: </h3>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter OTP"
+            className="forget-otp"
+            disabled={!otpSent} // Disable if OTP not sent
+            required
+          />
+          <br />
+          <input
+            type="text"
+            placeholder="New Password"
+            className="new-password"
+            disabled={!otpSent} // Disable if OTP not sent
+          />
+          <input
+            type="button"
+            value="Submit"
+            className="Submit-btn"
+            disabled={!otpSent} // Disable if OTP not sent
+          />
+          <br />
+          <br />
+          <NavLink to={"/"}>Forgot your password?</NavLink>
+          <br />
         </div>
       </div>
     </StyledForget>
@@ -60,7 +95,7 @@ const StyledForget = styled.div`
     border: 1px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 25%;
-    height: 45vh;
+    height: 75vh;
     
   }
   .Email_label{
@@ -69,12 +104,36 @@ const StyledForget = styled.div`
   .forget-inputs {
     width: 90%;
     height: 6vh;
+    padding: 2%;
     border: 1px solid gray;
     border-radius: 3px;
     margin-bottom: 2vh;
 
   }
   .forget_btn {
+    width: 90%;
+    height: 6vh;
+    border: 1px solid gray;
+    background-color: #d04e17;
+    color: white;
+    border-radius: 3px;
+  }
+  .forget-otp{
+    padding: 2%;
+    width: 90%;
+    height: 6vh;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+
+  }
+  .new-password{
+    padding: 2%;
+    width: 90%;
+    height: 6vh;
+    margin-bottom: 2vh;
+
+  }
+  .Submit-btn{
     width: 90%;
     height: 6vh;
     border: 1px solid gray;

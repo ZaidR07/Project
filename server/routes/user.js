@@ -94,7 +94,7 @@ router.post('/Forgot_password', async (req, res) => {
             from: 'zaidstudy342@gmail.com',
             to: email,
             subject: 'Reset Password',
-            text: 'That was easy!'
+            text: `Your one-time OTP to reset password is ${otp}`,
         };
 
         
