@@ -2,6 +2,8 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.js';
 import jwt from 'jsonwebtoken';
+import { randomInt } from 'crypto'
+
 
 
 const router = express.Router();
@@ -59,12 +61,26 @@ router.post('/login', async (req, res) => {
         })
     }
 
-    const token = jwt.sign({username: user.username},process.env.KEY,{expiresIn: '1h'})
-    res.cookie('token',token,{httpOnly:true, maxAge:360000})
+    const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' })
+    res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
     return res.json({
         message: "Login Succesfull",
-        status : true,
+        status: true,
     })
+
+
+})
+
+router.post('/Forgot_password', (req, res) => {
+    try {
+        const { email } = req.body;
+        const otp = randomInt(100000, 1000000)
+    }
+    catch{
+        
+    }
+    
+    
 
 })
 

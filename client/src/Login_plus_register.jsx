@@ -117,7 +117,7 @@ const Styledloginplusregister = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     display: grid;
     place-items: center;
 `;

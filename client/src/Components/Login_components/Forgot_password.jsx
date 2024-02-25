@@ -1,22 +1,41 @@
 import React from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useState } from "react";
+
+
+
+
+
 
 const Forgot_password = () => {
+  const [email, setEmail] = useState();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try{
+      axios.post('http://localhost:4000/Forgot_password',{
+        email,
+      })
+      
+    }
+    catch(err){
+      console.log(err);
+    }
+    
+  }
   return (
     <StyledForget>
       <div className="container">
-        <div className="main-container">
-          <h1>Forget Password</h1>
-          <label htmlFor="email"><b>Email:</b></label>
+        <div className="box">
+          <h1>Forget Password</h1><br />
+          <h3 className="Email_label" htmlFor="Email">Email:</h3>
           <input
-            name="email"
-            id="email"
-            className="forget-inputs"
             type="text"
-            placeholder="Email"
+            placeholder="Your email here"
+            className="forget-inputs"
             required
-          />
-          <input className="forget_btn" type="submit" value="Send" />
+            onChange={(e)=>setEmail(e.target.value)} />
+          <input className="forget_btn" type="submit" value="Send" onClick={handleSubmit} />
           <label htmlFor="email">Back To Login Page </label>
         </div>
       </div>
@@ -32,37 +51,38 @@ const StyledForget = styled.div`
   .container {
     width: 100%;
     height: 100vh;
-    /* background-color:green; */
+    display: grid;
+    place-items: center;
   }
-  .main-container {
-    /* background-color:red; */
-    padding-left: 2rem;
+  .box {
+    padding-left: 2.5%;
+    padding-top: 5vh;
     border: 1px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 25%;
-    height: 45%;
-    margin-left: 40%;
-    margin-top: 12%;
-    position: fixed;
-    display: grid;
+    height: 45vh;
+    
   }
-  h1 {
-    padding-top: 40px;
+  .Email_label{
+    margin-bottom: 1vh;
   }
   .forget-inputs {
-    width: 93%;
+    width: 90%;
     height: 6vh;
     border: 1px solid gray;
     border-radius: 3px;
+    margin-bottom: 2vh;
+
   }
   .forget_btn {
-    width: 93%;
+    width: 90%;
     height: 6vh;
     border: 1px solid gray;
     background-color: #d04e17;
     color: white;
     border-radius: 3px;
   }
+  
 `;
 
 export default Forgot_password;

@@ -126,8 +126,7 @@ const StyledAbout = styled.div`
   .about_paragraph2 { 
     color: white;
     font-size: 40px;
-    ${'' /* text-indent:-3em; */}
-    text-style:Sans-serif;
+    
     
   }
   .about_txt4 {
