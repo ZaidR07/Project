@@ -6,21 +6,41 @@ import { NavLink } from "react-router-dom";
 const Forgot_password = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
+  const [newpass, setNewpass] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:4000/Forgot_password", {
+      const response = await axios.post("http://localhost:4000/Forgot_password", {
         email,
 
       });
-      setOtpSent(true);
+      alert(response.data.message);
+      if(response.data.status){
+        setOtpSent(true);
+      }
+      
+
     } catch (err) {
       console.log(err);
     }
   };
+  const handleSubmit1 = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:4000/SetNewpassword", {
+        email,
+        otp,
+        newpass,
 
+
+      });
+      alert(response.data.message);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <StyledForget>
       <div className="container">
@@ -52,21 +72,25 @@ const Forgot_password = () => {
             type="text"
             placeholder="Enter OTP"
             className="forget-otp"
-            disabled={!otpSent} 
+            disabled={!otpSent}
             required
+            onChange={(e) => setOtp(e.target.value)}
           />
           <br />
           <input
             type="text"
             placeholder="New Password"
             className="new-password"
-            disabled={!otpSent} 
+            disabled={!otpSent}
+            required
+            onChange={(e) => setNewpass(e.target.value)}
           />
           <input
             type="button"
             value="Submit"
             className="Submit-btn"
-            disabled={!otpSent} 
+            disabled={!otpSent}
+            onClick={handleSubmit1}
           />
           <br />
           <br />

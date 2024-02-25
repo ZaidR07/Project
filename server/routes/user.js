@@ -8,27 +8,28 @@ import nodemailer from 'nodemailer';
 
 
 const router = express.Router();
+let globalOtp = null;
 
 router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
     try {
-        // Check if the user already exists
+        // Checking if the user already exists
         const User = await UserModel.findOne({ email });
         if (User) {
             return res.json({ message: "User already exists" });
         }
 
-        // Hashing  the password
+        // Hashing the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create a new user
+        // Creating a new user
         const newUser = new UserModel({
             username,
             email,
             password: hashedPassword
         });
 
-        // Save the new user
+        // Saving the new user
         await newUser.save();
 
         return res.json({
@@ -75,11 +76,28 @@ router.post('/login', async (req, res) => {
 router.post('/Forgot_password', async (req, res) => {
     const { email } = req.body;
     const otp = randomInt(100000, 1000000)
+
     try {
         const user = await UserModel.findOne({ email });
         if (!user) {
             return res.json({ message: "Invalid User" })
         }
+
+       
+        user.resetPasswordOTP = {
+            otp,
+            timestamp: Date.now() 
+        };
+        await user.save();
+
+        
+        setTimeout(async () => {
+            user.resetPasswordOTP = undefined;
+            await user.save();
+            console.log("OTP expired for user:", user.email);
+        }, 60000);
+
+        globalOtp = otp;
 
 
         var transporter = nodemailer.createTransport({
@@ -97,12 +115,13 @@ router.post('/Forgot_password', async (req, res) => {
             text: `Your OTP to reset password is ${otp}`,
         };
 
-        
+
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 console.log(error);
             } else {
                 console.log('Email sent: ' + info.response);
+                return res.json({ status: true, message: "Email Sent Succesfully" })
             }
         });
     }
@@ -113,6 +132,34 @@ router.post('/Forgot_password', async (req, res) => {
 
 
 })
+router.post('/SetNewpassword', async (req, res) => {
+    const { email, otp, newpass } = req.body;
+    if (otp == globalOtp) {
+        try {
+
+            const user = await UserModel.findOne({ email });
+
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
+            user.password = await bcrypt.hash(newpass, 10);
+
+            await user.save();
+
+            return res.json({ message: "Password updated successfully" });
+        }
+        catch (error) 
+        {
+            console.error("Error updating password:", error);
+            return res.status(500).json({ message: "Internal server error" });
+        }
+    } 
+    else 
+    {
+        return res.status(400).json({ message: "Invalid OTP" });
+    }
+});
 
 export { router };
 
