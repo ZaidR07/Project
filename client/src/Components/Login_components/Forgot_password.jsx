@@ -95,7 +95,7 @@ const Forgot_password = () => {
           />
           <br />
           <br />
-          <NavLink to={"/"}>Forgot your password?</NavLink>
+          <NavLink to={"/"}>Back to login</NavLink>
           <br />
         </div>
       </div>

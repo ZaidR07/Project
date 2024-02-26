@@ -13,6 +13,7 @@ import GlobalStyle from "./GlobalStyle";
 import Login_plus_register from "./Login_plus_register";
 import Forgot_password from "./Components/Login_components/Forgot_password";
 import Admin_panel from './Admin_panel';
+import Survey from './Survey';
 
 
 
@@ -38,6 +39,9 @@ function App() {
                 <>
                   <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
                   <Route path="/Forgot_password" element={<Forgot_password />} />
+
+                  
+
                 </>
               )}
               {isLoggedIn && (
@@ -49,6 +53,7 @@ function App() {
                   <Route path="/Shop" element={<Shop />} />
                   <Route path="/Contact" element={<Contact />} />
                   <Route path="/Admin_panel" element={<Admin_panel />} />
+                  <Route path="/Survey" element={<Survey />} />
                 </>
               )}
             </Routes>
