@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { UserModel } from '../models/user.js';
+import { SignupModel } from '../models/Signup.js';
 import jwt from 'jsonwebtoken';
 import { randomInt } from 'crypto';
 import nodemailer from 'nodemailer';
@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
     try {
         // Checking if the user already exists
-        const User = await UserModel.findOne({ email });
+        const User = await SignupModel.findOne({ email });
         if (User) {
             return res.json({ message: "User already exists" });
         }
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Creating a new user
-        const newUser = new UserModel({
+        const newUser = new SignupModel({
             username,
             email,
             password: hashedPassword
@@ -50,7 +50,7 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    const user = await UserModel.findOne({ email })
+    const user = await SignupModel.findOne({ email })
     if (!user) {
         return res.json({
             message: "User is not registered"
@@ -78,7 +78,7 @@ router.post('/Forgot_password', async (req, res) => {
     const otp = randomInt(100000, 1000000)
 
     try {
-        const user = await UserModel.findOne({ email });
+        const user = await SignupModel.findOne({ email });
         if (!user) {
             return res.json({ message: "Invalid User" })
         }
@@ -137,7 +137,7 @@ router.post('/SetNewpassword', async (req, res) => {
     if (otp == globalOtp) {
         try {
 
-            const user = await UserModel.findOne({ email });
+            const user = await SignupModel.findOne({ email });
 
             if (!user) {
                 return res.status(404).json({ message: "User not found" });

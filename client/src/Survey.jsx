@@ -1,7 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 const Survey = () => {
+
+    const [agree, setAgree] = useState(false);
+    
+
     return (
         <StyledContainer>
             <div className="box">
@@ -11,37 +16,44 @@ const Survey = () => {
                 >
                     <div className="personalinfo">
                         <div className="input-box">
-                            <label htmlFor="gender">Gender</label>
+                            <label htmlFor="gender">Gender :  </label>
+                            Male
                             <input className='input-fields' type="radio" name="male" id="" />
+                            Female
                             <input className='input-fields' type="radio" name="female" id="" />
                         </div>
                         <div className="input-box">
-                            <input className='input-fields' type="number" name="age" id="" />
+                            <label htmlFor="age">Age :</label>
+                            <input className='input-fields' type="text" name="age" id="" />
                         </div>
                         <div className="input-box">
+                            <label htmlFor="height">Height : </label>
                             <input className='input-fields'
-                                type="number"
+                                type="text"
                                 name="height"
                                 placeholder='In feets'
                                 id="" />
                         </div>
                         <div className="input-box">
+                            <label htmlFor="weight">Weight : </label>
                             <input className='input-fields'
-                                type="number"
+                                type="text"
                                 name="height"
                                 placeholder='In kilograms'
                                 id="" />
                         </div>
                         <div className="input-box">
+                            <label htmlFor="weight">Waist : </label>
                             <input className='input-fields'
-                                type="number"
-                                name="height"
+                                type="text"
+                                name="Waist"
                                 placeholder='Waist in inches'
                                 id="" />
                         </div>
                     </div>
                     <div className="diet">
                         <div className="input-box">
+                            <label htmlFor="Diet">Diet : </label>
                             <label htmlFor="Non-vegetarian">Non-vegetarian</label>
                             <input className='input-fields'
                                 type="radio"
@@ -56,10 +68,13 @@ const Survey = () => {
                     </div>
                     <div className="level">
                         <div className="input-box">
+                            <label htmlFor="Experience">Experience : </label>
+                            <label htmlFor="Beginner">Beginner</label>
                             <input className='input-fields'
                                 type="radio"
-                                name="beginner"
+                                name="Beginner"
                                 id="" />
+                            <label htmlFor="Intermediate">Intermediate</label>
                             <input className='input-fields'
                                 type="radio"
                                 name="Intermediate"
@@ -72,7 +87,12 @@ const Survey = () => {
                         </div>
 
 
-                    </div>
+                    </div><br />
+                    <input type="checkbox" name="terms" id=""
+                        onChange={(e) => setAgree(e.target.checked)} />
+                    <label>I have read and agree to terms and conditions</label>
+                    <br />
+                    <input type="button" value="Submit" disabled = {!agree} />
 
 
 

@@ -159,7 +159,7 @@ const StyleAdmin = styled.div`
     overflow-y: auto;
     padding: 20px 20px;
     color: rgba(255, 255, 255, 0.95);
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: 5%;
   }
 

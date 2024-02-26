@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(router);
 app.use(cookieParser);
 
-mongoose.connect("mongodb://127.0.0.1:27017/Signup_info")
+mongoose.connect("mongodb://127.0.0.1:27017/Fitness365")
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
