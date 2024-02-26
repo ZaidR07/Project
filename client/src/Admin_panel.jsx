@@ -31,26 +31,10 @@ import
 const Admin_panel = () => {
   return (
     <StyleAdmin>
-    <header className='header'>
-        <div className='menu-icon'>
-            {/* <BsJustify className='icon' onClick={OpenSidebar}/> */}
-        </div>
-        <div className='header-left'>
-            <BsSearch  className='icon'/>
-        </div>
-        <div className='header-right'>
-            <BsFillBellFill className='icon'/>
-            <BsFillEnvelopeFill className='icon'/>
-            <BsPersonCircle className='icon'/>
-        </div>
-    </header>
+    
       <div className="container">
         <aside className="sidebar">
-          <div className="sidebar-title">
-            <div className="sidebar-brand">
-              <BsCart3 className="icon_header" /> STORE
-            </div>
-          </div>
+          
 
           <ul className="sidebar-list">
             <li className="sidebar-list-item">
@@ -63,31 +47,19 @@ const Admin_panel = () => {
                 <BsFillArchiveFill className="icon" /> Products
               </a>
             </li>
-            <li className="sidebar-list-item">
-              <a href="">
-                <BsFillGrid3X3GapFill className="icon" /> Categories
-              </a>
-            </li>
+            
             <li className="sidebar-list-item">
               <a href="">
                 <BsPeopleFill className="icon" /> Customers
               </a>
             </li>
-            <li className="sidebar-list-item">
-              <a href="">
-                <BsListCheck className="icon" /> Inventory
-              </a>
-            </li>
+            
             <li className="sidebar-list-item">
               <a href="">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
             </li>
-            <li className="sidebar-list-item">
-              <a href="">
-                <BsFillGearFill className="icon" /> Setting
-              </a>
-            </li>
+            
           </ul>
         </aside>
         <div className="card-container">
@@ -134,43 +106,19 @@ const Admin_panel = () => {
 };
 
 const StyleAdmin = styled.div`
-.header {
-  grid-area: header;
-  height:40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px 0 30px;
-  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
-  background-color:#031C4A;
-  color: #fff;
-}
-
-.menu-icon {
-  display: none;
-}
   .container {
     display: flex;
   }
   .sidebar {
     grid-area: sidebar;
     width:20%;
-    height: 100%;
+    height: 100vh;
     background-color: #263043;
     overflow-y: auto;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
   }
-  .icon_header{
-    color: #fff;
-  }
-  .sidebar-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px 0px 30px;
-    margin-bottom: 30px;
-  }
+  
   .sidebar-brand {
     margin-top: 15px;
     font-size: 20px;
@@ -211,7 +159,7 @@ const StyleAdmin = styled.div`
     overflow-y: auto;
     padding: 20px 20px;
     color: rgba(255, 255, 255, 0.95);
-    margin-top: 10%;
+    margin-top: 15%;
     margin-left: 5%;
   }
 
