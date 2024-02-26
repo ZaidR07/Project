@@ -117,6 +117,7 @@ const StyleAdmin = styled.div`
     overflow-y: auto;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    position: relative;
   }
   
   .sidebar-brand {
