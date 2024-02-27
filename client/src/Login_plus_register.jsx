@@ -30,6 +30,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 alert(` Welcome ${response.data.user.username}`)
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail',response.data.user.email);
                 navigate('/Survey');
             }
         }
@@ -49,6 +50,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
             if (response.data.status) {
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true'); 
+                
                 navigate('/');
             }
         }

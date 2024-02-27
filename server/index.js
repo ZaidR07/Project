@@ -1,10 +1,11 @@
 import express from "express";
 import cors from 'cors';
-import { router } from "./routes/user.js";
+import { Signuprouter } from "./routes/Signup.js";
+import { Userrouter } from "./routes/User.js"
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config();
-import cookieParser from 'cookie-parser'
+
 
 
 
@@ -17,8 +18,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use(router);
-app.use(cookieParser);
+app.use(Signuprouter);
+app.use(Userrouter);
+// app.use(cookieParser());
 
 mongoose.connect("mongodb://127.0.0.1:27017/Fitness365")
     .then(() => {
