@@ -27,41 +27,49 @@ import { BsFillGearFill } from "react-icons/bs";
 import 
  {BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify}
  from 'react-icons/bs'
+ import { NavLink } from 'react-router-dom'
 
 const Admin_panel = () => {
   return (
     <StyleAdmin>
+    <div className="nav1">
+          <NavLink to="/" >
+            <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
+            <span>FITNESS365</span>
+
+          </NavLink>
+        </div>
     
       <div className="container">
-        <aside className="sidebar">
+        <div className="sidebar">
           
 
           <ul className="sidebar-list">
             <li className="sidebar-list-item">
-              <a href="">
+              <a href="blue">
                 <BsGrid1X2Fill className="icon" /> Dashboard
               </a>
             </li>
             <li className="sidebar-list-item">
-              <a href="">
+              <a href="red">
                 <BsFillArchiveFill className="icon" /> Products
               </a>
             </li>
             
             <li className="sidebar-list-item">
-              <a href="">
+              <a href="yellow">
                 <BsPeopleFill className="icon" /> Customers
               </a>
             </li>
             
             <li className="sidebar-list-item">
-              <a href="">
+              <a href="green">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
             </li>
             
           </ul>
-        </aside>
+        </div>
         <div className="card-container">
           <main className="main-container">
             <div className="main-title">
@@ -100,7 +108,13 @@ const Admin_panel = () => {
             </div>
           </main>
         </div>
-      </div>
+        </div>
+        <div className="color_container">
+        <div className="blue_container" id="blue"></div>
+        <div className="red_container" id="red"></div>
+        <div className="yellow_container" id="yellow"></div>
+        <div className="green_container" id="green"></div>
+        </div>
     </StyleAdmin>
   );
 };
@@ -117,6 +131,7 @@ const StyleAdmin = styled.div`
     overflow-y: auto;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
+    position: relative;
   }
   
   .sidebar-brand {
@@ -209,7 +224,26 @@ const StyleAdmin = styled.div`
   .card-inner > .card_icon {
     font-size: 25px;
   }
-  
+  .blue_container{
+    width:100%;
+  height:100vh;
+  background-color:blue;
+  }
+  .red_container{
+    width:100%;
+  height:100vh;
+  background-color:red;
+  }
+  .yellow_container{
+    width:100%;
+  height:100vh;
+  background-color:yellow;
+  }
+  .green_container{
+    width:100%;
+  height:100vh;
+  background-color:green;
+  }
   
 `
 
