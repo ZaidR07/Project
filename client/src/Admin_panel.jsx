@@ -33,9 +33,10 @@ const Admin_panel = () => {
     <StyleAdmin>
       <div className="container">
         <div className="sidebar">
+        <NavLink to="/">
           <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
           <span>FITNESS365</span>
-
+        </NavLink>
           <ul className="sidebar-list">
             <li className="sidebar-list-item">
               <a href="#dashboard">
@@ -79,7 +80,7 @@ const Admin_panel = () => {
                 </div>
                 <div className="card">
                   <div className="card-inner">
-                    <h3>CATEGORIES</h3>
+                    <h3>SALES</h3>
                     <BsFillGrid3X3GapFill className="card_icon" />
                   </div>
                   <h1>12</h1>
@@ -93,7 +94,7 @@ const Admin_panel = () => {
                 </div>
                 <div className="card">
                   <div className="card-inner">
-                    <h3>ALERTS</h3>
+                    <h3>ENGAGEMENTS</h3>
                     <BsFillBellFill className="card_icon" />
                   </div>
                   <h1>42</h1>
