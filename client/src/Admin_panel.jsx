@@ -24,97 +24,93 @@ import { BsGrid1X2Fill } from "react-icons/bs";
 import { BsListCheck } from "react-icons/bs";
 import { BsMenuButtonWideFill } from "react-icons/bs";
 import { BsFillGearFill } from "react-icons/bs";
-import 
- {BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify}
- from 'react-icons/bs'
- import { NavLink } from 'react-router-dom'
+import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
+  from 'react-icons/bs'
+import { NavLink } from 'react-router-dom'
 
 const Admin_panel = () => {
   return (
     <StyleAdmin>
-    <div className="nav1">
-          <NavLink to="/" >
-            <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
-            <span>FITNESS365</span>
-
-          </NavLink>
-        </div>
-    
       <div className="container">
         <div className="sidebar">
-          
+          <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
+          <span>FITNESS365</span>
 
           <ul className="sidebar-list">
             <li className="sidebar-list-item">
-              <a href="blue">
+              <a href="#dashboard">
                 <BsGrid1X2Fill className="icon" /> Dashboard
               </a>
             </li>
             <li className="sidebar-list-item">
-              <a href="red">
+              <a href="#red">
                 <BsFillArchiveFill className="icon" /> Products
               </a>
             </li>
-            
+
             <li className="sidebar-list-item">
-              <a href="yellow">
+              <a href="#yellow">
                 <BsPeopleFill className="icon" /> Customers
               </a>
             </li>
-            
+
             <li className="sidebar-list-item">
-              <a href="green">
+              <a href="#green">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
             </li>
-            
+
           </ul>
         </div>
-        <div className="card-container">
-          <main className="main-container">
-            <div className="main-title">
-              <h3>DASHBOARD</h3>
-            </div>
+        <div className="display">
+          <div className="dashboard" id="dashboard">
+            <main className="main-container">
+              <div className="main-title">
+                <h3>DASHBOARD</h3>
+              </div>
 
-            <div className="main-cards">
-              <div className="card">
-                <div className="card-inner">
-                  <h3>PRODUCTS</h3>
-                  <BsFillArchiveFill className="card_icon" />
+              <div className="main-cards">
+                <div className="card">
+                  <div className="card-inner">
+                    <h3>PRODUCTS</h3>
+                    <BsFillArchiveFill className="card_icon" />
+                  </div>
+                  <h1>300</h1>
                 </div>
-                <h1>300</h1>
-              </div>
-              <div className="card">
-                <div className="card-inner">
-                  <h3>CATEGORIES</h3>
-                  <BsFillGrid3X3GapFill className="card_icon" />
+                <div className="card">
+                  <div className="card-inner">
+                    <h3>CATEGORIES</h3>
+                    <BsFillGrid3X3GapFill className="card_icon" />
+                  </div>
+                  <h1>12</h1>
                 </div>
-                <h1>12</h1>
-              </div>
-              <div className="card">
-                <div className="card-inner">
-                  <h3>CUSTOMERS</h3>
-                  <BsPeopleFill className="card_icon" />
+                <div className="card">
+                  <div className="card-inner">
+                    <h3>CUSTOMERS</h3>
+                    <BsPeopleFill className="card_icon" />
+                  </div>
+                  <h1>33</h1>
                 </div>
-                <h1>33</h1>
-              </div>
-              <div className="card">
-                <div className="card-inner">
-                  <h3>ALERTS</h3>
-                  <BsFillBellFill className="card_icon" />
+                <div className="card">
+                  <div className="card-inner">
+                    <h3>ALERTS</h3>
+                    <BsFillBellFill className="card_icon" />
+                  </div>
+                  <h1>42</h1>
                 </div>
-                <h1>42</h1>
               </div>
-            </div>
-          </main>
+            </main>
+          </div>
+          <div className="red_container" id="red"></div>
+          <div className="yellow_container" id="yellow"></div>
+          <div className="green_container" id="green"></div>
         </div>
-        </div>
-        <div className="color_container">
-        <div className="blue_container" id="blue"></div>
+      </div>
+      {/* <div className="color_container">
         <div className="red_container" id="red"></div>
         <div className="yellow_container" id="yellow"></div>
         <div className="green_container" id="green"></div>
-        </div>
+      </div> */}
     </StyleAdmin>
   );
 };
@@ -124,14 +120,15 @@ const StyleAdmin = styled.div`
     display: flex;
   }
   .sidebar {
-    grid-area: sidebar;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
     width:20%;
     height: 100vh;
     background-color: #263043;
-    overflow-y: auto;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
-    position: relative;
   }
   
   .sidebar-brand {
@@ -165,17 +162,20 @@ const StyleAdmin = styled.div`
     position: absolute;
     z-index: 12 !important;
   }
-.card-container{
+  .display{
+    position: absolute;
+    top: 0;
+    margin-left: 20%;
+    z-index: 1;
+  }
+.dashboard{
   background-color:#081938;
   width:100%;
+  height: 100vh;
 }
   .main-container {
-    grid-area: main;
-    overflow-y: auto;
     padding: 20px 20px;
     color: rgba(255, 255, 255, 0.95);
-    margin-top: 5%;
-    margin-left: 5%;
   }
 
   .main-title {

@@ -31,7 +31,7 @@ const Survey = () => {
                 diet,
                 experience
             })
-            navigate('/Survey');
+            navigate('/');
             
         } catch (error) {
             console.log(error);
