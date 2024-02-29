@@ -27,7 +27,6 @@ const Diet = () => {
       <div className="blue"></div>
       <div className="green"></div>
       <div className="yellow"></div>
-      <div className="purple"></div>
     </StyledDiet>
   );
 };
@@ -58,13 +57,6 @@ const StyledDiet = styled.div`
     background-color: yellow;
     display: ${({ calory }) => (calory >= 2000 && calory < 2500 ? 'flex' : 'none')};
   }
-  .purple {
-    width: 100%;
-    height: 100vh;
-    background-color: purple;
-    display: ${({ calory }) => (calory >= 2500 ? 'flex' : 'none')};
-  }
-  
 `;
 
 export default Diet;
