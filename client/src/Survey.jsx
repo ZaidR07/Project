@@ -14,6 +14,8 @@ const Survey = () => {
     const [waist, setWaist] = useState("");
     const [diet, setDiet] = useState("");
     const [experience, setExperience] = useState("");
+    const [activity, setActivity] = useState("");
+
 
     const navigate = useNavigate();
 
@@ -29,10 +31,13 @@ const Survey = () => {
                 weight,
                 waist,
                 diet,
-                experience
+                experience,
+                activity
+
+
             })
             navigate('/');
-            
+
         } catch (error) {
             console.log(error);
         }
@@ -78,7 +83,7 @@ const Survey = () => {
                             <label htmlFor="weight">Weight : </label>
                             <input className='input-fields'
                                 type="text"
-                                name="height"
+                                name="Weight"
                                 placeholder='In kilograms'
                                 id=""
                                 onChange={(e) => setWeight(e.target.value)} />
@@ -112,46 +117,88 @@ const Survey = () => {
                                 onChange={(e) => setDiet(e.target.value)} />
                         </div>
                     </div>
-                    <div className="level">
+                    <div className="Activeness">
                         <div className="input-box">
-                            <label htmlFor="Experience">Experience : </label>
-                            <label htmlFor="Beginner">Beginner</label>
+                            <label htmlFor="Experience">How active you are : </label>
+                            <label htmlFor="Sedentary">Sedentary</label>
                             <input className='input-fields'
                                 type="radio"
-                                name="Experience"
+                                name="Activeness"
                                 id=""
-                                value="Beginner"
-                                onChange={(e) => setExperience(e.target.value)} />
-                            <label htmlFor="Intermediate">Intermediate</label>
+                                value="Sedentary"
+                                onChange={(e) => setActivity(e.target.value)} />
+                            <label htmlFor="Light-Activity">Light Activity</label>
                             <input className='input-fields'
                                 type="radio"
-                                name="Experience"
+                                name="Activeness"
                                 id=""
-                                value="Intermediate"
-                                onChange={(e) => setExperience(e.target.value)} />
-                            <label htmlFor="Advanced">Advanced</label>
+                                value="Light-Activity"
+                                onChange={(e) => setActivity(e.target.value)} />
+                            <label htmlFor="Moderately-active">Moderately active</label>
                             <input className='input-fields'
                                 type="radio"
-                                name="Experience"
+                                name="Activeness"
                                 id=""
-                                value="Advanced"
-                                onChange={(e) => setExperience(e.target.value)} />
+                                value="Moderately-active"
+                                onChange={(e) => setActivity(e.target.value)} />
+                            <label htmlFor="Highly-active">Highly active</label>
+                            <input className='input-fields'
+                                type="radio"
+                                name="Activeness"
+                                id=""s
+                                value="Highly-active"
+                                onChange={(e) => setActivity(e.target.value)} />
                         </div>
 
+                        <div className="level">
+                            <div className="input-box">
+                                <label htmlFor="Experience">Experience : </label>
+                                <label htmlFor="Beginner">Beginner</label>
+                                <input className='input-fields'
+                                    type="radio"
+                                    name="Experience"
+                                    id=""
+                                    value="Beginner"
+                                    onChange={(e) => setExperience(e.target.value)} />
+                                <label htmlFor="Intermediate">Intermediate</label>
+                                <input className='input-fields'
+                                    type="radio"
+                                    name="Experience"
+                                    id=""
+                                    value="Intermediate"
+                                    onChange={(e) => setExperience(e.target.value)} />
+                                <label htmlFor="Advanced">Advanced</label>
+                                <input className='input-fields'
+                                    type="radio"
+                                    name="Experience"
+                                    id=""
+                                    value="Advanced"
+                                    onChange={(e) => setExperience(e.target.value)} />
+                            </div>
 
-                    </div><br />
-                    <input type="checkbox" name="terms" id=""
-                        onChange={(e) => setAgree(e.target.checked)} />
-                    <label>I have read and agree to terms and conditions</label>
-                    <br />
-                    <input type="button" value="Submit" disabled={!agree} onClick={handleSubmit} />
+
+                        </div><br />
+                        <input type="checkbox" name="terms" id=""
+                            onChange={(e) => setAgree(e.target.checked)} />
+                        <label>I have read and agree to terms and conditions</label>
+                        <br />
+                        <input type="button" value="Submit" disabled={!agree} onClick={handleSubmit} />
+
+
+
+                    </div>
+
+
+
+
 
 
 
                 </div>
-
             </div>
-        </StyledContainer>
+
+
+        </StyledContainer >
     )
 }
 

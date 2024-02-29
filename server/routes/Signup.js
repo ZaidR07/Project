@@ -68,7 +68,12 @@ Signuprouter.post('/login', async (req, res) => {
     return res.json({
         message: "Login Succesfull",
         status: true,
+        user: {
+            email: email
+
+        }
     })
+    
 
 
 })
