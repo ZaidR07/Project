@@ -37,19 +37,19 @@ const Workout = () => {
 
 const StyledWorkout = styled.div`
   .red{
-    display: ${({Level}) => (Level == "Beginner" ? 'block' : 'none')};
+    display: ${({Level}) => (Level === "Beginner" ? 'block' : 'none')};
     background-color: red;
     width: 100%;
     min-height: 100vh;
   }
   .blue{
-    display: ${({Level}) => (Level == "Intermediate" ? 'block' : 'none')};
+    display: ${({Level}) => (Level === "Intermediate" ? 'block' : 'none')};
     background-color: blue;
     width: 100%;
     min-height: 100vh;
   }
   .green{
-    display: ${({Level}) => (Level == "Advanced" ? 'block' : 'none')};
+    display: ${({Level}) => (Level === "Advanced" ? 'block' : 'none')};
     background-color: green;
     width: 100%;
     min-height: 100vh;
