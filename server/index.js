@@ -4,6 +4,7 @@ import { Signuprouter } from "./routes/Signup.js";
 import { Userrouter } from "./routes/User.js";
 import {Bmrrouter} from "./routes/Bmr.js";
 import { Levelrouter } from "./routes/Level.js";
+import {Adminrouter} from "./routes/Admin.js";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(Signuprouter);
 app.use(Userrouter);
 app.use(Bmrrouter);
 app.use(Levelrouter);
+app.use(Adminrouter);
 
 
 

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -28,15 +29,33 @@ import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
   from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 
+
 const Admin_panel = () => {
+  const [totalusers, setTotalusers] = useState();
+  useEffect(() => {
+    const handleLoad = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/Admin", {
+
+        })
+        setTotalusers(response.data.totalusers);
+      } catch (error) {
+        console.log(error);
+      }
+
+    };
+    handleLoad();
+  }, []);
   return (
     <StyleAdmin>
       <div className="container">
         <div className="sidebar">
-        <NavLink to="/">
-          <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
-          <span>FITNESS365</span>
-        </NavLink>
+          <div className="sidebartop">
+            <NavLink to="/">
+              <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="40px" />
+              <span className="side-heading">FITNESS365</span>
+            </NavLink>
+          </div>
           <ul className="sidebar-list">
             <li className="sidebar-list-item">
               <a href="#dashboard">
@@ -90,7 +109,7 @@ const Admin_panel = () => {
                     <h3>CUSTOMERS</h3>
                     <BsPeopleFill className="card_icon" />
                   </div>
-                  <h1>33</h1>
+                  <h1>{totalusers}</h1>
                 </div>
                 <div className="card">
                   <div className="card-inner">
@@ -102,17 +121,35 @@ const Admin_panel = () => {
               </div>
             </main>
           </div>
-          <div className="red_container" id="red"></div>
+          <div className="product_container" id="red">
+            <div className="box">
+              <button className="add-btn">Add Product</button>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>ID</th>
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+
+          </div>
           <div className="yellow_container" id="yellow"></div>
           <div className="green_container" id="green"></div>
         </div>
       </div>
-      
+
     </StyleAdmin>
   );
 };
 
 const StyleAdmin = styled.div`
+  
   .container {
     display: flex;
   }
@@ -127,7 +164,21 @@ const StyleAdmin = styled.div`
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
   }
-  
+  .sidebartop{
+    width: 100%;
+    height: 64px;
+    background-color: #263043;
+    padding: 4%;
+    border: 1px solid #263043;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .side-heading,a{
+    font-size: 1.5rem;
+    vertical-align: super;
+    text-decoration: none;
+    font-style:normal;
+    color: #d04e17;
+  }
   .sidebar-brand {
     margin-top: 15px;
     font-size: 20px;
@@ -227,10 +278,12 @@ const StyleAdmin = styled.div`
   height:100vh;
   background-color:blue;
   }
-  .red_container{
+  .product_container{
     width:100%;
   height:100vh;
   background-color:red;
+  display: grid;
+  place-items: center;
   }
   .yellow_container{
     width:100%;
@@ -243,6 +296,20 @@ const StyleAdmin = styled.div`
   background-color:green;
   }
   
+  .box{
+    background-color: green;
+    width: 90%;
+    min-height: 90vh;
+    padding: 5vh 5vw 5vh 5vw;
+  }
+  table,tr,td,th{
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,tr{
+    min-width: 5vw;
+    max-width: 20vw;
+  }
 `
 
 export default Admin_panel;
