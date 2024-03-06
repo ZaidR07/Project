@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
     weight: { type: String,  },
     waist: { type: String,  },
     diet: { type: String,  },
+    activity: { type: String,  },
     experience: { type: String,  }
+    
 
 
 

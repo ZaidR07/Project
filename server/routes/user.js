@@ -6,7 +6,7 @@ const Userrouter = express.Router();
 
 Userrouter.post('/Userinfo', async (req, res) => {
     try {
-        const { email,gender, age, height, weight, waist, diet, experience } = req.body; 
+        const { email,gender, age, height, weight, waist, diet, activity, experience } = req.body; 
 
         
         const newUser = new UserModel({
@@ -17,6 +17,7 @@ Userrouter.post('/Userinfo', async (req, res) => {
             weight,
             waist,
             diet,
+            activity,
             experience
         });
 
