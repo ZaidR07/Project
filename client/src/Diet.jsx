@@ -28,7 +28,7 @@ const Diet = () => {
 
   const Scalecard = (event) => {
     const clickedCard = event.currentTarget;
-
+  
     if (reset) {
       console.log(reset);
       clickedCard.style.cssText = `
@@ -40,14 +40,17 @@ const Diet = () => {
       setIsClicked(false);
       return;
     }
-
+  
+    setIsClicked(true);
     clickedCard.style.cssText = `
       position: absolute;
       width: calc(80% - 4vw);
       height: calc(100vh - 5.8vh);
       z-index:1;
+      .dietimg{
+        display:none;
+      }
     `;
-    setIsClicked(true);
   };
 
   return (
@@ -110,39 +113,49 @@ const Diet = () => {
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
           <h4 className='dayhead'>SUNDAY</h4>
-          <img className='dietimg' src="/Resorces/diet2.jpg" alt="" srcset="" />
+          <img className='dietimg' src="/Resorces/dietnew3.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
           <h4 className='dayhead'>MONDAY</h4>
+          <img className='dietimg' src="/Resorces/diet4.png" alt="" srcset="" />
+        </div>
+        <div className="card" onClick={Scalecard}>
+          <button onClick={() => setReset(true)} className='crossiconbtn'>
+            <FontAwesomeIcon icon={faXmark} className='crossicon' />
+          </button>
+          <h4 className='dayhead'>TUESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet2.png" alt="" srcset="" />
+        </div>
+        <div className="card" onClick={Scalecard}>
+          <button onClick={() => setReset(true)} className='crossiconbtn'>
+            <FontAwesomeIcon icon={faXmark} className='crossicon' />
+          </button>
+          <h4 className='dayhead'>WEDNESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet5.png" alt="" srcset="" />
+        </div>
+        <div className="card" onClick={Scalecard}>
+          <button onClick={() => setReset(true)} className='crossiconbtn'>
+            <FontAwesomeIcon icon={faXmark} className='crossicon' />
+          </button>
+          <h4 className='dayhead'>THURSDAY</h4>
+          <img className='dietimg' src="/Resorces/diet6.png" alt="" srcset="" />
+        </div>
+        <div className="card" onClick={Scalecard}>
+          <button onClick={() => setReset(true)} className='crossiconbtn'>
+            <FontAwesomeIcon icon={faXmark} className='crossicon' />
+          </button>
+          <h4 className='dayhead'>FRIDAY</h4>
           <img className='dietimg' src="/Resorces/diet1.jpg" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
-        </div>
-        <div className="card" onClick={Scalecard}>
-          <button onClick={() => setReset(true)} className='crossiconbtn'>
-            <FontAwesomeIcon icon={faXmark} className='crossicon' />
-          </button>
-        </div>
-        <div className="card" onClick={Scalecard}>
-          <button onClick={() => setReset(true)} className='crossiconbtn'>
-            <FontAwesomeIcon icon={faXmark} className='crossicon' />
-          </button>
-        </div>
-        <div className="card" onClick={Scalecard}>
-          <button onClick={() => setReset(true)} className='crossiconbtn'>
-            <FontAwesomeIcon icon={faXmark} className='crossicon' />
-          </button>
-        </div>
-        <div className="card" onClick={Scalecard}>
-          <button onClick={() => setReset(true)} className='crossiconbtn'>
-            <FontAwesomeIcon icon={faXmark} className='crossicon' />
-          </button>
+          <h4 className='dayhead'>SATURDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew7.png" alt="" srcset="" />
         </div>
 
       </div>
@@ -151,36 +164,50 @@ const Diet = () => {
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>SUNDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew3.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>MONDAY</h4>
+          <img className='dietimg' src="/Resorces/diet4.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>TUESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet2.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>WEDNESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet5.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>THURSDAY</h4>
+          <img className='dietimg' src="/Resorces/diet6.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>FRIDAY</h4>
+          <img className='dietimg' src="/Resorces/diet1.jpg" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>SATURDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew7.png" alt="" srcset="" />
         </div>
       </div>
       <div id="yellow" className='container'>
@@ -188,41 +215,50 @@ const Diet = () => {
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>SUNDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew3.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>MONDAY</h4>
+          <img className='dietimg' src="/Resorces/diet4.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>TUESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet2.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>WEDNESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet5.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>THURSDAY</h4>
+          <img className='dietimg' src="/Resorces/diet6.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>FRIDAY</h4>
+          <img className='dietimg' src="/Resorces/diet1.jpg" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
-        </div>
-        <div className="card" onClick={Scalecard}>
-          <button onClick={() => setReset(true)} className='crossiconbtn'>
-            <FontAwesomeIcon icon={faXmark} className='crossicon' />
-          </button>
+          <h4 className='dayhead'>SATURDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew7.png" alt="" srcset="" />
         </div>
       </div>
     </StyledDiet>
@@ -230,6 +266,7 @@ const Diet = () => {
 };
 
 const StyledDiet = styled.div`
+  background-color: #d04e17;
   #red {
     display: ${({ calory }) => (calory >= 600 && calory < 1500 ? 'flex' : 'none')};
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
@@ -257,7 +294,7 @@ const StyledDiet = styled.div`
   .container {
     margin: auto;
     width: 80%;
-    /* height: 100vh; */
+    background-color:#242426; 
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -287,13 +324,14 @@ const StyledDiet = styled.div`
   .crossiconbtn{
     display: ${({ isClicked }) => (isClicked ? 'block' : 'none')};
   }
-  .dietimg{
-    display: block;
+  .dietimg {
+    display: ${({ isClicked }) => (isClicked ? 'none' : 'block')};
     margin: auto;
-    width: 50%;
-    aspect-ratio: 3/3;
+    width: 100%;
+    aspect-ratio: 4.5/3;
     object-fit: contain;
-  }
+    }
+
   .dayhead{
     text-align: center;
     font-family: cursive;
