@@ -57,37 +57,52 @@ const Diet = () => {
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>SUNDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew3.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>MONDAY</h4>
+          <img className='dietimg' src="/Resorces/diet4.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>TUESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet2.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>WEDNESDAY</h4>
+          <img className='dietimg' src="/Resorces/diet5.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>THURSDAY</h4>
+          <img className='dietimg' src="/Resorces/diet6.png" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>FRIDAY</h4>
+          <img className='dietimg' src="/Resorces/diet1.jpg" alt="" srcset="" />
         </div>
         <div className="card" onClick={Scalecard}>
           <button onClick={() => setReset(true)} className='crossiconbtn'>
             <FontAwesomeIcon icon={faXmark} className='crossicon' />
           </button>
+          <h4 className='dayhead'>SATURDAY</h4>
+          <img className='dietimg' src="/Resorces/dietnew7.png" alt="" srcset="" />
         </div>
+
       </div>
       <div id="blue" className='container'>
         <div className="card" onClick={Scalecard}>
@@ -248,8 +263,8 @@ const StyledDiet = styled.div`
     flex-wrap: wrap;
   }
   .card {
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
     width: calc(33.33% - 4vw);
     margin: 2vw;
     padding: 1vw;
@@ -273,11 +288,14 @@ const StyledDiet = styled.div`
     display: ${({ isClicked }) => (isClicked ? 'block' : 'none')};
   }
   .dietimg{
-    width: 100%;
-    aspect-ratio: 4.5/3;
+    display: block;
+    margin: auto;
+    width: 50%;
+    aspect-ratio: 3/3;
     object-fit: contain;
   }
   .dayhead{
+    text-align: center;
     font-family: cursive;
   }
 `;
