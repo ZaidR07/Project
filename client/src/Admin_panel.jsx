@@ -107,11 +107,7 @@ const Admin_panel = () => {
           <div className="green_container" id="green"></div>
         </div>
       </div>
-      {/* <div className="color_container">
-        <div className="red_container" id="red"></div>
-        <div className="yellow_container" id="yellow"></div>
-        <div className="green_container" id="green"></div>
-      </div> */}
+      
     </StyleAdmin>
   );
 };
@@ -164,6 +160,7 @@ const StyleAdmin = styled.div`
     z-index: 12 !important;
   }
   .display{
+    width: 80%;
     position: absolute;
     top: 0;
     margin-left: 20%;
