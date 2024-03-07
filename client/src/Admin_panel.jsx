@@ -28,10 +28,34 @@ import { BsFillGearFill } from "react-icons/bs";
 import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
   from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
+  const [name , setName] = useState("");
+  const [price , setPrice] = useState("");
+  const [description , setDescription] = useState("");
+  const [image , setImage] = useState();
+
+
+  const handleSubmit = async () =>{
+    try {
+      const response = axios.post("http://localhost:4000/Productadd",{
+        name : name,
+        price : price,
+        description : description,
+        image : image,
+
+
+      })
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     const handleLoad = async () => {
       try {
@@ -46,6 +70,26 @@ const Admin_panel = () => {
     };
     handleLoad();
   }, []);
+  const crossRef = React.createRef();
+  const overlayRef = React.createRef();
+
+  const handleButtonClick = () => {
+    const overlayElement = overlayRef.current;
+    const crossElement = crossRef.current;
+    if (overlayElement.style.display !== "block") {
+      overlayElement.style.display = "block";
+      crossElement.style.display = "block";
+    }
+  };
+
+  const handleCross = () => {
+    const overlayElement = overlayRef.current;
+    const crossElement = crossRef.current;
+    if (overlayElement.style.display === "block") {
+      overlayElement.style.display = "none";
+      crossElement.style.display = "none";
+    }
+  };
   return (
     <StyleAdmin>
       <div className="container">
@@ -123,7 +167,8 @@ const Admin_panel = () => {
           </div>
           <div className="product_container" id="red">
             <div className="box">
-              <button className="add-btn">Add Product</button>
+              <button onClick={handleButtonClick} className="add-btn">Add Product</button><br /><br />
+              <br /><br />
               <table>
                 <thead>
                   <tr>
@@ -137,6 +182,26 @@ const Admin_panel = () => {
                 </thead>
               </table>
             </div>
+            <div className="overlaybox" ref={overlayRef}>
+              <button className='crossicon' ref={crossRef} onClick={handleCross}>
+                <FontAwesomeIcon icon={faXmark} />
+              </button>
+              <h3 style={{ textAlign: "center" }}>New Product</h3><br />
+              <form>
+                <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e)=>(setName(e.target.value))} /><br /><br />
+                <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e)=>(setPrice(e.target.value))}  /><br /><br />
+
+
+                <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e)=>(setDescription(e.target.value))} ></textarea><br /><br />
+                <input type="file" className="product-inputs" name="product_image" onChange={(e)=>(setImage(e.target.value))}/><br />
+                <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
+
+
+
+
+              </form>
+            </div>
+
 
           </div>
           <div className="yellow_container" id="yellow"></div>
@@ -296,20 +361,51 @@ const StyleAdmin = styled.div`
   background-color:green;
   }
   
-  .box{
-    background-color: green;
-    width: 90%;
-    min-height: 90vh;
-    padding: 5vh 5vw 5vh 5vw;
-  }
+  .box {
+  background-color: green;
+  width: 90%;
+  min-height: 90vh;
+  padding: 5vh 5vw 5vh 5vw;
+  display: block;
+}
+
+.overlaybox {
+  background-color: white;
+  display: none;
+  width: 40%;
+  height: 60vh;
+  position: absolute;
+  z-index: 1;
+}
   table,tr,td,th{
     border: 1px solid black;
     border-collapse: collapse;
   }
   th,tr{
-    min-width: 5vw;
+    min-width: 8vw;
     max-width: 20vw;
   }
+  form{
+    width: 100%;
+    padding: 0 0% 0px 10%;
+  }
+.product-inputs{
+  width: 90%;
+  height: 5vh;
+  padding-left: 1%;
+}
+textarea{
+  width: 90%;
+  height: 20vh;
+
+
+}
+.submitbtn{
+  display: block;
+  margin: auto;
+  width: 6vw;
+  min-height: 4vh;
+}
 `
 
 export default Admin_panel;
