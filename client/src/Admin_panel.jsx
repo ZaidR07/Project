@@ -34,24 +34,28 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
-  const [name , setName] = useState("");
-  const [price , setPrice] = useState("");
-  const [description , setDescription] = useState("");
-  const [image , setImage] = useState();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState();
 
 
-  const handleSubmit = async () =>{
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description);
+
     try {
-      const response = axios.post("http://localhost:4000/Productadd",{
-        name : name,
-        price : price,
-        description : description,
-        image : image,
+      const response = await axios.post("http://localhost:4000/Productadd", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data' 
+        }
+      });
 
-
-      })
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   }
@@ -188,12 +192,12 @@ const Admin_panel = () => {
               </button>
               <h3 style={{ textAlign: "center" }}>New Product</h3><br />
               <form>
-                <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e)=>(setName(e.target.value))} /><br /><br />
-                <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e)=>(setPrice(e.target.value))}  /><br /><br />
+                <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e) => (setName(e.target.value))} /><br /><br />
+                <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e) => (setPrice(e.target.value))} /><br /><br />
 
 
-                <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e)=>(setDescription(e.target.value))} ></textarea><br /><br />
-                <input type="file" className="product-inputs" name="product_image" onChange={(e)=>(setImage(e.target.value))}/><br />
+                <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e) => (setDescription(e.target.value))} ></textarea><br /><br />
+                <input type="file" className="product-inputs" name="image" onChange={(e) => (setFile(e.target.files[0]))} /><br />
                 <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
 
 
