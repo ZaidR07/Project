@@ -28,6 +28,7 @@ app.use(Bmrrouter);
 app.use(Levelrouter);
 app.use(Adminrouter);
 app.use(Productrouter);
+app.use(express.static('public'));
 
 
 

@@ -37,7 +37,10 @@ const Admin_panel = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
   const [file, setFile] = useState();
+  const [product, setProduct] = useState([]);
+
 
 
   const handleSubmit = async (event) => {
@@ -47,11 +50,13 @@ const Admin_panel = () => {
     formData.append('name', name);
     formData.append('price', price);
     formData.append('description', description);
+    formData.append('link', link);
+
 
     try {
       const response = await axios.post("http://localhost:4000/Productadd", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data' 
+          'Content-Type': 'multipart/form-data'
         }
       });
 
@@ -66,6 +71,10 @@ const Admin_panel = () => {
         const response = await axios.get("http://localhost:4000/Admin", {
 
         })
+        const res = await axios.get("http://localhost:4000/Productget", {
+
+        })
+        setProduct(res.data);
         setTotalusers(response.data.totalusers);
       } catch (error) {
         console.log(error);
@@ -178,12 +187,26 @@ const Admin_panel = () => {
                   <tr>
                     <th>Image</th>
                     <th>ID</th>
-                    <th>Category</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
                   </tr>
                 </thead>
+
+                <tbody>
+
+                  {product.length > 0 && product.map((item, index) => (
+                    <tr key={index}>
+                      <td><img className="product_table_img" src={"http://localhost:4000/Productimages/" + item.image} alt="" /></td>
+                      <td>{item.product_id}</td>
+                      <td>{item.name}</td>
+                      <td>{item.description}</td>
+                      <td>{item.price}</td>
+                    </tr>
+                  ))}
+
+
+                </tbody>
               </table>
             </div>
             <div className="overlaybox" ref={overlayRef}>
@@ -197,6 +220,7 @@ const Admin_panel = () => {
 
 
                 <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e) => (setDescription(e.target.value))} ></textarea><br /><br />
+                <input type="text" className="product-inputs" name="product_price" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
                 <input type="file" className="product-inputs" name="image" onChange={(e) => (setFile(e.target.files[0]))} /><br />
                 <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
 
@@ -388,6 +412,7 @@ const StyleAdmin = styled.div`
   th,tr{
     min-width: 8vw;
     max-width: 20vw;
+    text-align: center;
   }
   form{
     width: 100%;
@@ -403,6 +428,12 @@ textarea{
   height: 20vh;
 
 
+}
+.product_table_img{
+  width: 50%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  
 }
 .submitbtn{
   display: block;
