@@ -217,9 +217,16 @@ const StyledContainer = styled.div`
         box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
         border-radius: 2%;
 
-
+    }
+    h1{
+        display:block;
+        text-align:center;
+        font-size: 2em;
+        color:#595959;
+        
     }
     .form{
+        background-color:green;
         
     }
     .personalinfo{
@@ -231,15 +238,17 @@ const StyledContainer = styled.div`
     }
     
     .level{
-        
+        display: block;
+      margin-bottom: 5px;
     }
     .input-box{
-        width: 50%;
-        height: 6vh;
-        /* background-color: yellow; */
-        padding-top:1vh;
-        padding-bottom:1vh;
-
+         width: 50%;
+        height: 6vh; 
+        padding-top:1vh; 
+        padding-bottom:1vh; 
+         flex-direction:column;
+         margin-bottom: 15px;
+       
     }
     .input-fields{
         margin-left: 2%;
