@@ -30,17 +30,24 @@ import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'react-toastify';
+
+
 
 
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
+  const [totalproducts, setTotalproducts] = useState();
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [file, setFile] = useState();
   const [product, setProduct] = useState([]);
+  const [category, setCategory] = useState([]);
 
+  const notify = () => toast("Product Added Successfully");
 
 
   const handleSubmit = async (event) => {
@@ -51,6 +58,8 @@ const Admin_panel = () => {
     formData.append('price', price);
     formData.append('description', description);
     formData.append('link', link);
+    formData.append('category', category);
+
 
 
     try {
@@ -60,6 +69,10 @@ const Admin_panel = () => {
         }
       });
 
+
+      if(response.status){
+        notify()
+      }
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +89,7 @@ const Admin_panel = () => {
         })
         setProduct(res.data);
         setTotalusers(response.data.totalusers);
+        setTotalproducts(response.data.totalproducts);
       } catch (error) {
         console.log(error);
       }
@@ -152,14 +166,14 @@ const Admin_panel = () => {
                     <h3>PRODUCTS</h3>
                     <BsFillArchiveFill className="card_icon" />
                   </div>
-                  <h1>300</h1>
+                  <h1>{totalproducts}</h1>
                 </div>
                 <div className="card">
                   <div className="card-inner">
                     <h3>SALES</h3>
                     <BsFillGrid3X3GapFill className="card_icon" />
                   </div>
-                  <h1>12</h1>
+                  <h1>0</h1>
                 </div>
                 <div className="card">
                   <div className="card-inner">
@@ -216,12 +230,18 @@ const Admin_panel = () => {
               <h3 style={{ textAlign: "center" }}>New Product</h3><br />
               <form>
                 <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e) => (setName(e.target.value))} /><br /><br />
+
                 <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e) => (setPrice(e.target.value))} /><br /><br />
+
+                <input type="text" className="product-inputs" name="product_category" placeholder="Enter Category" onChange={(e) => (setCategory(e.target.value))} /><br /><br />
 
 
                 <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e) => (setDescription(e.target.value))} ></textarea><br /><br />
-                <input type="text" className="product-inputs" name="product_price" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
+
+                <input type="text" className="product-inputs" name="product_link" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
+
                 <input type="file" className="product-inputs" name="image" onChange={(e) => (setFile(e.target.files[0]))} /><br />
+
                 <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
 
 
@@ -373,8 +393,7 @@ const StyleAdmin = styled.div`
   }
   .product_container{
     width:100%;
-  height:100vh;
-  background-color:red;
+  min-height:100vh;
   display: grid;
   place-items: center;
   }
@@ -390,7 +409,6 @@ const StyleAdmin = styled.div`
   }
   
   .box {
-  background-color: green;
   width: 90%;
   min-height: 90vh;
   padding: 5vh 5vw 5vh 5vw;
@@ -430,8 +448,8 @@ textarea{
 
 }
 .product_table_img{
-  width: 50%;
-  aspect-ratio: 3/2;
+  width: 55%;
+  aspect-ratio: 2/2;
   object-fit: contain;
   
 }
