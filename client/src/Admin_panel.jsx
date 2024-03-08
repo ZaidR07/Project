@@ -28,16 +28,53 @@ import { BsFillGearFill } from "react-icons/bs";
 import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
   from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+  const [file, setFile] = useState();
+  const [product, setProduct] = useState([]);
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description);
+    formData.append('link', link);
+
+
+    try {
+      const response = await axios.post("http://localhost:4000/Productadd", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     const handleLoad = async () => {
       try {
         const response = await axios.get("http://localhost:4000/Admin", {
 
         })
+        const res = await axios.get("http://localhost:4000/Productget", {
+
+        })
+        setProduct(res.data);
         setTotalusers(response.data.totalusers);
       } catch (error) {
         console.log(error);
@@ -46,6 +83,26 @@ const Admin_panel = () => {
     };
     handleLoad();
   }, []);
+  const crossRef = React.createRef();
+  const overlayRef = React.createRef();
+
+  const handleButtonClick = () => {
+    const overlayElement = overlayRef.current;
+    const crossElement = crossRef.current;
+    if (overlayElement.style.display !== "block") {
+      overlayElement.style.display = "block";
+      crossElement.style.display = "block";
+    }
+  };
+
+  const handleCross = () => {
+    const overlayElement = overlayRef.current;
+    const crossElement = crossRef.current;
+    if (overlayElement.style.display === "block") {
+      overlayElement.style.display = "none";
+      crossElement.style.display = "none";
+    }
+  };
   return (
     <StyleAdmin>
       <div className="container">
@@ -123,20 +180,56 @@ const Admin_panel = () => {
           </div>
           <div className="product_container" id="red">
             <div className="box">
-              <button className="add-btn">Add Product</button>
+              <button onClick={handleButtonClick} className="add-btn">Add Product</button><br /><br />
+              <br /><br />
               <table>
                 <thead>
                   <tr>
                     <th>Image</th>
                     <th>ID</th>
-                    <th>Category</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
                   </tr>
                 </thead>
+
+                <tbody>
+
+                  {product.length > 0 && product.map((item, index) => (
+                    <tr key={index}>
+                      <td><img className="product_table_img" src={"http://localhost:4000/Productimages/" + item.image} alt="" /></td>
+                      <td>{item.product_id}</td>
+                      <td>{item.name}</td>
+                      <td>{item.description}</td>
+                      <td>{item.price}</td>
+                    </tr>
+                  ))}
+
+
+                </tbody>
               </table>
             </div>
+            <div className="overlaybox" ref={overlayRef}>
+              <button className='crossicon' ref={crossRef} onClick={handleCross}>
+                <FontAwesomeIcon icon={faXmark} />
+              </button>
+              <h3 style={{ textAlign: "center" }}>New Product</h3><br />
+              <form>
+                <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e) => (setName(e.target.value))} /><br /><br />
+                <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e) => (setPrice(e.target.value))} /><br /><br />
+
+
+                <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e) => (setDescription(e.target.value))} ></textarea><br /><br />
+                <input type="text" className="product-inputs" name="product_price" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
+                <input type="file" className="product-inputs" name="image" onChange={(e) => (setFile(e.target.files[0]))} /><br />
+                <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
+
+
+
+
+              </form>
+            </div>
+
 
           </div>
           <div className="yellow_container" id="yellow"></div>
@@ -296,20 +389,58 @@ const StyleAdmin = styled.div`
   background-color:green;
   }
   
-  .box{
-    background-color: green;
-    width: 90%;
-    min-height: 90vh;
-    padding: 5vh 5vw 5vh 5vw;
-  }
+  .box {
+  background-color: green;
+  width: 90%;
+  min-height: 90vh;
+  padding: 5vh 5vw 5vh 5vw;
+  display: block;
+}
+
+.overlaybox {
+  background-color: white;
+  display: none;
+  width: 40%;
+  height: 60vh;
+  position: absolute;
+  z-index: 1;
+}
   table,tr,td,th{
     border: 1px solid black;
     border-collapse: collapse;
   }
   th,tr{
-    min-width: 5vw;
+    min-width: 8vw;
     max-width: 20vw;
+    text-align: center;
   }
+  form{
+    width: 100%;
+    padding: 0 0% 0px 10%;
+  }
+.product-inputs{
+  width: 90%;
+  height: 5vh;
+  padding-left: 1%;
+}
+textarea{
+  width: 90%;
+  height: 20vh;
+
+
+}
+.product_table_img{
+  width: 50%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  
+}
+.submitbtn{
+  display: block;
+  margin: auto;
+  width: 6vw;
+  min-height: 4vh;
+}
 `
 
 export default Admin_panel;

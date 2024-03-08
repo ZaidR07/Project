@@ -5,6 +5,7 @@ import { Userrouter } from "./routes/User.js";
 import {Bmrrouter} from "./routes/Bmr.js";
 import { Levelrouter } from "./routes/Level.js";
 import {Adminrouter} from "./routes/Admin.js";
+import { Productrouter } from "./routes/Product.js";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config();
@@ -26,6 +27,8 @@ app.use(Userrouter);
 app.use(Bmrrouter);
 app.use(Levelrouter);
 app.use(Adminrouter);
+app.use(Productrouter);
+app.use(express.static('public'));
 
 
 

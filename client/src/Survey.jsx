@@ -134,12 +134,12 @@ const Survey = () => {
                                 id=""
                                 value="Light-Activity"
                                 onChange={(e) => setActivity(e.target.value)} />
-                            <label htmlFor="Moderately-active">Moderately active</label>
+                            <label htmlFor="Moderately-active">Moderately-Active</label>
                             <input className='input-fields'
                                 type="radio"
                                 name="Activeness"
                                 id=""
-                                value="Moderately-active"
+                                value="Moderately-Active"
                                 onChange={(e) => setActivity(e.target.value)} />
                             <label htmlFor="Highly-active">Highly active</label>
                             <input className='input-fields'
