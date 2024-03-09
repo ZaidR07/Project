@@ -11,12 +11,23 @@ Adminrouter.get("/Admin", async (req, res) => {
         const totalusers = users.length;
         const totalproducts = products.length;
 
-        res.json({ totalusers,totalproducts, status : true
-         });
+        res.json({
+            totalusers, totalproducts, status: true
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
-export  {Adminrouter};
+Adminrouter.get("/Customerget", async (req, res) => {
+    try {
+        const users = await UserModel.find();
+        res.json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+export { Adminrouter };

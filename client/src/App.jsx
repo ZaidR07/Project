@@ -35,7 +35,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <>
-            {isLoggedIn && <Header />}
+            {isLoggedIn && <Header setIsLoggedIn ={setIsLoggedIn} />}
             <Routes>
               {!isLoggedIn && (
                 <>
