@@ -5,16 +5,30 @@ import styled from "styled-components";
 import axios from "axios";
 
 const MyCarousel = () => {
-  const [products, setProducts] = useState([]);
+  const [supplements, setSupplements] = useState([]);
+  const [equipments, setEquipments] = useState([]);
+  const [apparels, setApparels] = useState([]);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:4000/Productget");
-        const filteredProducts = response.data.filter(
+        const filteredsupplements = response.data.filter(
           (product) => product.category === "Supplements"
         );
-        setProducts(filteredProducts);
+        setSupplements(filteredsupplements);
+
+        const filteredequipments = response.data.filter(
+          (product) => product.category === "Equipments"
+        );
+        setEquipments(filteredequipments);
+
+        const filterapparels = response.data.filter(
+          (product) => product.category === "Apparels"
+        );
+        setApparels(filterapparels);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
@@ -46,44 +60,128 @@ const MyCarousel = () => {
   };
 
   return (
-    <Carousel
-      arrows={true}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlay={false}
-      keyBoardControl={true}
-      customTransition="all .5"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      deviceType={"desktop"}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-      {products.length > 0 && products.map((product) => (
-        <StyledItem key={product._id}>
-          <img
-            className="Carousel_img"
-            src={"http://localhost:4000/Productimages/" + product.image}
-          />
-          <br />
-          <div className="description">
-            <p>{product.description}</p>
+    <>
+      <h1 style={{ fontSize: '2rem', marginLeft: '4%' }}>Health Supplements</h1>
+      <Carousel
+        arrows={true}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        deviceType={"desktop"}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {supplements.length > 0 && supplements.map((supplements) => (
+          <StyledItem key={supplements._id}>
+            <img
+              className="Carousel_img"
+              src={"http://localhost:4000/Productimages/" + supplements.image}
+            />
             <br />
-            <span className="rupee">
-              ₹<span className="price">{product.price}</span>
-            </span>
-            <button
-              onClick={() => handleImageClick(product.link)}
-              className="order"
-            >
-              Order on Flipkart
-            </button>
-          </div>
-        </StyledItem>
-      ))}
-    </Carousel>
+            <div className="description">
+              <h3 style={{ marginBottom: '0.8vh' }}>{supplements.name}</h3>
+              <p>{supplements.description}</p>
+              <br />
+              <span className="rupee">
+                ₹<span className="price">{supplements.price}</span>
+              </span>
+              <button
+                onClick={() => handleImageClick(supplements.link)}
+                className="order"
+              >
+                Order on Flipkart
+              </button>
+            </div>
+          </StyledItem>
+        ))}
+      </Carousel>
+      <h1 style={{ fontSize: '2rem', marginLeft: '4%', marginTop: '10vh' }}>Equipments</h1>
+      <Carousel
+        arrows={true}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        deviceType={"desktop"}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {equipments.length > 0 && equipments.map((equipments) => (
+          <StyledItem key={equipments._id}>
+            <img
+              className="Carousel_img"
+              src={"http://localhost:4000/Productimages/" + equipments.image}
+            />
+            <br />
+            <div className="description">
+              <h3 style={{ marginBottom: '0.8vh' }}>{equipments.name}</h3>
+              <p>{equipments.description}</p>
+              <br />
+              <span className="rupee">
+                ₹<span className="price">{equipments.price}</span>
+              </span>
+              <button
+                onClick={() => handleImageClick(equipments.link)}
+                className="order"
+              >
+                Order on Flipkart
+              </button>
+            </div>
+          </StyledItem>
+        ))}
+      </Carousel>
+      <h1 style={{ fontSize: '2rem', marginLeft: '4%', marginTop: '10vh' }}>Apparels</h1>
+      <Carousel
+        arrows={true}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={false}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        deviceType={"desktop"}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {apparels.length > 0 && apparels.map((apparels) => (
+          <StyledItem key={apparels._id}>
+            <img
+              className="Carousel_img"
+              src={"http://localhost:4000/Productimages/" + apparels.image}
+            />
+            <br />
+            <div className="description">
+              <h3 style={{ marginBottom: '0.8vh' }}>{apparels.name}</h3>
+              <p>{apparels.description}</p>
+              <br />
+              <span className="rupee">
+                ₹<span className="price">{apparels.price}</span>
+              </span>
+              <button
+                onClick={() => handleImageClick(apparels.link)}
+                className="order"
+              >
+                Order on Flipkart
+              </button>
+            </div>
+          </StyledItem>
+        ))}
+      </Carousel>
+    </>
   );
 };
 
