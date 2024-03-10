@@ -211,7 +211,6 @@ const StyledContainer = styled.div`
     .box{
         width:60%;
         height: 80vh;
-        /* background-color: #d04e17; */
         padding: 2%;
         border: 1px;
         box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
@@ -226,7 +225,7 @@ const StyledContainer = styled.div`
         
     }
     .form{
-        background-color:green;
+        background-color:red;
         
     }
     .personalinfo{
@@ -248,6 +247,8 @@ const StyledContainer = styled.div`
         padding-bottom:1vh; 
          flex-direction:column;
          margin-bottom: 15px;
+        display:inline-block;
+
        
     }
     .input-fields{
