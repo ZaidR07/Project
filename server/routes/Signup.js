@@ -63,13 +63,15 @@ Signuprouter.post('/login', async (req, res) => {
         })
     }
 
+    const username = user.username;
     const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' })
     res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
     return res.json({
         message: "Login Succesfull",
         status: true,
         user: {
-            email: email
+            email: email,
+            username : username
 
         }
     })

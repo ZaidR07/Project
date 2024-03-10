@@ -30,18 +30,24 @@ import { BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify }
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-
+import { toast } from 'react-toastify';
 
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
+  const [totalproducts, setTotalproducts] = useState();
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [file, setFile] = useState();
   const [product, setProduct] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [customer, setCustomer] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(3);
 
-
+  const notify = () => toast("Product Added Successfully");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -51,7 +57,7 @@ const Admin_panel = () => {
     formData.append('price', price);
     formData.append('description', description);
     formData.append('link', link);
-
+    formData.append('category', category);
 
     try {
       const response = await axios.post("http://localhost:4000/Productadd", formData, {
@@ -60,6 +66,9 @@ const Admin_panel = () => {
         }
       });
 
+      if (response.status) {
+        notify()
+      }
     } catch (error) {
       console.log(error);
     }
@@ -68,21 +77,20 @@ const Admin_panel = () => {
   useEffect(() => {
     const handleLoad = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/Admin", {
-
-        })
-        const res = await axios.get("http://localhost:4000/Productget", {
-
-        })
-        setProduct(res.data);
+        const response = await axios.get("http://localhost:4000/Admin", {});
+        const productres = await axios.get("http://localhost:4000/Productget", {});
+        const customerres = await axios.get("http://localhost:4000/Customerget", {});
+        setProduct(productres.data);
+        setCustomer(customerres.data);
         setTotalusers(response.data.totalusers);
+        setTotalproducts(response.data.totalproducts);
       } catch (error) {
         console.log(error);
       }
-
     };
     handleLoad();
   }, []);
+
   const crossRef = React.createRef();
   const overlayRef = React.createRef();
 
@@ -103,6 +111,19 @@ const Admin_panel = () => {
       crossElement.style.display = "none";
     }
   };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = product.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handleNextPage = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage(prevPage => prevPage - 1);
+  };
+
   return (
     <StyleAdmin>
       <div className="container">
@@ -124,19 +145,16 @@ const Admin_panel = () => {
                 <BsFillArchiveFill className="icon" /> Products
               </a>
             </li>
-
             <li className="sidebar-list-item">
               <a href="#yellow">
                 <BsPeopleFill className="icon" /> Customers
               </a>
             </li>
-
             <li className="sidebar-list-item">
               <a href="#green">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
             </li>
-
           </ul>
         </div>
         <div className="display">
@@ -145,21 +163,20 @@ const Admin_panel = () => {
               <div className="main-title">
                 <h3>DASHBOARD</h3>
               </div>
-
               <div className="main-cards">
                 <div className="card">
                   <div className="card-inner">
                     <h3>PRODUCTS</h3>
                     <BsFillArchiveFill className="card_icon" />
                   </div>
-                  <h1>300</h1>
+                  <h1>{totalproducts}</h1>
                 </div>
                 <div className="card">
                   <div className="card-inner">
                     <h3>SALES</h3>
                     <BsFillGrid3X3GapFill className="card_icon" />
                   </div>
-                  <h1>12</h1>
+                  <h1>0</h1>
                 </div>
                 <div className="card">
                   <div className="card-inner">
@@ -179,7 +196,7 @@ const Admin_panel = () => {
             </main>
           </div>
           <div className="product_container" id="red">
-            <div className="box">
+            <div className="product_box">
               <button onClick={handleButtonClick} className="add-btn">Add Product</button><br /><br />
               <br /><br />
               <table>
@@ -192,10 +209,8 @@ const Admin_panel = () => {
                     <th>Price</th>
                   </tr>
                 </thead>
-
                 <tbody>
-
-                  {product.length > 0 && product.map((item, index) => (
+                  {currentItems.map((item, index) => (
                     <tr key={index}>
                       <td><img className="product_table_img" src={"http://localhost:4000/Productimages/" + item.image} alt="" /></td>
                       <td>{item.product_id}</td>
@@ -204,10 +219,12 @@ const Admin_panel = () => {
                       <td>{item.price}</td>
                     </tr>
                   ))}
-
-
                 </tbody>
               </table>
+              <div>
+                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                <button onClick={handleNextPage} disabled={indexOfLastItem >= product.length}>Next</button>
+              </div>
             </div>
             <div className="overlaybox" ref={overlayRef}>
               <button className='crossicon' ref={crossRef} onClick={handleCross}>
@@ -217,30 +234,50 @@ const Admin_panel = () => {
               <form>
                 <input type="text" className="product-inputs" name="product_name" placeholder="Enter Product Name" onChange={(e) => (setName(e.target.value))} /><br /><br />
                 <input type="text" className="product-inputs" name="product_price" placeholder="Enter Price" onChange={(e) => (setPrice(e.target.value))} /><br /><br />
-
-
+                <input type="text" className="product-inputs" name="product_category" placeholder="Enter Category" onChange={(e) => (setCategory(e.target.value))} /><br /><br />
                 <textarea name="product_description" id="" cols="30" rows="10" placeholder="Description" onChange={(e) => (setDescription(e.target.value))} ></textarea><br /><br />
-                <input type="text" className="product-inputs" name="product_price" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
+                <input type="text" className="product-inputs" name="product_link" placeholder="Affiliate link" onChange={(e) => (setLink(e.target.value))} /><br /><br />
                 <input type="file" className="product-inputs" name="image" onChange={(e) => (setFile(e.target.files[0]))} /><br />
                 <input type="submit" value="Add" className="submitbtn" onClick={handleSubmit} />
-
-
-
-
               </form>
             </div>
-
-
           </div>
-          <div className="yellow_container" id="yellow"></div>
+          <div className="customer_container" id="yellow">
+            <div className="customer_box">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Diet</th>
+                    <th>Experience</th>
+        
+                  </tr>
+                </thead>
+                <tbody>
+                  {customer.length > 0 && customer.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.email}</td>
+                      <td>{item.gender}</td>
+                      <td>{item.age}</td>
+                      <td>{item.diet}</td>
+                      <td>{item.experience}</td>
+                      <td>Update</td>
+                      <td>Delete</td>
+
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div className="green_container" id="green"></div>
         </div>
       </div>
-
     </StyleAdmin>
   );
 };
-
 const StyleAdmin = styled.div`
   
   .container {
@@ -373,15 +410,18 @@ const StyleAdmin = styled.div`
   }
   .product_container{
     width:100%;
-  height:100vh;
-  background-color:red;
+  min-height:100vh;
   display: grid;
   place-items: center;
   }
-  .yellow_container{
+  .customer_container{
     width:100%;
-  height:100vh;
-  background-color:yellow;
+  min-height:100vh;
+  display: grid;
+  place-items: center;
+
+
+ 
   }
   .green_container{
     width:100%;
@@ -389,14 +429,25 @@ const StyleAdmin = styled.div`
   background-color:green;
   }
   
-  .box {
-  background-color: green;
-  width: 90%;
+  .product_box {
   min-height: 90vh;
-  padding: 5vh 5vw 5vh 5vw;
+  /* padding: 5vh 5vw 5vh 5vw; */
   display: block;
 }
+.customer_box {
+  min-height: 90vh;
+  /* padding: 5vh 5vw 5vh 5vw; */
+  display: block;
+  overflow-y: scroll;
+}
 
+.customer_box::-webkit-scrollbar {
+  width: 0; 
+}
+
+.customer_box {
+  scrollbar-width: none;
+}
 .overlaybox {
   background-color: white;
   display: none;
@@ -409,10 +460,14 @@ const StyleAdmin = styled.div`
     border: 1px solid black;
     border-collapse: collapse;
   }
-  th,tr{
+  th,td{
+    font-size: 1rem;
     min-width: 8vw;
     max-width: 20vw;
     text-align: center;
+    padding: 0.5%;
+    
+    
   }
   form{
     width: 100%;
@@ -430,8 +485,8 @@ textarea{
 
 }
 .product_table_img{
-  width: 50%;
-  aspect-ratio: 3/2;
+  width: 55%;
+  aspect-ratio: 2/2;
   object-fit: contain;
   
 }

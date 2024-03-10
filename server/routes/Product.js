@@ -18,7 +18,7 @@ const upload = multer({ storage });
 
 
 Productrouter.post("/Productadd", upload.single('file'), async (req, res) => {
-  const { name, price, description, link} = req.body;
+  const { name, price, description, link , category} = req.body;
   const image = req.file.filename;
   console.log(image);
   try {
@@ -27,10 +27,15 @@ Productrouter.post("/Productadd", upload.single('file'), async (req, res) => {
       price,
       description,
       image,
-      link
+      link,
+      category
 
     });
     await newProduct.save();
+    return res.json({
+      message : "Product Added Successfully",
+      status : true
+    })
 
 
   }

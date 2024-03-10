@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
@@ -8,9 +9,32 @@ import { useState } from 'react';
 import Admin_panel from './Admin_panel';
 
 
-const Header = () => {
+const Header = ({ setIsLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [username, setUsername] = useState();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    try {
+      const storedUsername = localStorage.getItem('username');
+      const firstLetter = storedUsername.charAt(0).toUpperCase();
+      setUsername(firstLetter);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  
+
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+
+    navigate('/');
+  };
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -64,8 +88,8 @@ const Header = () => {
         <div className="nav3">
           <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
 
-          <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: 'white', marginLeft: '1vw' }} className="profile">
-
+          <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: '#CC3D00', marginLeft: '1vw' }} className="profile">
+            <h3>{username}</h3>
           </div>
 
           <div className="dropdown-container">
@@ -75,8 +99,8 @@ const Header = () => {
             {isOpen && (
               <div className="dropdown-content">
                 <p>Profile</p>
-                <p>Log out</p>
-                <NavLink to = '/Admin_panel'>
+                <p onClick={handleLogout}>Log out</p>
+                <NavLink to='/Admin_panel'>
                   <p>Admin Panel</p>
                 </NavLink>
               </div>
@@ -237,6 +261,14 @@ const MainHeader = styled.header`
 .dropdown-content p:hover {
   background-color: #E49472;
 }
+
+.profile{
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+
 `
 
 export default Header;

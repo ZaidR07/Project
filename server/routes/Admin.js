@@ -1,18 +1,33 @@
 import express from "express";
 import { UserModel } from "../models/User.js";
+import { ProductModel } from "../models/Product.js";
 const Adminrouter = express.Router();
 
 Adminrouter.get("/Admin", async (req, res) => {
     try {
         const users = await UserModel.find();
+        const products = await ProductModel.find();
 
         const totalusers = users.length;
-        res.json({ totalusers,status : true
-         });
+        const totalproducts = products.length;
+
+        res.json({
+            totalusers, totalproducts, status: true
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
-export  {Adminrouter};
+Adminrouter.get("/Customerget", async (req, res) => {
+    try {
+        const users = await UserModel.find();
+        res.json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+export { Adminrouter };

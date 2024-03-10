@@ -31,6 +31,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('userEmail',response.data.user.email);
+                localStorage.setItem('username',response.data.user.username);
                 navigate('/Survey');
             }
         }
@@ -51,6 +52,8 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true'); 
                 localStorage.setItem('userEmail',response.data.user.email);
+                localStorage.setItem('username',response.data.user.username);
+            
                 
                 navigate('/');
             }
