@@ -69,8 +69,8 @@ width: 100%;
 
 export const Button = styled.button`
    border-radius: 20px;
-   border: 1px solid #d04e17;
-   background-color: #d04e17;
+   border: 1px solid #CC3D00;
+   background-color: #CC3D00;
    color: #ffffff;
    font-size: 12px;
    font-weight: bold;
@@ -110,7 +110,7 @@ ${props =>
 `;
 
 export const Overlay = styled.div`
-background-color: #d04e17;
+background-color: #CC3D00;
 background-repeat: no-repeat;
 background-size: cover;
 background-position: 0 0;
