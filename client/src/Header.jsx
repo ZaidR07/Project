@@ -89,7 +89,7 @@ const Header = ({ setIsLoggedIn }) => {
           <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
 
           <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: '#CC3D00', marginLeft: '1vw' }} className="profile">
-            <h3>{username}</h3>
+            <h4>{username}</h4>
           </div>
 
           <div className="dropdown-container">
