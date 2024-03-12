@@ -45,8 +45,10 @@ const Survey = () => {
         <div className="form">
           <div className="personalinfo">
             <div className="input-box">
-              <label htmlFor="gender">Gender : </label>
-              Male
+              <div className="label">
+                <label htmlFor="gender">Gender : </label>
+              </div>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Male</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -55,7 +57,7 @@ const Survey = () => {
                 value="male"
                 onChange={(e) => setGender(e.target.value)}
               />
-              Female
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Female</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -66,7 +68,9 @@ const Survey = () => {
               />
             </div>
             <div className="input-box">
-              <label htmlFor="age">Age :</label>
+              <div className="label">
+                <label htmlFor="age">Age : </label>
+              </div>
               <input
                 className="input-fields"
                 type="text"
@@ -76,7 +80,9 @@ const Survey = () => {
               />
             </div>
             <div className="input-box">
-              <label htmlFor="height">Height : </label>
+              <div className="label">
+                <label htmlFor="height">Height : </label>
+              </div>
               <input
                 className="input-fields"
                 type="text"
@@ -87,7 +93,9 @@ const Survey = () => {
               />
             </div>
             <div className="input-box">
-              <label htmlFor="weight">Weight : </label>
+              <div className="label">
+                <label htmlFor="weight">Weight : </label>
+              </div>
               <input
                 className="input-fields"
                 type="text"
@@ -98,7 +106,9 @@ const Survey = () => {
               />
             </div>
             <div className="input-box">
-              <label htmlFor="weight">Waist : </label>
+              <div className="label">
+                <label htmlFor="weight">Waist : </label>
+              </div>
               <input
                 className="input-fields"
                 type="text"
@@ -111,8 +121,10 @@ const Survey = () => {
           </div>
           <div className="diet">
             <div className="input-box">
-              <label htmlFor="Diet">Diet : </label>
-              <label htmlFor="Non-vegetarian">Non-vegetarian</label>
+              <div className="label">
+                <label htmlFor="Diet">Diet : </label>
+              </div>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Vegetarian</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -121,7 +133,7 @@ const Survey = () => {
                 value="Non-vegetarian"
                 onChange={(e) => setDiet(e.target.value)}
               />
-              <label htmlFor="Vegetarian">Vegetarian</label>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Non-Vegetarian</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -134,8 +146,11 @@ const Survey = () => {
           </div>
           <div className="Activeness">
             <div className="input-box">
-              <label htmlFor="Experience">How active you are : </label>
-              <label htmlFor="Sedentary">Sedentary</label>
+              <div className="label">
+                <label htmlFor="Experience">Activeness :
+                </label>
+              </div>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Sedentary</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -144,7 +159,7 @@ const Survey = () => {
                 value="Sedentary"
                 onChange={(e) => setActivity(e.target.value)}
               />
-              <label htmlFor="Light-Activity">Light Activity</label>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Light-Activity</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -153,7 +168,7 @@ const Survey = () => {
                 value="Light-Activity"
                 onChange={(e) => setActivity(e.target.value)}
               />
-              <label htmlFor="Moderately-active">Moderately-Active</label>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Moderately-Active</p>
               <input
                 className="input-fields"
                 type="radio"
@@ -162,22 +177,24 @@ const Survey = () => {
                 value="Moderately-Active"
                 onChange={(e) => setActivity(e.target.value)}
               />
-              <label htmlFor="Highly-active">Highly active</label>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Highly-active</p>
               <input
                 className="input-fields"
                 type="radio"
                 name="Activeness"
                 id=""
                 s
-                value="Highly-active"
+                value="Highly-Active"
                 onChange={(e) => setActivity(e.target.value)}
               />
             </div>
 
             <div className="level">
               <div className="input-box">
-                <label htmlFor="Experience">Experience : </label>
-                <label htmlFor="Beginner">Beginner</label>
+                <div className="label">
+                  <label htmlFor="Experience">Experience :   </label>
+                </div>
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Beginner</p>
                 <input
                   className="input-fields"
                   type="radio"
@@ -186,7 +203,7 @@ const Survey = () => {
                   value="Beginner"
                   onChange={(e) => setExperience(e.target.value)}
                 />
-                <label htmlFor="Intermediate">Intermediate</label>
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Intermediate</p>
                 <input
                   className="input-fields"
                   type="radio"
@@ -195,7 +212,7 @@ const Survey = () => {
                   value="Intermediate"
                   onChange={(e) => setExperience(e.target.value)}
                 />
-                <label htmlFor="Advanced">Advanced</label>
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Advanced</p>
                 <input
                   className="input-fields"
                   type="radio"
@@ -230,14 +247,12 @@ const Survey = () => {
 
 const StyledContainer = styled.div`
   width: 100%;
-  height: calc(100vh - 64px);
   display: grid;
   place-items: center;
   background-color: #d04e17;
 
   .box {
     width: 60%;
-    height: 100vh;
     padding: 2%;
     border: 1px;
     box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
@@ -276,18 +291,16 @@ const StyledContainer = styled.div`
   .input-box {
     width: 100%;
     height: 6vh;
-    padding: 10px;
+    padding: 1vh 0 0 1%;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 2vh;
     display: inline-block;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align:left;
   }
-  .input-fields {
-    margin-top: 10px;
-  }
+  
   input[type="checkbox"] {
     margin-right: 5px;
     margin-bottom: 5px;
@@ -301,11 +314,28 @@ const StyledContainer = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 2vh;
+
+  }
+
+  .input-fields{
+    padding-left: 1%;
   }
 
   input[type="button"]:hover {
     background-color:#E8751A;
   }
-`;
+  
+  .label{
+    min-width: 15%;
+
+    display: inline-block;
+  }
+
+  .input-box input[type="radio"] {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+`
 
 export default Survey;
