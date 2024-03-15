@@ -221,9 +221,9 @@ const Admin_panel = () => {
                   ))}
                 </tbody>
               </table>
-              <div>
-                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-                <button onClick={handleNextPage} disabled={indexOfLastItem >= product.length}>Next</button>
+              <div  className="buttons">
+                <button className="previous" onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                <button className="next" onClick={handleNextPage} disabled={indexOfLastItem >= product.length}>Next</button>
               </div>
             </div>
             <div className="overlaybox" ref={overlayRef}>
@@ -419,16 +419,12 @@ const StyleAdmin = styled.div`
   min-height:100vh;
   display: grid;
   place-items: center;
-
-
- 
   }
   .green_container{
     width:100%;
   height:100vh;
   background-color:green;
   }
-  
   .product_box {
   min-height: 90vh;
   /* padding: 5vh 5vw 5vh 5vw; */
@@ -496,6 +492,127 @@ textarea{
   width: 6vw;
   min-height: 4vh;
 }
+/* Product Container */
+.product_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color:#081938;
+}
+
+.product_box {
+  width: 80%;
+}
+
+.add-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product_table_img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Buttons */
+.buttons{
+  margin-top: 16px;
+  display:flex;
+  justify-content: space-between;
+}
+.previous {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.next {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.previous:hover,
+.next:hover {
+  background-color: #0056b3;
+}
+/* Customer Container */
+.customer_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #081938; /* Light yellow background */
+  padding: 20px;
+
+}
+
+.customer_box {
+  width: 90%;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: #263043;
+  font-size:large;
+  font-weight:600;
+
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Buttons */
+button.update-btn,
+button.delete-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button.update-btn:hover,
+button.delete-btn:hover {
+  background-color: #0056b3;
+}
+
+
 `
 
 export default Admin_panel;
