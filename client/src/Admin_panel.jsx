@@ -204,7 +204,7 @@ const Admin_panel = () => {
           <div className="product_container" id="red">
             <div className="product_box">
               <button onClick={handleButtonClick} className="add-btn">Add Product</button><br /><br />
-              <br /><br />
+              <br />
               <table>
                 <thead>
                   <tr>
@@ -227,7 +227,7 @@ const Admin_panel = () => {
                   ))}
                 </tbody>
               </table>
-              <div  className="buttons">
+              <div className="buttons">
                 <button className="previous" onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
                 <button className="next" onClick={handleNextPage} disabled={indexOfLastItem >= product.length}>Next</button>
               </div>
@@ -258,11 +258,12 @@ const Admin_panel = () => {
                     <th>Age</th>
                     <th>Diet</th>
                     <th>Experience</th>
-
+                    <th>Update</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {customer.length > 0 && customer.map((item, index) => (
+                  {customer.slice((currentPage - 1) * 7, currentPage * 7).map((item, index) => (
                     <tr key={index}>
                       <td>{item.email}</td>
                       <td>{item.gender}</td>
@@ -271,11 +272,14 @@ const Admin_panel = () => {
                       <td>{item.experience}</td>
                       <td>Update</td>
                       <td>Delete</td>
-
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <div className="buttons">
+                <button className="previous" onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                <button className="next" onClick={handleNextPage} disabled={(currentPage * 7) >= customer.length}>Next</button>
+              </div>
             </div>
           </div>
           <div className="workout_container" id="purple">
@@ -491,8 +495,8 @@ textarea{
 
 }
 .product_table_img{
-  width: 55%;
-  aspect-ratio: 2/2;
+  width: 80%;
+  aspect-ratio: 2/3;
   object-fit: contain;
   
 }
@@ -516,7 +520,7 @@ textarea{
 }
 
 .add-btn {
-  background-color: #007bff;
+  background-color: #D04E17;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -549,7 +553,7 @@ th, td {
   justify-content: space-between;
 }
 .previous {
-  background-color: #007bff;
+  background-color: #D04E17;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -557,7 +561,7 @@ th, td {
   cursor: pointer;
 }
 .next {
-  background-color: #007bff;
+  background-color: #D04E17;
   color: #fff;
   border: none;
   padding: 8px 16px;
@@ -567,8 +571,9 @@ th, td {
 
 
 .previous:hover,
-.next:hover {
-  background-color: #0056b3;
+.next:hover, .add-btn:hover {
+  background-color: #DD7B33;
+ 
 }
 /* Customer Container */
 .customer_container {
@@ -582,7 +587,7 @@ th, td {
 }
 
 .customer_box {
-  width: 90%;
+  width: 95%;
 }
 
 /* Table */
@@ -592,17 +597,17 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 2px solid #263043;
   padding: 8px;
   text-align: center;
-  color: #263043;
+  color: #9e9ea4;
   font-size:large;
   font-weight:600;
 
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #263043;
 }
 
 /* Buttons */

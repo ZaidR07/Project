@@ -121,6 +121,7 @@ const Workout = () => {
                                     </video>
                                 </td>
                                 <td>{item.name}</td>
+                                <td>{item.workout_id}</td>
                                 <td>{item.reps}</td>
                             </tr>
                         ))}
