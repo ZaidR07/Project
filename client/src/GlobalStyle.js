@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
         --multinavheight: 40px;
     }
 
+    .custom-toast-progress {
+    background-color: blue;
+}
+
   
 
   /* CONTACT PAGE CSS */

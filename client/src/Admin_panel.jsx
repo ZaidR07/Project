@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Workout from "./Components/Admin_components/Workout";
 import axios from "axios";
 import {
   BsFillArchiveFill,
@@ -151,6 +152,11 @@ const Admin_panel = () => {
               </a>
             </li>
             <li className="sidebar-list-item">
+              <a href="#purple">
+                <BsPeopleFill className="icon" /> Workout
+              </a>
+            </li>
+            <li className="sidebar-list-item">
               <a href="#green">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
@@ -252,7 +258,7 @@ const Admin_panel = () => {
                     <th>Age</th>
                     <th>Diet</th>
                     <th>Experience</th>
-        
+
                   </tr>
                 </thead>
                 <tbody>
@@ -271,6 +277,10 @@ const Admin_panel = () => {
                 </tbody>
               </table>
             </div>
+          </div>
+          <div className="workout_container" id="purple">
+            <Workout />
+
           </div>
           <div className="green_container" id="green"></div>
         </div>
