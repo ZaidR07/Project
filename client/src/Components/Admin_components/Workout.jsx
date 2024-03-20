@@ -22,7 +22,7 @@ const Workout = () => {
     const [itemsPerPage] = useState(3);
 
 
-    const notify = () => toast("Product Added Successfully");
+    const notify = () => toast("Workout Added Successfully");
 
     const handleAddWorkout = () => {
         const overlayElement = overlayref.current;

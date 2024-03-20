@@ -1,22 +1,30 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
 
-
 const Workout = () => {
   const [Level, setLevel] = useState("");
+  const [clock, setClock] = useState(31);
+  const [sessionstart, setSessionstart] = useState(false);
+  const [workout, setWorkout] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [timer, setTimer] = useState(null);
+  const [sessionComplete, setSessionComplete] = useState(false);
 
   useEffect(() => {
     const handleLoad = async () => {
-
-
       try {
         const userEmail = localStorage.getItem('userEmail');
         const response = await axios.post("http://localhost:4000/Level", {
           email: userEmail,
         });
+        const workoutresponse = await axios.get("http://localhost:4000/Workoutget");
         setLevel(response.data.level);
+        setWorkout(workoutresponse.data);
       } catch (error) {
         console.log(error);
       }
@@ -25,35 +33,175 @@ const Workout = () => {
     handleLoad();
   }, []);
 
+  useEffect(() => {
+    setClock(30);
+    clocktimer(); // Call clocktimer function whenever currentIndex changes
+  }, [currentIndex]);
+
+  const handleboxclick = (event) => {
+    setClicked(true);
+    const clickedBox = event.currentTarget;
+    const h3Element = clickedBox.querySelector('h3');
+
+    // Clear the previous interval timer
+    clearInterval(timer);
+
+    clickedBox.style.width = "calc(60%)";
+    clickedBox.style.height = "50vh";
+    clickedBox.style.position = "absolute";
+    clickedBox.style.display = "grid";
+    clickedBox.style.placeItems = "center";
+    clickedBox.style.zIndex = 1;
+    h3Element.style.display = "none";
+  };
+
+  const start = () => {
+    setTimer(setInterval(() => {
+      setCurrentIndex(prevIndex => {
+        const nextIndex = prevIndex + 1;
+        if (nextIndex >= workout.length) {
+          clearInterval(timer);
+          setSessionComplete(true);
+        }
+        return nextIndex;
+      });
+    }, 30000));
+  };
+
+  const clocktimer = () => {
+    const intervalId = setInterval(() => {
+      if (clock > 0) {
+        setClock(prevClock => prevClock - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId); // Clean up the interval on component unmount
+  };
 
   return (
-    <StyledWorkout Level = {Level}>
-      <div className="red"></div>
-      <div className="blue"></div>
-      <div className="green"></div>
+    <StyledWorkout Level={Level} clicked={clicked}>
+      <div className="red">
+        <div className="workout-container">
+          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div>
+        </div>
+      </div>
+      <div className="blue">
+        <div className="workout-container">
+          <div className="box" onClick={handleboxclick}>
+            <h3 style={{ textAlign: 'center' }}>Full Body Workout</h3>
+            {!sessionstart && !clicked && !sessionComplete && <button onClick={start}>Start</button>}
+            {clicked && workout.length > 0 && workout.map((item, index) => (
+              <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
+                <div className="left">
+                  <video className="workout_video" autoPlay loop muted>
+                    <source src={"http://localhost:4000/Workoutvideos/" + item.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="right">
+                  <h3>{item.name}</h3>
+                  <p>{item.reps}</p><br /><br />
+                  <p>{clock}</p>
+                </div>
+              </div>
+            ))}
+            {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' /></button>}
+            {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
+          </div>
+
+          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div>
+        </div>
+      </div>
+      <div className="green">
+        <div className="workout-container">
+          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div>
+        </div>
+      </div>
     </StyledWorkout>
   )
 }
 
 const StyledWorkout = styled.div`
-  .red{
-    display: ${({Level}) => (Level === "Beginner" ? 'block' : 'none')};
+  .red {
+    display: ${({ Level }) => (Level === "Beginner" ? 'grid' : 'none')};
     background-color: red;
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
+    place-items: center;
   }
-  .blue{
-    display: ${({Level}) => (Level === "Intermediate" ? 'block' : 'none')};
+  .blue {
+    display: ${({ Level }) => (Level === "Intermediate" ? 'grid' : 'none')};
     background-color: blue;
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
+    place-items: center;
   }
-  .green{
-    display: ${({Level}) => (Level === "Advanced" ? 'block' : 'none')};
+  .green {
+    display: ${({ Level }) => (Level === "Advanced" ? 'grid' : 'none')};
     background-color: green;
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
+    place-items: center;
   }
+  
+  .workout-container {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 80%;
+    padding: 10vh 2.5% 10vh 2.5%;
+  }
+
+  .box {
+    width: calc((100% / 3) - 7.5%);
+    height: 45vh;
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 1%;
+    
+    
+  }
+  .box:hover{
+    transform: ${({ clicked }) => (clicked ? 'scale(1)' : 'scale(1.2)')};
+    transition: all 0.2s;
+  }
+
+  .content{
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  .left{
+    width: 30%;
+    min-height: 35vh;
+  }
+
+  .right{
+    width: 30%;
+  }
+
+  .workout_video{
+        width: 100%;
+        max-height: 35vh;
+        object-fit: contain;
+      
+  }
+
+  .crossbtn{
+    margin-left: -98%;
+    margin-top: -15vh;
+    font-size: 1.2rem;
+  }
+
+
 `
 
 export default Workout;

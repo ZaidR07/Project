@@ -7,7 +7,7 @@ const Workoutrouter = express.Router();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/Productvideos')
+    cb(null, 'public/Workoutvideos')
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname))
