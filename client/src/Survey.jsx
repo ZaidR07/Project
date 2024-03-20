@@ -188,7 +188,6 @@ const Survey = () => {
                 onChange={(e) => setActivity(e.target.value)}
               />
             </div>
-
             <div className="level">
               <div className="input-box">
                 <div className="label">
@@ -267,14 +266,11 @@ const StyledContainer = styled.div`
     color: #595959;
     margin-bottom:10px;
   }
-
   .form {
     background-color: #f0f0f0;
     padding: 10px;
     border-radius: 10px;
-    
   }
-
   .personalinfo {
     display: flex;
     flex-wrap: wrap;   
@@ -287,7 +283,6 @@ const StyledContainer = styled.div`
     margin-top: 20px;
     justify-content: space-between;
   }
- 
   .input-box {
     width: 100%;
     height: 6vh;
@@ -300,12 +295,10 @@ const StyledContainer = styled.div`
     border-radius: 5px;
     text-align:left;
   }
-  
   input[type="checkbox"] {
     margin-right: 5px;
     margin-bottom: 5px;
   }
-
   input[type="button"] {
     padding: 10px 20px;
     background-color: #d04e17;
@@ -315,25 +308,20 @@ const StyledContainer = styled.div`
     cursor: pointer;
     font-size: 16px;
     margin-top: 2vh;
-
   }
-
   .input-fields{
     padding-left: 1%;
   }
-
   input[type="button"]:hover {
     background-color:#E8751A;
   }
-  
   .label{
     min-width: 15%;
 
     display: inline-block;
   }
-
   .input-box input[type="radio"] {
-  margin-right: 10px; /* Adjust the value as needed */
+  margin-right: 10px; 
 }
 
 `

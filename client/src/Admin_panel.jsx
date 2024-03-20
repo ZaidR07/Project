@@ -513,6 +513,7 @@ textarea{
   align-items: center;
   flex-direction: column;
   background-color:#081938;
+
 }
 
 .product_box {
@@ -581,7 +582,7 @@ th, td {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #081938; /* Light yellow background */
+  background-color: #081938; 
   padding: 20px;
 
 }
@@ -626,8 +627,79 @@ button.update-btn:hover,
 button.delete-btn:hover {
   background-color: #0056b3;
 }
+/* Add Product */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  justify-content: center;
+  align-items: center;
+  color: #9e9ea4;
+}
 
+.overlaybox {
+  background-color: #263043;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  height:90vh;
+}
+h3{
+  color:#9e9ea4;
+  font-size: large;
+}
+.crossicon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background:none;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+}
 
+.product-inputs {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left:-5%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left:-5%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.submitbtn {
+  width: 100%;
+  padding: 10px;
+  margin-left:-5%;
+  background-color:#D04E17; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.submitbtn:hover {
+  background-color: #DD7B33; 
+}
+.workout_container{
+  background-color:#081938;
+}
 `
 
 export default Admin_panel;
