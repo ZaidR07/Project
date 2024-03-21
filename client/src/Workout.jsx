@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-
 const Workout = () => {
   const [Level, setLevel] = useState("");
   const [clock, setClock] = useState(31);
@@ -34,8 +33,7 @@ const Workout = () => {
   }, []);
 
   useEffect(() => {
-    setClock(30);
-    clocktimer(); // Call clocktimer function whenever currentIndex changes
+    setClock(10); // Reset the clock whenever currentIndex changes
   }, [currentIndex]);
 
   const handleboxclick = (event) => {
@@ -55,7 +53,14 @@ const Workout = () => {
     h3Element.style.display = "none";
   };
 
+  const handlecrossbtn = (event) => {
+    window.location.reload()
+
+    
+  };
+
   const start = () => {
+    setSessionstart(true);
     setTimer(setInterval(() => {
       setCurrentIndex(prevIndex => {
         const nextIndex = prevIndex + 1;
@@ -65,7 +70,8 @@ const Workout = () => {
         }
         return nextIndex;
       });
-    }, 30000));
+    }, 10000));
+    clocktimer(); // Start the clock timer
   };
 
   const clocktimer = () => {
@@ -75,7 +81,7 @@ const Workout = () => {
       }
     }, 1000);
 
-    return () => clearInterval(intervalId); // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   };
 
   return (
@@ -107,7 +113,7 @@ const Workout = () => {
                 </div>
               </div>
             ))}
-            {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' /></button>}
+            {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
             {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
           </div>
 
@@ -163,8 +169,6 @@ const StyledWorkout = styled.div`
     background-color: #fff;
     border: 1px solid black;
     padding: 1%;
-    
-    
   }
   .box:hover{
     transform: ${({ clicked }) => (clicked ? 'scale(1)' : 'scale(1.2)')};
@@ -187,6 +191,8 @@ const StyledWorkout = styled.div`
   .right{
     width: 30%;
   }
+
+  
 
   .workout_video{
         width: 100%;
