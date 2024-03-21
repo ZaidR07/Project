@@ -39,7 +39,7 @@ const About = () => {
             little more about you.
             <br />
             <br />
-            <input
+            {/* <input
               style={{
                 width: "10rem",
                 height: "3rem",
@@ -51,11 +51,12 @@ const About = () => {
               }}
               type="submit"
               value="Join My Programs "
-            />
+            /> */}
           </p>
         </div>
       </div>
       <div className="about_txt3">
+      
         <h1 className="about_paragraph2">
           “WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE <br/>
           THEN IS NOT AN ACT BUT A HABIT.”
@@ -126,7 +127,7 @@ const StyledAbout = styled.div`
   .about_paragraph2 { 
     color: white;
     font-size: 40px;
-    
+    /* font-family: Avantgarde, "TeX Gyre Adventor", "URW Gothic L", sans-serif; */
     
   }
   .about_txt4 {
