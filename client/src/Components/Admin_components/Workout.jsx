@@ -132,7 +132,6 @@ const Workout = () => {
         </table>
         <div>
           <br />
-          <br />
           <div className="button">
             <button
               className="previous"
@@ -230,7 +229,7 @@ const StyledWorkout = styled.div`
   }
   .workout_table_video {
     width: 100%;
-    height: auto;
+    max-height: 17vh;
     aspect-ratio: 4/3;
     object-fit: contain;
   }
@@ -287,5 +286,7 @@ const StyledWorkout = styled.div`
     border-radius: 5px;
     cursor: pointer;
   }
+
+ 
 `;
 export default Workout;

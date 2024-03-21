@@ -33,6 +33,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'react-toastify';
 
+const handleNavigation = (event) => {
+  event.preventDefault();
+  const targetId = event.target.getAttribute("href").slice(1);
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    window.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: "smooth"
+    });
+  }
+};
+
+
+
+
+
 const Admin_panel = () => {
   const [totalusers, setTotalusers] = useState();
   const [totalproducts, setTotalproducts] = useState();
@@ -75,6 +91,7 @@ const Admin_panel = () => {
     }
   }
 
+
   useEffect(() => {
     const handleLoad = async () => {
       try {
@@ -90,6 +107,37 @@ const Admin_panel = () => {
       }
     };
     handleLoad();
+  }, []);
+
+  useEffect(() => {
+    const sidebarLinks = document.querySelectorAll(".sidebar-list-item a");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", handleNavigation);
+    });
+
+    return () => {
+      sidebarLinks.forEach(link => {
+        link.removeEventListener("click", handleNavigation);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+
+    document.body.style.overflow = "hidden";
+
+    const sidebarLinks = document.querySelectorAll(".sidebar-list-item a");
+    sidebarLinks.forEach(link => {
+      link.addEventListener("click", handleNavigation);
+    });
+
+    return () => {
+
+      document.body.style.overflow = "auto";
+      sidebarLinks.forEach(link => {
+        link.removeEventListener("click", handleNavigation);
+      });
+    };
   }, []);
 
   const crossRef = React.createRef();
@@ -124,6 +172,8 @@ const Admin_panel = () => {
   const handlePreviousPage = () => {
     setCurrentPage(prevPage => prevPage - 1);
   };
+
+
 
   return (
     <StyleAdmin>
@@ -286,7 +336,10 @@ const Admin_panel = () => {
             <Workout />
 
           </div>
-          <div className="green_container" id="green"></div>
+          <div className="reports_container" id="green">
+          <h1 style={{ color: 'white', fontSize: '3rem' }}>COMING SOON</h1>
+
+          </div>
         </div>
       </div>
     </StyleAdmin>
@@ -434,10 +487,13 @@ const StyleAdmin = styled.div`
   display: grid;
   place-items: center;
   }
-  .green_container{
+  .reports_container{
     width:100%;
   height:100vh;
-  background-color:green;
+  background-color:#081938;
+  display: grid;
+  place-items: center;
+
   }
   .product_box {
   min-height: 90vh;
@@ -649,7 +705,6 @@ button.delete-btn:hover {
   height:90vh;
 }
 h3{
-  color:#9e9ea4;
   font-size: large;
 }
 .crossicon {
@@ -699,6 +754,10 @@ textarea {
 }
 .workout_container{
   background-color:#081938;
+}
+
+.card_icon{
+  margin-left: 2vh;
 }
 `
 
