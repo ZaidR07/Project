@@ -135,21 +135,21 @@ const Workout = () => {
 const StyledWorkout = styled.div`
   .red {
     display: ${({ Level }) => (Level === "Beginner" ? 'grid' : 'none')};
-    background-color: red;
+    background-color: #D04E17;
     width: 100%;
     min-height: 80vh;
     place-items: center;
   }
   .blue {
     display: ${({ Level }) => (Level === "Intermediate" ? 'grid' : 'none')};
-    background-color: blue;
+    background-color: #D04E17;
     width: 100%;
     min-height: 80vh;
     place-items: center;
   }
   .green {
     display: ${({ Level }) => (Level === "Advanced" ? 'grid' : 'none')};
-    background-color: green;
+    background-color: #D04E17;
     width: 100%;
     min-height: 80vh;
     place-items: center;
@@ -167,7 +167,6 @@ const StyledWorkout = styled.div`
     width: calc((100% / 3) - 7.5%);
     height: 45vh;
     background-color: #fff;
-    border: 1px solid black;
     padding: 1%;
   }
   .box:hover{

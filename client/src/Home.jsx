@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -13,6 +15,8 @@ const Home = () => {
   }, []);
   const form = useRef();
   const [isSuccess, setIsSuccess] = useState(false);
+  const [sales, setSales] = useState([]);
+  const navigate = useNavigate();
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -25,25 +29,63 @@ const Home = () => {
         alert(error.text);
       });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/Productget");
+        const filteredsale = response.data.filter(
+          (product) => product.category === "Sale"
+        );
+        setSales(filteredsale);
+
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleImageClick = (link) => {
+    window.open(link, "_blank");
+  };
+
   return (
     <StyledHome>
       <div className="hero">
         <div className="headline">
           <h1>ELEVATE YOUR JOURNEY.</h1>
-          <h1>CHALLENGES SHAPE SUCCES!</h1><br />
-          <button className='headline-btn'>Get Started</button>
+          <h1>CHALLENGES SHAPE SUCCESS!</h1><br />
+          <button className='headline-btn' onClick={() => navigate('/Workout')}>Get Started</button>
+
         </div>
         <div className="ad">
           <h1>Top Pick's for you</h1><br />
           <div className="cards">
             <div className="card">
-
+              <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
+              {sales.length > 0 && sales.map((sales) => (
+                <div key={sales._id}>
+                  <img
+                    className="Carousel_img"
+                    src={"http://localhost:4000/Productimages/" + sales.image}
+                  />
+                  <br />
+                  <button
+                    onClick={() => handleImageClick(sales.link)}
+                    className="order"
+                  >
+                    Order on Flipkart
+                  </button>
+                </div>
+              ))}
             </div>
             <div className="card">
-
+              <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
             </div>
             <div className="card">
-
+              <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
             </div>
           </div>
         </div>
@@ -298,9 +340,11 @@ const StyledHome = styled.div`
   justify-content: space-around;
 }
 .card{
+  position: relative;
   width: 25%;
   height: 50vh;
-  background-color: red;
+  background-color: #494A4D;
+  overflow: hidden; 
 
 }
 .blog{
@@ -403,6 +447,17 @@ const StyledHome = styled.div`
   height: auto;
   max-height: 66.6vh;
 
+}
+
+.saleimges{
+  width: 96%;
+  height: 25vh;
+  bottom: 0;
+  right: 0;
+  /* transform-origin: left;  */
+  transform: rotate(-45deg);
+  margin-left: -19%;
+  z-index: 1;
 }
 
 `
