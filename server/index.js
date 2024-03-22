@@ -13,9 +13,9 @@ dotenv.config();
 
 
 
-
+const DB = process.env.DB;
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 app.use(cors({
     origin: 'http://localhost:3000',
@@ -37,7 +37,7 @@ app.use(express.static('public'));
 
 // app.use(cookieParser());
 
-mongoose.connect("mongodb://127.0.0.1:27017/Fitness365")
+mongoose.connect(DB)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
