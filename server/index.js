@@ -15,14 +15,20 @@ dotenv.config();
 
 const DB = process.env.DB;
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT
 
+<<<<<<< HEAD
 
 app.options('*',cors({
+=======
+app.options('*', cors({
+>>>>>>> 588a4e3836a45edbd3cde85aea72b9c20b565ff3
     origin: 'https://fitness365.vercel.app',
     headers: ["Content-Type"],
     credentials: true
 }));
+
+
 
 app.use(express.json());
 app.use(Signuprouter);
