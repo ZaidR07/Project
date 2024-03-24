@@ -17,10 +17,8 @@ const DB = process.env.DB;
 const app = express();
 const PORT = process.env.PORT
 
-app.set('trust proxy', 1)
-app.use(
-  cors({ credentials: true, origin: true, exposedHeaders: ['Set-Cookie'] }),
-)
+
+app.use(cors);
 
 
 
