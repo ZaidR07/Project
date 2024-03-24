@@ -17,17 +17,29 @@ const DB = process.env.DB;
 const app = express();
 const PORT = process.env.PORT
 
+const allowedOrigins = ['https://fitness365.vercel.app'];
 app.use(cors({
-    origin: 'https://fitness365.vercel.app',
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
 
-// Add middleware to handle OPTIONS preflight requests
+// Handling preflight requests
 app.options('*', cors({
-    origin: 'https://fitness365.vercel.app',
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
-
 
 
 
