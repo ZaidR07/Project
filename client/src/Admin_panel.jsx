@@ -77,7 +77,7 @@ const Admin_panel = () => {
     formData.append('category', category);
 
     try {
-      const response = await axios.post("http://localhost:4000/Productadd", formData, {
+      const response = await axios.post("https://fitness365api.vercel.app//Productadd", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -95,9 +95,9 @@ const Admin_panel = () => {
   useEffect(() => {
     const handleLoad = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/Admin", {});
-        const productres = await axios.get("http://localhost:4000/Productget", {});
-        const customerres = await axios.get("http://localhost:4000/Customerget", {});
+        const response = await axios.get("https://fitness365api.vercel.app/Admin", {});
+        const productres = await axios.get("https://fitness365api.vercel.app/Productget", {});
+        const customerres = await axios.get("https://fitness365api.vercel.app/Customerget", {});
         setProduct(productres.data);
         setCustomer(customerres.data);
         setTotalusers(response.data.totalusers);
@@ -268,7 +268,7 @@ const Admin_panel = () => {
                 <tbody>
                   {currentItems.map((item, index) => (
                     <tr key={index}>
-                      <td><img className="product_table_img" src={"http://localhost:4000/Productimages/" + item.image} alt="" /></td>
+                      <td><img className="product_table_img" src={"https://fitness365api.vercel.app/Productimages/" + item.image} alt="" /></td>
                       <td>{item.product_id}</td>
                       <td>{item.name}</td>
                       <td>{item.description}</td>

@@ -13,7 +13,7 @@ const Diet = () => {
     const handleLoad = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail');
-        const response = await axios.post("http://localhost:4000/Bmr", {
+        const response = await axios.post("https://fitness365api.vercel.app/Bmr", {
           email: userEmail,
         });
         setCalory(response.data.calories);

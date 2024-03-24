@@ -30,7 +30,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/signup", {
+            const response = await axios.post("https://fitness365api.vercel.app/signup", {
                 username: username,
                 email: email,
                 password: password
@@ -53,7 +53,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit1 = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/login", {
+            const response = await axios.post("https://fitness365api.vercel.app/login", {
                 email: loginemail,
                 password: loginpassword,
             });
