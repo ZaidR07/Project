@@ -19,9 +19,15 @@ const PORT = process.env.PORT
 
 app.use(cors({
     origin: 'https://fitness365.vercel.app',
-    methods: ["GET", "POST"],
     credentials: true
 }));
+
+// Add middleware to handle OPTIONS preflight requests
+app.options('*', cors({
+    origin: 'https://fitness365.vercel.app',
+    credentials: true
+}));
+
 
 
 
