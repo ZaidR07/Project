@@ -1,18 +1,17 @@
-import React, { useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import Admin_panel from './Admin_panel';
 
 
 const Header = ({ setIsLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState();
-  const [barclicked, setBarclicked] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +24,9 @@ const Header = ({ setIsLoggedIn }) => {
     }
   }, []);
 
+  
+
+
   const handleLogout = () => {
     setIsLoggedIn(false);
 
@@ -33,129 +35,85 @@ const Header = ({ setIsLoggedIn }) => {
 
     navigate('/');
   };
-
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
-
-  const mobnavRef = useRef(null);
-
-  const handlebarclicked = () => {
-    const mobilenavElement = mobnavRef.current;
-
-    if (barclicked) {
-      mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        display : none;
-      `;
-    }
-    else {
-      mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        right: 0;
-        transform: translateX(0);
-        
-        
-        
-
-
-        
-
-
-      `;
-
-    }
-  };
-
   return (
     <MainHeader>
-      <section>
-        <nav className='topmobnav'>
-          <NavLink to="/Home">
-            <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" id='logo' />
+      <nav className='navbar'>
+        <div className="nav1">
+          <NavLink to="/" >
+            <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" />
             <span>FITNESS365</span>
+
           </NavLink>
-          <FontAwesomeIcon
-            icon={faBars}
-            className='awesomeicons'
-            id='bars'
-            onClick={() => {
-              setBarclicked(!barclicked);
-              handlebarclicked();
-            }}
-          />
-        </nav>
+        </div>
+        <div className="nav2">
+          <ul className='navlist'>
+            <li>
+              <NavLink to="/About" >
+                <span>About</span>
 
-        <nav className='navbar' ref={mobnavRef}>
-          <div className="nav1">
-            <NavLink to="/Home">
-              <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" id='logo' />
-              <span>FITNESS365</span>
-            </NavLink>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Workout" >
+                <span>Workout</span>
+
+              </NavLink>
+
+            </li>
+            <li>
+              <NavLink to="/Diet" >
+                <span>Diet</span>
+
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Shop" >
+                <span>Shop</span>
+
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Contact" >
+                <span>Contact</span>
+
+              </NavLink>
+            </li>
+
+
+          </ul>
+        </div>
+        <div className="nav3">
+          <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
+
+          <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: '#CC3D00', marginLeft: '1vw' }} className="profile">
+            <h4>{username}</h4>
           </div>
-          <div className="nav2">
-            <ul className='navlist'>
-              <li>
-                <NavLink to="/About">
-                  <span>About</span>
+
+          <div className="dropdown-container">
+            <button className="dropdown-button" onClick={handleToggle}>
+              <FontAwesomeIcon icon={faAngleDown} className='awesomeicons' />
+            </button>
+            {isOpen && (
+              <div className="dropdown-content">
+                <p>Profile</p>
+                <p onClick={handleLogout}>Log out</p>
+                <NavLink to='/Admin_panel'>
+                  <p>Admin Panel</p>
                 </NavLink>
-              </li>
-              <li>
-                <NavLink to="/Workout">
-                  <span>Workout</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/Diet">
-                  <span>Diet</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/Shop">
-                  <span>Shop</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/Contact">
-                  <span>Contact</span>
-                </NavLink>
-              </li>
-            </ul>
+              </div>
+            )}
           </div>
-          <div className="nav3">
-            <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
-            <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: '#CC3D00', marginLeft: '1vw' }} className="profile">
-              <h4>{username}</h4>
-            </div>
-            <div className="dropdown-container">
-              <button className="dropdown-button" onClick={handleToggle}>
-                <FontAwesomeIcon icon={faAngleDown} className='awesomeicons' />
-              </button>
-              {isOpen && (
-                <div className="dropdown-content">
-                  <p>Profile</p>
-                  <p onClick={handleLogout}>Log out</p>
-                  <NavLink to='/Admin_panel'>
-                    <p>Admin Panel</p>
-                  </NavLink>
-                </div>
-              )}
-            </div>
-          </div>
-        </nav>
-      </section>
+
+
+        </div>
+      </nav>
     </MainHeader>
-  );
-};
+  )
+}
 const MainHeader = styled.header`
-
   .navbar{
     height: var(--navbarheight);
     display: flex;
@@ -308,93 +266,6 @@ const MainHeader = styled.header`
   display: grid;
   place-items: center;
   color: white;
-}
-
-
-// Responsiveness for mobile
-@media screen and (max-width: 480px) {
-  .navbar{
-    height: 100vh;
-    background-color:#CC3D00 ;
-    background-image: none;
-    position:fixed ;
-    top: var(--multinavheight);
-    right: 0;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 15vh;
-    z-index: 99;
-
-
-
-  }
-
-  #bars{
-  font-size: 1.8rem ;
-  color: #fff;
-  position: fixed;
-  z-index: 99;
-  right: 3%;
-
-
-}
-
-  .topmobnav{
-    width: 100%;
-    height: var(--multinavheight);
-    background-color: #15191F;
-    padding: 2%;
-    position: fixed;
-  }
-
-.nav1{
-  display: none;
-}
-.nav2{
-  width: 60%;
-  height: 40vh;
-  border-radius: 4%;
-  margin: 0;
-  padding: 0;
-  font-size: 1.5rem;
-  border: 1px solid #fff;
-  background-color:#CC3D00 ;
-  margin-bottom: 10vh;
-
-
-
-
-  
-
-
-  
-}
-.nav3{
-  width: 60%;
-  height: 10vh;
-  border-radius: 5%;
-  margin: 0;
-  padding: 0;
-  border: 1px solid #fff;
-  background-color:#CC3D00 ;
-
-
-}
-.nav2>ul{
-  height: 90%;
-  display: flex;
-  flex-direction: column;
- 
-}
-.profile{
-  background-color: #fff !important;
-  color: #CC3D00;
-}
-
-
-
-
 }
 
 

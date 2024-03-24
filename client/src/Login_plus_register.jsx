@@ -64,7 +64,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('userEmail', response.data.user.email);
                 localStorage.setItem('username', response.data.user.username);
-                navigate('/Home');
+                navigate('/');
             }
         }
         catch (err) {
