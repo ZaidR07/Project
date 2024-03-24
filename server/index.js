@@ -15,9 +15,7 @@ dotenv.config();
 
 const DB = process.env.DB;
 const app = express();
-const PORT = process.env.PORT;
-
-app.options('*', cors());
+const PORT = process.env.PORT
 
 app.use(cors({
     origin: 'https://fitness365.vercel.app',
