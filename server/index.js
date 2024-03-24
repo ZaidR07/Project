@@ -17,12 +17,10 @@ const DB = process.env.DB;
 const app = express();
 const PORT = process.env.PORT
 
-const corsOptions = {
-  origin: 'https://fitness365.vercel.app',
-  optionsSuccessStatus: 200, // Handle legacy browsers' behavior
-};
-
-app.use(cors(corsOptions));
+app.set('trust proxy', 1)
+app.use(
+  cors({ credentials: true, origin: true, exposedHeaders: ['Set-Cookie'] }),
+)
 
 
 
