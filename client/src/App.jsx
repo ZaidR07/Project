@@ -35,7 +35,7 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <>
-            {!isLoggedIn && <Header setIsLoggedIn ={setIsLoggedIn} />}
+            {isLoggedIn && <Header setIsLoggedIn ={setIsLoggedIn} />}
             <Routes>
               {!isLoggedIn && (
                 <>
@@ -46,7 +46,7 @@ function App() {
 
                 </>
               )}
-              {!isLoggedIn && (
+              {isLoggedIn && (
                 <>
                   <Route path="/Home" element={<Home />} />
                   <Route path="/About" element={<About />} />
