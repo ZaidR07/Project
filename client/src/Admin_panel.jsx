@@ -180,7 +180,7 @@ const Admin_panel = () => {
       <div className="container">
         <div className="sidebar">
           <div className="sidebartop">
-            <NavLink to="/">
+            <NavLink to="/Home">
               <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="40px" />
               <span className="side-heading">FITNESS365</span>
             </NavLink>

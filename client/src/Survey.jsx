@@ -32,7 +32,7 @@ const Survey = () => {
         experience,
         activity,
       });
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       console.log(error);
     }
