@@ -46,11 +46,14 @@ const Header = ({ setIsLoggedIn }) => {
     if (barclicked) {
       mobilenavElement.style.cssText = `
         transform: translateX(0);
+        transition: transform 0.8s ease-in-out;
+        
       `;
     }
     else {
       mobilenavElement.style.cssText = `
         transform: translateX(100%);
+        transition: transform 0.8s ease-in-out;
         
         
         
@@ -328,7 +331,7 @@ const MainHeader = styled.header`
   position: fixed;
   z-index: 99;
   right: 3%;
-
+  
 
 }
 
