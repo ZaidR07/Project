@@ -18,7 +18,9 @@ const app = express();
 const PORT = process.env.PORT
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://fitness365.vercel.app'
+}));
 
 
 
