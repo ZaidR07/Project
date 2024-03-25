@@ -306,8 +306,7 @@ const StyledHome = styled.div`
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5; 
   letter-spacing: 5px;
-  left: 4%;
-  top: 30vh;
+
 
 }
 .headline-btn{
@@ -460,6 +459,48 @@ const StyledHome = styled.div`
   z-index: 1;
 }
 
+
+@media screen and (max-width: 480px) {
+
+  .hero{
+  background-image: url(".//Resorces/landing1.jpg");
+  background-size: 135%;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+  width: 100%;
+
+}
+
+.headline{
+  top: 15vh !important;
+  left: 4vw;
+  color: #242426;
+  font-size: 0.4rem;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5; 
+  letter-spacing: 5px;
+  left: 4%;
+
+
+}
+
+.headline-btn{
+    width: 20vw;
+    height: 2.5vh;
+    border: 1px solid #242426;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0);
+    color: #242426;
+    font-size: 0.8rem;
+}
+}
+
+.ad{
+    top: 30vh;
+    opacity: 80%;
+    font-size: 0.5rem;
+}
+}
 `
 
 

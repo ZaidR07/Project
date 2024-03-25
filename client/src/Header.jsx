@@ -73,7 +73,7 @@ const Header = ({ setIsLoggedIn }) => {
         <nav className='topmobnav'>
           <NavLink to="/Home">
             <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="20px" id='logo' />
-            <span>FITNESS365</span>
+            <span id='logotxt'>FITNESS365</span>
           </NavLink>
           <FontAwesomeIcon
             icon={faBars}
@@ -302,6 +302,10 @@ const MainHeader = styled.header`
   place-items: center;
   color: white;
 }
+.topmobnav{
+  display: none;
+}
+
 
 
 // Responsiveness for mobile
@@ -311,7 +315,7 @@ const MainHeader = styled.header`
     background-color:#CC3D00 ;
     background-image: none;
     position:fixed ;
-    top: var(--multinavheight);
+    top: var(--navbarheight);
     right: 0;
     width: 50%;
     flex-direction: column;
@@ -326,18 +330,20 @@ const MainHeader = styled.header`
   }
 
   #bars{
-  font-size: 1.8rem ;
+  font-size: 2rem ;
   color: #fff;
   position: fixed;
   z-index: 99;
-  right: 3%;
+  right: 4%;
   
 
 }
 
   .topmobnav{
+    display: flex;
+    align-items: center;
     width: 100%;
-    height: var(--multinavheight);
+    height: var(--navbarheight);
     background-color: #15191F;
     padding: 2%;
     position: fixed;
@@ -387,8 +393,12 @@ const MainHeader = styled.header`
   color: #CC3D00;
 }
 
-
-
+#logo{
+  width: 30px;
+}
+#logotxt{
+  font-size: 1.5rem;
+}
 
 }
 
