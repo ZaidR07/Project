@@ -45,22 +45,12 @@ const Header = ({ setIsLoggedIn }) => {
 
     if (barclicked) {
       mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        display : none;
+        transform: translateX(0);
       `;
     }
     else {
       mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        right: 0;
-        transform: translateX(0);
+        transform: translateX(100%);
         
         
         
@@ -325,6 +315,8 @@ const MainHeader = styled.header`
     align-items: center;
     padding-top: 15vh;
     z-index: 99;
+    transform: translateX(100%);
+    
 
 
 
