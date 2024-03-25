@@ -45,22 +45,22 @@ const Header = ({ setIsLoggedIn }) => {
 
     if (barclicked) {
       mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        display : none;
+      height: 100vh;
+      background-color:#CC3D00 ;
+      background-image: none;
+      position:fixed ;
+      top: var(--navbarheight);
+      right: 0;
+      width: 50%;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 15vh;
+      z-index: 99;
       `;
     }
     else {
       mobilenavElement.style.cssText = `
-        width: 50%;
-        height: 100vh;
-        position: fixed;
-        right: 0;
-        transform: translateX(0);
+        transform: translateX(100%);
         
         
         
@@ -314,17 +314,7 @@ const MainHeader = styled.header`
 // Responsiveness for mobile
 @media screen and (max-width: 480px) {
   .navbar{
-    height: 100vh;
-    background-color:#CC3D00 ;
-    background-image: none;
-    position:fixed ;
-    top: var(--multinavheight);
-    right: 0;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 15vh;
-    z-index: 99;
+    
 
 
 
@@ -342,7 +332,7 @@ const MainHeader = styled.header`
 
   .topmobnav{
     width: 100%;
-    height: var(--multinavheight);
+    height: var(--navbarheight);
     background-color: #15191F;
     padding: 2%;
     position: fixed;
