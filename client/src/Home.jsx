@@ -475,7 +475,7 @@ const StyledHome = styled.div`
   top: 15vh !important;
   left: 4vw;
   color: #242426;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-family: 'Montserrat', sans-serif;
   line-height: 1.5; 
   letter-spacing: 5px;
