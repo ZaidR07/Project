@@ -19,8 +19,7 @@ const PORT = process.env.PORT
 
 
 app.use(cors({
-  //origin: 'https://fitness365.vercel.app',
-  origin: '*',
+  origin: ['https://fitness365.vercel.app', 'http://localhost:3000'],  // Allow specific origins
   credentials: true
 }));
 
