@@ -48,7 +48,7 @@ const Workout = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/Workoutadd",
+        "https://project-d44v.onrender.com/Workoutadd",
         formData,
         {
           headers: {
@@ -69,7 +69,7 @@ const Workout = () => {
     const handleLoad = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/Workoutget",
+          "https://project-d44v.onrender.com/Workoutget",
           {}
         );
         setWorkout(response.data);
@@ -117,7 +117,7 @@ const Workout = () => {
                 <td>
                   <video className="workout_table_video" autoPlay loop muted>
                     <source
-                      src={"http://localhost:4000/Workoutvideos/" + item.video}
+                      src={"https://project-d44v.onrender.com/Workoutvideos/" + item.video}
                       type="video/mp4"
                     />
                     Your browser does not support the video tag.

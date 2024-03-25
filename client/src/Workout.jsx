@@ -18,10 +18,10 @@ const Workout = () => {
     const handleLoad = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail');
-        const response = await axios.post("http://localhost:4000/Level", {
+        const response = await axios.post("https://project-d44v.onrender.com/Level", {
           email: userEmail,
         });
-        const workoutresponse = await axios.get("http://localhost:4000/Workoutget");
+        const workoutresponse = await axios.get("https://project-d44v.onrender.com/Workoutget");
         setLevel(response.data.level);
         setWorkout(workoutresponse.data);
       } catch (error) {
@@ -102,7 +102,7 @@ const Workout = () => {
               <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
                 <div className="left">
                   <video className="workout_video" autoPlay loop muted>
-                    <source src={"http://localhost:4000/Workoutvideos/" + item.video} type="video/mp4" />
+                    <source src={"https://project-d44v.onrender.com/Workoutvideos/" + item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>

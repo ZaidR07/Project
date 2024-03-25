@@ -21,7 +21,7 @@ const Survey = () => {
     event.preventDefault();
     try {
       const userEmail = localStorage.getItem("userEmail");
-      const response = await axios.post("http://localhost:4000/Userinfo", {
+      const response = await axios.post("https://project-d44v.onrender.com/Userinfo", {
         email: userEmail,
         gender,
         age,

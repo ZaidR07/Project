@@ -33,7 +33,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/Productget");
+        const response = await axios.get("https://project-d44v.onrender.com/Productget");
         const filteredsale = response.data.filter(
           (product) => product.category === "Sale"
         );
@@ -69,7 +69,7 @@ const Home = () => {
                 <div key={sales._id}>
                   <img
                     className="Carousel_img"
-                    src={"http://localhost:4000/Productimages/" + sales.image}
+                    src={"https://project-d44v.onrender.com/Productimages/" + sales.image}
                   />
                   <br />
                   <button

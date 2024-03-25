@@ -12,7 +12,7 @@ const Forgot_password = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/Forgot_password", {
+      const response = await axios.post("https://project-d44v.onrender.com/Forgot_password", {
         email,
 
       });
@@ -29,7 +29,7 @@ const Forgot_password = () => {
   const handleSubmit1 = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/SetNewpassword", {
+      const response = await axios.post("https://project-d44v.onrender.com/SetNewpassword", {
         email,
         otp,
         newpass,

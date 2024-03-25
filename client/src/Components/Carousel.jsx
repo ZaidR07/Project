@@ -14,7 +14,7 @@ const MyCarousel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/Productget");
+        const response = await axios.get("https://project-d44v.onrender.com/Productget");
         const filteredsupplements = response.data.filter(
           (product) => product.category === "Supplements"
         );
@@ -81,7 +81,7 @@ const MyCarousel = () => {
           <StyledItem key={supplements._id}>
             <img
               className="Carousel_img"
-              src={"http://localhost:4000/Productimages/" + supplements.image}
+              src={"https://project-d44v.onrender.com/Productimages/" + supplements.image}
             />
             <br />
             <div className="description">
@@ -121,7 +121,7 @@ const MyCarousel = () => {
           <StyledItem key={equipments._id}>
             <img
               className="Carousel_img"
-              src={"http://localhost:4000/Productimages/" + equipments.image}
+              src={"https://project-d44v.onrender.com/Productimages/" + equipments.image}
             />
             <br />
             <div className="description">
@@ -161,7 +161,7 @@ const MyCarousel = () => {
           <StyledItem key={apparels._id}>
             <img
               className="Carousel_img"
-              src={"http://localhost:4000/Productimages/" + apparels.image}
+              src={"https://project-d44v.onrender.com/Productimages/" + apparels.image}
             />
             <br />
             <div className="description">
