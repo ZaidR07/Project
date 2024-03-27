@@ -113,7 +113,7 @@ const Home = () => {
 
         <div className="motivation_box">
           <div className="motivationicon">
-            <svg preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
+            <svg id='motivationicon' preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
               <g>
                 <path d="M156.804 39.022c-21.687 0-33.939-.799-54.102-17.941a4.16 4.16 0 0 0-5.404 0C77.135 38.223 64.883 39.022 43.196 39.022a4.172 4.172 0 0 0-4.174 4.174V116c0 27.308 16.69 37.493 44.34 54.371 4.475 2.727 9.28 5.661 14.408 8.901a4.185 4.185 0 0 0 4.458 0c5.127-3.24 9.933-6.175 14.408-8.901 27.65-16.878 44.34-27.063 44.34-54.371V43.195a4.169 4.169 0 0 0-4.172-4.173zM152.63 116c0 22.62-13.483 30.849-40.342 47.242-3.852 2.352-7.952 4.854-12.288 7.569-4.337-2.714-8.437-5.217-12.288-7.569C60.852 146.85 47.37 138.621 47.37 116V47.352c19.739-.159 33.156-1.924 52.63-17.668 19.474 15.745 32.891 17.509 52.63 17.668V116z" fill="#D64000" data-color="1"></path>
                 <path d="M98.829 64.029a3.834 3.834 0 0 0-5.423 5.423l14.547 14.547-21.424 21.424-14.547-14.547a3.836 3.836 0 0 0-5.423 5.423l34.518 34.518a3.836 3.836 0 0 0 5.423-5.423l-14.547-14.547 21.424-21.424 14.547 14.547a3.834 3.834 0 0 0 5.423-5.423L98.829 64.029z" fill="#D64000" data-color="1"></path>
@@ -140,7 +140,7 @@ const Home = () => {
 
         <div className="motivation_box">
           <div className="motivationicon">
-            <svg preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
+            <svg id='motivationicon' preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
               <g>
                 <path
                   d="M100 38.69c-33.806 0-61.31 27.503-61.31 61.31s27.504 61.31 61.31 61.31 61.31-27.504 61.31-61.311S133.807 38.69 100 38.69zm0 113.62c-28.844 0-52.311-23.467-52.311-52.311S71.156 47.69 100 47.69s52.31 23.466 52.31 52.31-23.466 52.31-52.31 52.31z"
@@ -177,7 +177,7 @@ const Home = () => {
         </div>
         <div className="motivation_box">
           <div className="motivationicon">
-            <svg preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
+            <svg id='motivationicon' preserveAspectRatio="xMidYMid meet" data-bbox="39.022 20.084 121.954 159.831" viewBox="39.022 20.084 121.954 159.831" height="200" width="200" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-label="" style={{ width: "60px", height: "60px" }}>
               <g>
                 <path d="M147.568 82.029a4.5 4.5 0 0 0-3.978-2.396h-31.91l17.135-58.28a4.5 4.5 0 0 0-7.948-3.928l-68.089 93.008a4.5 4.5 0 0 0 3.631 7.158h35.323l-17.676 61.073a4.5 4.5 0 0 0 8.042 3.783l65.212-95.783a4.493 4.493 0 0 0 .258-4.635zm-57.015 72.01l11.488-39.696a4.498 4.498 0 0 0-4.323-5.751H65.28l47.637-65.07-11.567 39.341a4.5 4.5 0 0 0 4.318 5.77h29.416l-44.531 65.406z" fill="#D64000" data-color="1"></path>
 
@@ -463,16 +463,16 @@ const StyledHome = styled.div`
 @media screen and (max-width: 480px) {
 
   .hero{
-  background-image: url(".//Resorces/landing1.jpg");
-  background-size: 135%;
+  background-image: url(".//Resorces/mob_landing2.jpg");
+  background-size:125%;
   background-repeat: no-repeat;
-  min-height: 90vh;
+  min-height: 57.5vh;
   width: 100%;
 
 }
 
 .headline{
-  top: 15vh !important;
+  top: 18vh !important;
   left: 4vw;
   color: #242426;
   font-size: 0.5rem;
@@ -485,6 +485,7 @@ const StyledHome = styled.div`
 }
 
 .headline-btn{
+  
     width: 20vw;
     height: 2.5vh;
     border: 1px solid #242426;
@@ -492,16 +493,76 @@ const StyledHome = styled.div`
     background-color: rgba(255, 255, 255, 0);
     color: #242426;
     font-size: 0.8rem;
-}
+    margin-top: 2vh;
 }
 
+
 .ad{
-    top: 30vh;
+    top: 40vh;
     opacity: 80%;
     font-size: 0.5rem;
+    height: 17.5vh;
 }
+
+.cards{
+  width: 100%;
 }
-`
+
+.card{
+  height: 12vh;
+}
+
+.blog{
+  height: 30vh;
+
+}
+
+.right{
+  height: 30vh;
+}
+
+
+.left{
+  height: 30vh;
+
+}
+
+
+.text{
+  font-size: 0.8rem !important;
+  text-align: justify;
+  margin-top: 5vh;
+}
+
+.readmorebtn{
+  width: 50%;
+  height: 2.5vh;
+  font-size: 0.6rem;
+
+}
+
+.motivationwall{
+  padding-top: 5vh;
+}
+
+.motivation_main_heading{
+  font-size: 1.2rem;
+}
+
+.motivation_box{
+  margin-top: -5vh;
+}
+
+#motivationicon{
+  width: 30px!important;
+  height: 30px!important;
+}
+
+
+}
+
+
+`;
 
 
 
