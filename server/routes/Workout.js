@@ -9,37 +9,51 @@ const Workoutrouter = express.Router();
 
 // Configure multer to store files in memory
 const upload = multer({ storage: multer.memoryStorage() });
+
 Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
   console.log("Request file:", req.file); // Log the file data from the request
 
   const { name, reps } = req.body;
 
   try {
-    // Upload video to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.buffer, {
-      resource_type: "video" // Specify the resource type as video
+    // Convert the buffer to a readable stream
+    const fileStream = cloudinary.v2.uploader.upload_stream({ resource_type: "video" }, (error, result) => {
+      if (error) {
+        console.error("Error uploading video to Cloudinary:", error);
+        return res.status(500).json({ message: "Internal server error" });
+      }
+      
+      // Create a new WorkoutModel instance
+      const newWorkout = new WorkoutModel({
+        name,
+        reps,
+        video: result.secure_url // Use the secure URL provided by Cloudinary
+      });
+
+      // Save the new workout to the database
+      newWorkout.save()
+        .then(() => {
+          // Return success response to the client
+          return res.json({
+            message: "Workout Added Successfully",
+            status: true
+          });
+        })
+        .catch((saveError) => {
+          console.error("Error saving workout to the database:", saveError);
+          return res.status(500).json({ message: "Internal server error" });
+        });
     });
 
-    // Create a new WorkoutModel instance
-    const newWorkout = new WorkoutModel({
-      name,
-      reps,
-      video: result.secure_url // Use the secure URL provided by Cloudinary
-    });
-
-    // Save the new workout to the database
-    await newWorkout.save();
-
-    // Return success response to the client
-    return res.json({
-      message: "Workout Added Successfully",
-      status: true
-    });
+    // Pipe the buffer to the file stream
+    fileStream.write(req.file.buffer);
+    fileStream.end();
   } catch (error) {
-    console.error("Error uploading video to Cloudinary:", error);
+    console.error("Error processing request:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 
 Workoutrouter.get("/Workoutget", async (req, res) => {
