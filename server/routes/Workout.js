@@ -26,8 +26,6 @@ Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
 
     await newWorkout.save();
     
-    // Delete the temporary file created by multer
-    // fs.unlinkSync(req.file.path);
 
     return res.json({
       message: "Workout Added Successfully",
