@@ -5,9 +5,10 @@ import multer from "multer";
 
 const Workoutrouter = express.Router();
 
-// Update multer upload configuration to handle Cloudinary
-const upload = multer();
 
+
+// Configure multer to store files in memory
+const upload = multer({ storage: multer.memoryStorage() });
 Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
   console.log("Request file:", req.file); // Log the file data from the request
 
@@ -15,7 +16,7 @@ Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
 
   try {
     // Upload video to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path, {
+    const result = await cloudinary.uploader.upload(req.file.buffer, {
       resource_type: "video" // Specify the resource type as video
     });
 
@@ -39,6 +40,7 @@ Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 Workoutrouter.get("/Workoutget", async (req, res) => {
   try {
