@@ -40,7 +40,6 @@ Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
   }
 });
 
-
 Workoutrouter.get("/Workoutget", async (req, res) => {
   try {
     // Retrieve all workouts from the database
