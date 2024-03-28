@@ -9,6 +9,8 @@ const Workoutrouter = express.Router();
 const upload = multer();
 
 Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
+  console.log("Request file:", req.file); // Log the file data from the request
+
   const { name, reps } = req.body;
 
   try {
@@ -37,6 +39,7 @@ Workoutrouter.post("/Workoutadd", upload.single('video'), async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 Workoutrouter.get("/Workoutget", async (req, res) => {
   try {
