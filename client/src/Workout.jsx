@@ -39,6 +39,7 @@ const Workout = () => {
   const handleboxclick = (event) => {
     setClicked(true);
     const clickedBox = event.currentTarget;
+    const workoutimg = clickedBox.querySelector('.workout_img');
     const h3Element = clickedBox.querySelector('h3');
 
     // Clear the previous interval timer
@@ -50,7 +51,9 @@ const Workout = () => {
     clickedBox.style.display = "grid";
     clickedBox.style.placeItems = "center";
     clickedBox.style.zIndex = 1;
+    workoutimg.style.display = "none";
     h3Element.style.display = "none";
+
   };
 
   const handlecrossbtn = (event) => {
@@ -97,7 +100,8 @@ const Workout = () => {
         <div className="workout-container">
           <div className="box" onClick={handleboxclick}>
             <h3 style={{ textAlign: 'center' }}>Full Body Workout</h3>
-            {!sessionstart && !clicked && !sessionComplete && <button onClick={start}>Start</button>}
+            <img src="./Resorces/Full_Body.png" alt="Full Body" className='workout_img'/>
+            {!sessionstart && !clicked && !sessionComplete && <button style={{width:'40%'}} onClick={start}>Start</button>}
             {clicked && workout.length > 0 && workout.map((item, index) => (
               <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
                 <div className="left">
@@ -164,6 +168,8 @@ const StyledWorkout = styled.div`
   }
 
   .box {
+    display: grid;
+    place-items: center ;
     width: calc((100% / 3) - 7.5%);
     height: 45vh;
     background-color: #fff;
@@ -206,6 +212,10 @@ const StyledWorkout = styled.div`
     font-size: 1.2rem;
   }
 
+  .workout_img{
+    width: 80%;
+    object-fit: contain;
+  }
 
 `
 

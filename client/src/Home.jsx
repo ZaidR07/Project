@@ -464,15 +464,15 @@ const StyledHome = styled.div`
 
   .hero{
   background-image: url(".//Resorces/mob_landing2.jpg");
-  background-size:125%;
+  background-size:135%;
   background-repeat: no-repeat;
-  min-height: 57.5vh;
+  min-height:61.5vh;
   width: 100%;
 
 }
 
 .headline{
-  top: 18vh !important;
+  top: 20vh !important;
   left: 4vw;
   color: #242426;
   font-size: 0.5rem;
@@ -498,7 +498,7 @@ const StyledHome = styled.div`
 
 
 .ad{
-    top: 40vh;
+    top: 42vh;
     opacity: 80%;
     font-size: 0.5rem;
     height: 17.5vh;
@@ -513,17 +513,20 @@ const StyledHome = styled.div`
 }
 
 .blog{
-  height: 30vh;
+  height: 35vh;
 
 }
+.blogimg{
+  height: 35vh;
 
+}
 .right{
-  height: 30vh;
+  height: 35vh;
 }
 
 
 .left{
-  height: 30vh;
+  height: 35vh;
 
 }
 
