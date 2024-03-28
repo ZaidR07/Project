@@ -117,7 +117,7 @@ const Workout = () => {
                 <td>
                   <video className="workout_table_video" autoPlay loop muted>
                     <source
-                      src={"https://project-d44v.onrender.com/Workoutvideos/" + item.video}
+                      src={item.video}
                       type="video/mp4"
                     />
                     Your browser does not support the video tag.

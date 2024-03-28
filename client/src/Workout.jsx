@@ -106,7 +106,7 @@ const Workout = () => {
               <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
                 <div className="left">
                   <video className="workout_video" autoPlay loop muted>
-                    <source src={"https://project-d44v.onrender.com/Workoutvideos/" + item.video} type="video/mp4" />
+                    <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
