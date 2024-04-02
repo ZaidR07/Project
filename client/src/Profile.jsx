@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { NavLink, useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 
@@ -8,7 +10,16 @@ const Profile = () => {
     const [customer, setCustomer] = useState([]);
     const [username, setUsername] = useState();
     const [purename, setPurename] = useState();
-
+    const [agree, setAgree] = useState(false);
+    const [gender, setGender] = useState("");
+    const [age, setAge] = useState("");
+    const [height, setHeight] = useState("");
+    const [weight, setWeight] = useState("");
+    const [waist, setWaist] = useState("");
+    const [diet, setDiet] = useState("");
+    const [experience, setExperience] = useState("");
+    const [activity, setActivity] = useState("");
+    const navigate = useNavigate();
 
 
     const handleLoad = async () => {
@@ -49,28 +60,28 @@ const Profile = () => {
                 </div>
                 {customer.length > 0 && (
                     <div className="infobox">
-                        <div className="box">
+                        <div className="box1">
                             <span>Gender: {customer[0].gender}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Age: {customer[0].age}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Height: {customer[0].height}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Weight: {customer[0].weight}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Waist: {customer[0].waist}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Diet: {customer[0].diet}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Activity: {customer[0].activity}</span>
                         </div>
-                        <div className="box">
+                        <div className="box1">
                             <span>Experience: {customer[0].experience}</span>
                         </div>
                     </div>
@@ -80,8 +91,181 @@ const Profile = () => {
                 <section className="top">
                     <h2>Update Profile</h2>
                 </section>
-
+                
+        
+        <div className="form">
+          <div className="personalinfo">
+            <div className="input-box">
+            </div>
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="age">Age : </label>
+              </div>
+              <input
+                className="input-fields"
+                type="text"
+                name="age"
+                id=""
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </div>
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="height">Height : </label>
+              </div>
+              <input
+                className="input-fields"
+                type="text"
+                name="height"
+                placeholder="In feets"
+                id=""
+                onChange={(e) => setHeight(e.target.value)}
+              />
+            </div>
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="weight">Weight : </label>
+              </div>
+              <input
+                className="input-fields"
+                type="text"
+                name="Weight"
+                placeholder="In kilograms"
+                id=""
+                onChange={(e) => setWeight(e.target.value)}
+              />
+            </div>
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="weight">Waist : </label>
+              </div>
+              <input
+                className="input-fields"
+                type="text"
+                name="Waist"
+                placeholder="Waist in inches"
+                id=""
+                onChange={(e) => setWaist(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="diet">
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="Diet">Diet : </label>
+              </div>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Vegetarian</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Diet"
+                id=""
+                value="Non-vegetarian"
+                onChange={(e) => setDiet(e.target.value)}
+              />
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Non-Vegetarian</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Diet"
+                id=""
+                value="Vegetarian"
+                onChange={(e) => setDiet(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="Activeness">
+            <div className="input-box">
+              <div className="label">
+                <label htmlFor="Experience">Activeness :
+                </label>
+              </div>
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Sedentary</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Activeness"
+                id=""
+                value="Sedentary"
+                onChange={(e) => setActivity(e.target.value)}
+              />
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Light-Activity</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Activeness"
+                id=""
+                value="Light-Activity"
+                onChange={(e) => setActivity(e.target.value)}
+              />
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Moderately-Active</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Activeness"
+                id=""
+                value="Moderately-Active"
+                onChange={(e) => setActivity(e.target.value)}
+              />
+              <p style={{ display: 'inline-block', marginRight: '2%' }}>Highly-active</p>
+              <input
+                className="input-fields"
+                type="radio"
+                name="Activeness"
+                id=""
+                s
+                value="Highly-Active"
+                onChange={(e) => setActivity(e.target.value)}
+              />
+            </div>
+            <div className="level">
+              <div className="input-box">
+                <div className="label">
+                  <label htmlFor="Experience">Experience :   </label>
+                </div>
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Beginner</p>
+                <input
+                  className="input-fields"
+                  type="radio"
+                  name="Experience"
+                  id=""
+                  value="Beginner"
+                  onChange={(e) => setExperience(e.target.value)}
+                />
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Intermediate</p>
+                <input
+                  className="input-fields"
+                  type="radio"
+                  name="Experience"
+                  id=""
+                  value="Intermediate"
+                  onChange={(e) => setExperience(e.target.value)}
+                />
+                <p style={{ display: 'inline-block', marginRight: '2%' }}>Advanced</p>
+                <input
+                  className="input-fields"
+                  type="radio"
+                  name="Experience"
+                  id=""
+                  value="Advanced"
+                  onChange={(e) => setExperience(e.target.value)}
+                />
+              </div>
+            </div>
+           
+            
+            
+            <input
+              type="button"
+              value="Submit"
+              disabled={!agree}
+              onClick={handleLoad}
+            />
+          </div>
+        </div>
+      
             </section>
+            
         </Styledprofile>
     )
 }
@@ -109,7 +293,7 @@ const Styledprofile = styled.div`
         width: 50%;
         height: 70vh;
         margin-top: 20vh;
-        background-color: yellow;
+        background-color: orange;
 
     }
 
@@ -145,7 +329,7 @@ const Styledprofile = styled.div`
         padding: 1vh 0 0 0;
     }
 
-    .box{
+    .box1{
         width: 50%;
         height: 5vh;
         /* box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1); */
@@ -153,15 +337,81 @@ const Styledprofile = styled.div`
         /* border-bottom: 0.2px solid black; */
         font-size: 0.8rem;
     }
+    .box {
+    width: 100%;
+    height: 90vh;
+    padding: 2%;
+    border: 1px;
+    box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
+    border-radius: 2%;
+    margin-top:5px;
+    background-color: white;
+  }
+  h2 {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    color: #595959;
+    margin-bottom:10px;
+  }
+  .form {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .personalinfo {
+    display: flex;
+    flex-wrap: wrap;   
+  }
+  .diet {
+    margin-top: 20px;
+  }
+  .Activeness,
+  .level {
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+  .input-box {
+    width: 100%;
+    height: 6vh;
+    padding: 1vh 0 0 1%;
+    flex-direction: column;
+    margin-bottom: 2vh;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align:left;
+  }
+  input[type="checkbox"] {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  input[type="button"] {
+    padding: 10px 20px;
+    background-color: #d04e17;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+  .input-fields{
+    padding-left: 1%;
+  }
+  input[type="button"]:hover {
+    background-color:#E8751A;
+  }
+  .label{
+    min-width: 15%;
 
-    .top{
-        width: 100%;
-        height: 12vh;
-        background-color: #CC3D00;
-        display: grid;
-        place-items: center;
-        color: white;
-    }
+    display: inline-block;
+  }
+  .input-box input[type="radio"] {
+  margin-right: 10px; 
+}
+    
 
 `
 
