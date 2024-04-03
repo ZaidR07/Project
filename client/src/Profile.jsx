@@ -90,13 +90,9 @@ const Profile = () => {
             <section className='updatesection'>
                 <section className="top">
                     <h2>Update Profile</h2>
-                </section>
-                
-        
+                </section>     
         <div className="form">
           <div className="personalinfo">
-            <div className="input-box">
-            </div>
             <div className="input-box">
               <div className="label">
                 <label htmlFor="age">Age : </label>
@@ -273,8 +269,8 @@ const Profile = () => {
 const Styledprofile = styled.div`
 
     width: 100%;
-    /* min-height: 90vh; */
-    background-color: #fff;
+    min-height: 100vh;
+    background-color: #f7f8fa;
     display: flex;
     justify-content: center;
 
@@ -284,6 +280,7 @@ const Styledprofile = styled.div`
         height: 60vh;
         background-color: whitesmoke;
         margin-right: 2%;
+        /* margin-top:20vh; */
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
 
@@ -292,8 +289,8 @@ const Styledprofile = styled.div`
     .updatesection{
         width: 50%;
         height: 70vh;
-        margin-top: 20vh;
-        background-color: orange;
+        margin-top: 15vh;
+        /* background-color: orange; */
 
     }
 
