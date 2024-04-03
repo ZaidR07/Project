@@ -161,7 +161,7 @@ const MyCarousel = () => {
           <StyledItem key={apparels._id}>
             <img
               className="Carousel_img"
-              src={"http://localhost:4000/Productimages/" + apparels.image}
+              src={apparels.image}
             />
             <br />
             <div className="description">

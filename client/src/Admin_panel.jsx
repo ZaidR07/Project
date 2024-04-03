@@ -135,9 +135,17 @@ const Admin_panel = () => {
     });
     if(dltresponse.status){
       toast.success("Product Deleted")
+      setDeleteclicked(false);
       handleLoad();
 
+
     }
+  }
+
+  const handlecancel = () =>{
+    const dlt = document.getElementById('overlaydelete');
+    dlt.style.display = 'none';
+    setDeleteclicked(false);
   }
 
   const handleLoad = async () => {
@@ -359,10 +367,10 @@ const Admin_panel = () => {
                 <button className="next" onClick={handleNextPage} disabled={indexOfLastItem >= product.length}>Next</button>
               </div>
             </div>
-            {deleteclicked && (<div className="overlaydelete">
+            {deleteclicked && (<div className="overlaydelete" id="overlaydelete">
               <h3 style={{ marginBottom: "1vh" }}>Are you Sure want to delete?</h3>
               <button onClick={() => handledelete()} style={{ marginRight: "10%", marginLeft: '15%', width: '20%' }} >Yes</button>
-              <button style={{ width: '20%' }}>Cancel</button>
+              <button onClick={()=> handlecancel()} style={{ width: '20%' }}>Cancel</button>
 
             </div>)}
 
