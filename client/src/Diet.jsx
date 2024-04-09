@@ -29,23 +29,37 @@ const Diet = () => {
   return (
     <StyledDiet calory={calory}>
       <div id="red" className='container'>
-        <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginTop: '2vh', marginLeft: '90%' }} icon={faFile} />
-        <img style={{ width: "90%", marginTop: "-8vh", height: "80vh", marginLeft: '5%' }} src="./Resorces/Cal1200.jpg" alt="" />
+        <a href={`./Resorces/Cal1200.jpg`} download>
+          <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginLeft: '90%' }} icon={faFile} />
+
+        </a>
+        <img src="./Resorces/Cal1200.jpg" alt="" />
 
       </div>
       <div id="blue" className='container'>
-        <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginTop: '2vh', marginLeft: '90%' }} icon={faFile} />
-        <img style={{ width: "90%", marginTop: "-8vh", height: "80vh", marginLeft: '5%' }} src="./Resorces/Cal1500.jpg" alt="" />
+        <a href={`./Resorces/Cal1500.jpg`} download>
+          <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginLeft: '90%' }} icon={faFile} />
+        </a>
+
+        <img src="./Resorces/Cal1500.jpg" alt="" />
 
       </div>
       <div id="green" className='container'>
-        <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginTop: '2vh', marginLeft: '90%' }} icon={faFile} />
-        <img style={{ width: "90%", marginTop: "-8vh", height: "80vh", marginLeft: '5%' }} src="./Resorces/Cal1800.jpg" alt="" />
+        <a href={`./Resorces/Cal1800.jpg`} download>
+
+          <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginLeft: '90%' }} icon={faFile} />
+        </a>
+
+        <img src="./Resorces/Cal1800.jpg" alt="" />
 
       </div>
       <div id="yellow" className='container'>
-        <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginTop: '2vh', marginLeft: '90%' }} icon={faFile} />
-        <img style={{ width: "90%", marginTop: "-8vh", height: "80vh", marginLeft: '5%' }} src="./Resorces/Cal2000.jpg" alt="" />
+        <a href={`./Resorces/Cal1800.jpg`} download>
+
+          <FontAwesomeIcon style={{ color: '#CC3D00', fontSize: '2rem', marginLeft: '90%' }} icon={faFile} />
+        </a>
+
+        <img src="./Resorces/Cal2000.jpg" alt="" />
 
       </div>
 
@@ -54,40 +68,53 @@ const Diet = () => {
 };
 
 const StyledDiet = styled.div`
+    background-color: #CC3D00;
+    
+
   #red {
+    background-color:#fff;
     display: ${({ calory }) => (calory >= 600 && calory < 1500 ? 'flex' : 'none')};
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     /* border: 1px solid rgba(0, 0, 0, 0.4); 
     border-radius: 8px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100vh;
+    
   }
   #blue {
+    background-color:#fff;
     display: ${({ calory }) => (calory >= 1500 && calory < 1800 ? 'flex' : 'none')};
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
     /* border: 1px solid rgba(0, 0, 0, 0.4); 
     border-radius: 8px; */
   }
   #green {
+    background-color:#fff;
     display: ${({ calory }) => (calory >= 1800 && calory < 2000 ? 'flex' : 'none')};
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adjust shadow as needed */
     /* border: 1px solid rgba(0, 0, 0, 0.4);  */
     /* border-radius: 8px; */
   }
   #yellow {
+    background-color:#fff;
+
     display: ${({ calory }) => (calory >= 2000 ? 'flex' : 'none')};
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
     /* border: 1px solid rgba(0, 0, 0, 0.4);
     border-radius: 8px; */
   }
   .container {
-    background-color: orange;
     margin: auto;
     width: 90%;
     min-height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
-  
+  img{
+    margin-left: 5%;
+    width: 90%;
+
+  }
 `;
 
 export default Diet;

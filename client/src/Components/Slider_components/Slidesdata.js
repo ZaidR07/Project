@@ -3,8 +3,8 @@ import axios from 'axios';
 const response = await axios.get('https://api.unsplash.com/search/photos', {
   params: {
     client_id: '2oSZUWFpzQznWst8O2DB0_p4jF1sXOMZLFwMQHgsu3Q',
-    query: 'gym equipment fitness apparel supplements',
-    per_page: 20,
+    query: 'gym',
+    per_page: 10,
     page: 1,
   },
 });
