@@ -20,7 +20,6 @@ const Profile = () => {
     const [activity, setActivity] = useState("");
 
 
-
     const handleLoad = async () => {
         try {
             const userEmail = localStorage.getItem('userEmail');
