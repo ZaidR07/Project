@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+const SERVER = process.env.server;
+
 const Login_plus_register = ({ setIsLoggedIn }) => {
     const [signIn, toggle] = React.useState(true);
     const [username, setUsername] = useState();
@@ -30,7 +32,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/signup", {
+            const response = await axios.post(`${SERVER}/signup`, {
                 username: username,
                 email: email,
                 password: password
@@ -53,7 +55,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit1 = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/login", {
+            const response = await axios.post(`${SERVER}/login`, {
                 email: loginemail,
                 password: loginpassword,
             });
