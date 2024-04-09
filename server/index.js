@@ -1,7 +1,7 @@
 import express from "express";
 import cors from 'cors';
 import { Signuprouter } from "./routes/Signup.js";
-import { Userrouter } from "./routes/user.js";
+import { Userrouter } from "./routes/User.js";
 import {Bmrrouter} from "./routes/Bmr.js";
 import { Levelrouter } from "./routes/Level.js";
 import {Adminrouter} from "./routes/Admin.js";
