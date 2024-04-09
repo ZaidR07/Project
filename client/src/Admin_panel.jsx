@@ -93,7 +93,7 @@ const Admin_panel = () => {
     try {
 
       if (updateid == null) {
-        const response = await axios.post("http://localhost:4000/Productadd", formData, {
+        const response = await axios.post("https://fitness365-1iww.onrender.com/Productadd", formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -110,7 +110,7 @@ const Admin_panel = () => {
 
 
       if (updateid != null) {
-        const response1 = await axios.post("http://localhost:4000/Productupdate", formData1, {
+        const response1 = await axios.post("https://fitness365-1iww.onrender.com/Productupdate", formData1, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -130,7 +130,7 @@ const Admin_panel = () => {
   }
 
   const handledelete = async() => {
-    const dltresponse = await axios.post("http://localhost:4000/Productdlt",{
+    const dltresponse = await axios.post("https://fitness365-1iww.onrender.com/Productdlt",{
         id:deleteid
     });
     if(dltresponse.status){
@@ -150,9 +150,9 @@ const Admin_panel = () => {
 
   const handleLoad = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/Admin", {});
-      const productres = await axios.get("http://localhost:4000/Productget", {});
-      const customerres = await axios.get("http://localhost:4000/Customerget", {});
+      const response = await axios.get("https://fitness365-1iww.onrender.com/Admin", {});
+      const productres = await axios.get("https://fitness365-1iww.onrender.com/Productget", {});
+      const customerres = await axios.get("https://fitness365-1iww.onrender.com/Customerget", {});
       setProduct(productres.data);
       setCustomer(customerres.data);
       setTotalusers(response.data.totalusers);
