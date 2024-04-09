@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const SERVER = process.env.SERVER;
+const SERVER = process.env.REACT_APP_SERVER;
 console.log(SERVER);
+
 
 const Login_plus_register = ({ setIsLoggedIn }) => {
     const [signIn, toggle] = React.useState(true);
