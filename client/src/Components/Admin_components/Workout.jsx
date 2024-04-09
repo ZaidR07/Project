@@ -48,7 +48,7 @@ const Workout = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/Workoutadd",
+        "https://fitness365-1iww.onrender.com/Workoutadd",
         formData,
         {
           headers: {
@@ -69,7 +69,7 @@ const Workout = () => {
     const handleLoad = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/Workoutget",
+          "https://fitness365-1iww.onrender.com/Workoutget",
           {}
         );
         setWorkout(response.data);

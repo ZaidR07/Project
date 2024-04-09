@@ -12,7 +12,7 @@ const Forgot_password = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://fitness365.onrender.com/Forgot_password", {
+      const response = await axios.post("https://fitness365-1iww.onrender.com/Forgot_password", {
         email,
 
       });
@@ -29,7 +29,7 @@ const Forgot_password = () => {
   const handleSubmit1 = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://fitness365.onrender.com/SetNewpassword", {
+      const response = await axios.post("https://fitness365-1iww.onrender.com/SetNewpassword", {
         email,
         otp,
         newpass,

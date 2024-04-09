@@ -18,10 +18,10 @@ const Workout = () => {
     const handleLoad = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail');
-        const response = await axios.post("http://localhost:4000/Level", {
+        const response = await axios.post("https://fitness365-1iww.onrender.com/Level", {
           email: userEmail,
         });
-        const workoutresponse = await axios.get("http://localhost:4000/Workoutget");
+        const workoutresponse = await axios.get("https://fitness365-1iww.onrender.com/Workoutget");
         setLevel(response.data.level);
         setWorkout(workoutresponse.data);
       } catch (error) {

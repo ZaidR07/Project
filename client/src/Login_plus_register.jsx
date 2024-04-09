@@ -5,9 +5,7 @@ import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const SERVER = process.env.REACT_APP_SERVER;
-console.log(SERVER);
-
+const SERVER = process.env.server;
 
 const Login_plus_register = ({ setIsLoggedIn }) => {
     const [signIn, toggle] = React.useState(true);
@@ -34,7 +32,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${SERVER}/signup`, {
+            const response = await axios.post("https://fitness365-1iww.onrender.com/signup", {
                 username: username,
                 email: email,
                 password: password
@@ -57,7 +55,7 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
     const handleSubmit1 = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${SERVER}/login`, {
+            const response = await axios.post("https://fitness365-1iww.onrender.com/login", {
                 email: loginemail,
                 password: loginpassword,
             });

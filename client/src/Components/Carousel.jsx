@@ -14,7 +14,7 @@ const MyCarousel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/Productget");
+        const response = await axios.get("https://fitness365-1iww.onrender.com/Productget");
         const filteredsupplements = response.data.filter(
           (product) => product.category === "Supplements"
         );

@@ -21,7 +21,7 @@ const Survey = () => {
     event.preventDefault();
     try {
       const userEmail = localStorage.getItem("userEmail");
-      const response = await axios.post("https://fitness365.onrender.com/Userinfo", {
+      const response = await axios.post("https://fitness365-1iww.onrender.com/Userinfo", {
         email: userEmail,
         gender,
         age,

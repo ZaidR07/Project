@@ -23,7 +23,7 @@ const Profile = () => {
     const handleLoad = async () => {
         try {
             const userEmail = localStorage.getItem('userEmail');
-            const customerres = await axios.post("http://localhost:4000/profileget", {
+            const customerres = await axios.post("https://fitness365-1iww.onrender.com/profileget", {
                 email: userEmail,
             });
             setCustomer(customerres.data);
@@ -49,7 +49,7 @@ const Profile = () => {
     const handleUpdate = () => {
         try {
             const userEmail = localStorage.getItem('userEmail');
-            axios.post("http://localhost:4000/profileupdate", {
+            axios.post("https://fitness365-1iww.onrender.com/profileupdate", {
             email: userEmail,
             age: age,
             height: height,
