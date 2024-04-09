@@ -15,7 +15,7 @@ dotenv.config();
 
 const DB = process.env.DB;
 const app = express();
-
+const PORT = 4000;
 
 
 app.use(cors({
