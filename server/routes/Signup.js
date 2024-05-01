@@ -70,7 +70,6 @@ Signuprouter.post('/login', async (req, res) => {
         if (!user) {
             return res.json({
                 message: "User is not registered",
-                login: true,
             });
         }
 
@@ -78,7 +77,6 @@ Signuprouter.post('/login', async (req, res) => {
         if (!validPassword) {
             return res.json({
                 message: "Password is incorrect",
-                login: false,
             });
         }
 
@@ -88,7 +86,7 @@ Signuprouter.post('/login', async (req, res) => {
 
         return res.json({
             message: "Login Successful",
-            status: true,
+            userlogin: true,
             user: {
                 email: email,
                 username: username
