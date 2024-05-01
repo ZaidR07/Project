@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const SERVER = process.env.server;
+// const SERVER = process.env.server;
 
-const Login_plus_register = ({ setIsLoggedIn }) => {
+const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
     const [signIn, toggle] = React.useState(true);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
@@ -69,6 +69,17 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
             }
             if(!response.data.status){
                 toast.error("Incorrect Username or password");
+            }
+            if(response.data.admin){
+                setAdminLoggedIn(true);
+                localStorage.setItem('adminLoggedIn', 'true');
+                toast.success("Admin login Successful");
+                navigate('/Admin_panel');
+
+
+            }
+            if(!response.data.admin){
+                toast.error("Incorrect Credentials");
             }
         }
         catch (err) {

@@ -23,6 +23,8 @@ import Profile from './Profile';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
 
+  const [adminLoggedIn, setAdminLoggedIn] = useState(localStorage.getItem('adminLoggedIn') === 'true');
+
   const theme = {
     colors: {
       heading: "",
@@ -36,14 +38,18 @@ function App() {
         <GlobalStyle />
         <BrowserRouter>
           <>
-            {isLoggedIn && <Header setIsLoggedIn ={setIsLoggedIn} />}
+            {isLoggedIn && <Header setIsLoggedIn={setIsLoggedIn} />}
             <Routes>
+              {adminLoggedIn && (
+                <Route path="/Admin_panel" element={<Admin_panel  setAdminLoggedIn={setAdminLoggedIn} />} />
+              )}
               {!isLoggedIn && (
                 <>
+                  
                   <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
                   <Route path="/Forgot_password" element={<Forgot_password />} />
 
-                  
+
 
                 </>
               )}
@@ -55,7 +61,6 @@ function App() {
                   <Route path="/Diet" element={<Diet />} />
                   <Route path="/Shop" element={<Shop />} />
                   <Route path="/Contact" element={<Contact />} />
-                  <Route path="/Admin_panel" element={<Admin_panel />} />
                   <Route path="/Survey" element={<Survey />} />
                   <Route path="/Profile" element={<Profile />} />
 

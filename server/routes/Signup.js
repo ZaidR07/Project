@@ -4,6 +4,7 @@ import { SignupModel } from '../models/Signup.js';
 import jwt from 'jsonwebtoken';
 import { randomInt } from 'crypto';
 import nodemailer from 'nodemailer';
+import { AdminModel } from '../models/Admin.js';
 
 
 
@@ -50,35 +51,46 @@ Signuprouter.post('/signup', async (req, res) => {
 
 Signuprouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    const user = await SignupModel.findOne({ email })
+    
+    // Check if the user is an admin
+    const admin = await AdminModel.findOne({ email });
+    if(admin && admin.password === password){
+        return res.json({
+            admin: true,
+        });
+    }
+
+    // Check if the user exists
+    const user = await SignupModel.findOne({ email });
     if (!user) {
         return res.json({
             message: "User is not registered"
-        })
-    }
-    const validPassword = await bcrypt.compare(password, user.password)
-    if (!validPassword) {
-        return res.json({
-            message: "password is incorrect"
-        })
+        });
     }
 
+    // Check if the password is correct
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+        return res.json({
+            message: "Password is incorrect"
+        });
+    }
+
+    // Generate JWT token for regular user
     const username = user.username;
-    const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' })
-    res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
+    const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' });
+    res.cookie('token', token, { httpOnly: true, maxAge: 360000 });
+
     return res.json({
-        message: "Login Succesfull",
+        message: "Login Successful",
         status: true,
         user: {
             email: email,
-            username : username
-
+            username: username
         }
-    })
-    
+    });
+});
 
-
-})
 
 Signuprouter.post('/Forgot_password', async (req, res) => {
     const { email } = req.body;

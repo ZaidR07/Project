@@ -201,7 +201,7 @@ const StyledItem = styled.div`
 
   .Carousel_img {
     width: 100%;
-    aspect-ratio: 3/2;
+    aspect-ratio: 3.5/2;
     object-fit: contain;
   }
 
