@@ -52,53 +52,52 @@ Signuprouter.post('/signup', async (req, res) => {
 Signuprouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    // Check if the user is an admin
-    const admin = await AdminModel.findOne({ email });
-    if (admin && admin.password === password) {
-        return res.json({
-            admin: true,
-            email: admin.email,
-            password: admin.password,
-        });
-    }
-    if (!admin) {
-        return res.json({
-            admin: false,
-        });
-    }
-
-    // Check if the user exists
-    const user = await SignupModel.findOne({ email });
-    if (!user) {
-        return res.json({
-            message: "User is not registered",
-            login: true,
-        });
-    }
-
-    // Check if the password is correct
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (user && !validPassword) {
-        return res.json({
-            message: "Password is incorrect",
-            login: false,
-
-        });
-    }
-
-    // Generate JWT token for regular user
-    const username = user.username;
-    const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true, maxAge: 360000 });
-
-    return res.json({
-        message: "Login Successful",
-        status: true,
-        user: {
-            email: email,
-            username: username
+    try {
+        // Check if the user is an admin
+        const admin = await AdminModel.findOne({ email });
+        if (admin && admin.password === password) {
+            // If admin is authenticated, send admin response
+            return res.json({
+                admin: true,
+                email: admin.email,
+                password: admin.password,
+            });
         }
-    });
+
+        // If the provided credentials do not belong to an admin,
+        // proceed to regular user authentication
+        const user = await SignupModel.findOne({ email });
+        if (!user) {
+            return res.json({
+                message: "User is not registered",
+                login: true,
+            });
+        }
+
+        const validPassword = await bcrypt.compare(password, user.password);
+        if (!validPassword) {
+            return res.json({
+                message: "Password is incorrect",
+                login: false,
+            });
+        }
+
+        const username = user.username;
+        const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' });
+        res.cookie('token', token, { httpOnly: true, maxAge: 360000 });
+
+        return res.json({
+            message: "Login Successful",
+            status: true,
+            user: {
+                email: email,
+                username: username
+            }
+        });
+    } catch (error) {
+        console.error("Error in login:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 
