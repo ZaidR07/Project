@@ -59,41 +59,50 @@ const Workout = () => {
 
       if (response.status) {
         notify();
+        handleLoad();
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleLoad = async () => {
+    try {
+      const response = await axios.get(
+        "https://fitness365-1iww.onrender.com/Workoutget",
+        {}
+      );
+      setWorkout(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    const handleLoad = async () => {
-      try {
-        const response = await axios.get(
-          "https://fitness365-1iww.onrender.com/Workoutget",
-          {}
-        );
-        setWorkout(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     handleLoad();
   }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Array.isArray(workout)
-    ? workout.slice(indexOfFirstItem, indexOfLastItem)
-    : [];
+  const currentItems = workout.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    setCurrentPage(prevPage => prevPage + 1);
   };
 
   const handlePreviousPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+    setCurrentPage(prevPage => prevPage - 1);
   };
+
+  // console.log(currentPage);
+  // console.log(indexOfFirstItem);
+  // console.log(indexOfLastItem);
+  // console.log(currentItems);
+
+
+
+
+
   return (
     <StyledWorkout>
       <div className="workoutbox">
@@ -106,48 +115,36 @@ const Workout = () => {
           <thead>
             <tr>
               <th>Video</th>
-              <th>ID</th>
               <th>Workout Name</th>
+              <th>ID</th>
               <th>Reps / Duration</th>
             </tr>
           </thead>
           <tbody>
-            {currentItems.map((item, index) => (
-              <tr key={index}>
-                <td>
-                  <video className="workout_table_video" autoPlay loop muted>
-                    <source
-                      src={item.video}
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </td>
-                <td>{item.name}</td>
-                <td>{item.workout_id}</td>
-                <td>{item.reps}</td>
-              </tr>
-            ))}
+            {currentItems.map((item, index) => {
+              console.log(currentItems)
+              return (
+                <tr key={index}>
+                  <td>
+                    <video className="workout_table_video" autoPlay loop muted>
+                      <source src={item.video} type="video/mp4" />
+                    </video>
+                  </td>
+                  <td>{item.name}</td>
+                  <td>{item.workout_id}</td>
+                  <td>{item.reps}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
+
         <div>
           <br />
-          <div className="button">
-            <button
-              className="previous"
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            <button
-              className="next"
-              onClick={handleNextPage}
-              disabled={indexOfLastItem >= workout.length}
-            >
-              Next
-            </button>
-          </div>
+          <div className="buttons">
+                <button className="previous" onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                <button className="next" onClick={handleNextPage} disabled={indexOfLastItem >= workout.length}>Next</button>
+              </div>
         </div>
       </div>
       <div className="overlaybox" ref={overlayref}>
@@ -166,7 +163,7 @@ const Workout = () => {
               type="text"
               className="workout-inputs"
               name="workout_name"
-              placeholder="Enter Product Name"
+              placeholder="Enter Workout"
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -220,7 +217,7 @@ const StyledWorkout = styled.div`
   }
   .overlaybox {
     width: 40%;
-    height: 60vh;
+    height: 60vh !important;
     position: absolute;
     z-index: 1;
     margin-top: 5vh;
@@ -243,7 +240,7 @@ const StyledWorkout = styled.div`
     cursor: pointer;
   }
   .form_container {
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     background-color: #263043;
     height: 45vh;
   }

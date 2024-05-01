@@ -129,11 +129,11 @@ const Admin_panel = () => {
     }
   }
 
-  const handledelete = async() => {
-    const dltresponse = await axios.post("https://fitness365-1iww.onrender.com/Productdlt",{
-        id:deleteid
+  const handledelete = async () => {
+    const dltresponse = await axios.post("https://fitness365-1iww.onrender.com/Productdlt", {
+      id: deleteid
     });
-    if(dltresponse.status){
+    if (dltresponse.status) {
       toast.success("Product Deleted")
       setDeleteclicked(false);
       handleLoad();
@@ -142,7 +142,7 @@ const Admin_panel = () => {
     }
   }
 
-  const handlecancel = () =>{
+  const handlecancel = () => {
     const dlt = document.getElementById('overlaydelete');
     dlt.style.display = 'none';
     setDeleteclicked(false);
@@ -370,7 +370,7 @@ const Admin_panel = () => {
             {deleteclicked && (<div className="overlaydelete" id="overlaydelete">
               <h3 style={{ marginBottom: "1vh" }}>Are you Sure want to delete?</h3>
               <button onClick={() => handledelete()} style={{ marginRight: "10%", marginLeft: '15%', width: '20%' }} >Yes</button>
-              <button onClick={()=> handlecancel()} style={{ width: '20%' }}>Cancel</button>
+              <button onClick={() => handlecancel()} style={{ width: '20%' }}>Cancel</button>
 
             </div>)}
 

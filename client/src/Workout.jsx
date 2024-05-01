@@ -91,7 +91,28 @@ const Workout = () => {
     <StyledWorkout Level={Level} clicked={clicked}>
       <div className="red">
         <div className="workout-container">
-          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}>
+          <h3 style={{ textAlign: 'center' }}>Full Body Workout</h3>
+            <img src="./Resorces/Full_Body.png" alt="Full Body" className='workout_img'/>
+            {!sessionstart && !clicked && !sessionComplete && <button style={{width:'40%'}} onClick={start}>Start</button>}
+            {clicked && workout.length > 0 && workout.map((item, index) => (
+              <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
+                <div className="left">
+                  <video className="workout_video" autoPlay loop muted>
+                    <source src={item.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="right">
+                  <h3>{item.name}</h3>
+                  <p>{item.reps} Reps / Seconds</p><br /><br />
+                  <p>{clock}</p>
+                </div>
+              </div>
+            ))}
+            {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
+            {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
+          </div>
           <div className="box" onClick={handleboxclick}></div>
           <div className="box" onClick={handleboxclick}></div>
         </div>
@@ -112,7 +133,7 @@ const Workout = () => {
                 </div>
                 <div className="right">
                   <h3>{item.name}</h3>
-                  <p>{item.reps}</p><br /><br />
+                  <p>{parseInt(item.reps) + 5} Reps / Seconds</p><br /><br />
                   <p>{clock}</p>
                 </div>
               </div>
@@ -127,8 +148,31 @@ const Workout = () => {
       </div>
       <div className="green">
         <div className="workout-container">
-          <div className="box" onClick={handleboxclick}></div>
-          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}>
+          <h3 style={{ textAlign: 'center' }}>Full Body Workout</h3>
+            <img src="./Resorces/Full_Body.png" alt="Full Body" className='workout_img'/>
+            {!sessionstart && !clicked && !sessionComplete && <button style={{width:'40%'}} onClick={start}>Start</button>}
+            {clicked && workout.length > 0 && workout.map((item, index) => (
+              <div className="content" key={index} style={{ display: index === currentIndex ? 'flex' : 'none' }}>
+                <div className="left">
+                  <video className="workout_video" autoPlay loop muted>
+                    <source src={item.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div className="right">
+                  <h3>{item.name}</h3>
+                  <p>{parseInt(item.reps) + 10} Reps / Seconds</p><br /><br />
+                  <p>{clock}</p>
+                </div>
+              </div>
+            ))}
+            {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
+            {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
+          </div>
+          <div className="box" onClick={handleboxclick}>
+            
+          </div>
           <div className="box" onClick={handleboxclick}></div>
         </div>
       </div>

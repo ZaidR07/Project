@@ -4,9 +4,8 @@ import mongooseSequence from "mongoose-sequence";
 const WorkoutSchema = new mongoose.Schema({
     name: { type: String, required: true },
     reps : { type: String, required: true },
+    level : { type: String, required: true },
     video : { type: String, required: true }
-
-    
 });
 
 
