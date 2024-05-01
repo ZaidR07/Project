@@ -9,17 +9,20 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
 
-const Header = ({ setIsLoggedIn }) => {
+const Header = ({ setIsLoggedIn, setAdminLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState();
   const [barclicked, setBarclicked] = useState(false);
+  const [checklogin , setlogin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     try {
       const storedUsername = localStorage.getItem('username');
+      const isloggedIn = localStorage.getItem('isLoggedIn');
       const firstLetter = storedUsername.charAt(0).toUpperCase();
       setUsername(firstLetter);
+      setlogin(!isloggedIn);
     } catch (error) {
       console.log(error);
     }
@@ -27,6 +30,8 @@ const Header = ({ setIsLoggedIn }) => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    setAdminLoggedIn(false);
+
 
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userEmail');
@@ -137,9 +142,13 @@ const Header = ({ setIsLoggedIn }) => {
                     <p>Profile</p>
                   </NavLink>
                   <p onClick={handleLogout}>Log out</p>
-                  <NavLink to='/Admin_panel'>
-                    <p>Admin Panel</p>
-                  </NavLink>
+                  {checklogin &&
+                    <NavLink to='/Admin_panel'>
+                      <p>Admin Panel</p>
+                    </NavLink>
+                  }
+
+
                 </div>
               )}
             </div>

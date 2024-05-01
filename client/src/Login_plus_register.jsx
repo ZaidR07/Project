@@ -63,11 +63,12 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                 notify1();
                 setIsLoggedIn(true);
                 localStorage.setItem('isLoggedIn', 'true');
+                setAdminLoggedIn(false);
                 localStorage.setItem('userEmail', response.data.user.email);
                 localStorage.setItem('username', response.data.user.username);
                 navigate('/Home');
             }
-            if(!response.data.userlogin){
+            if(response.data.userlogin){
                 toast.error("Incorrect Username or password");
             }
             if(response.data.admin){
@@ -79,7 +80,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
 
 
             }
-            if(!response.data.admin){
+            if(response.data.admin){
                 toast.error("Incorrect Credentials");
             }
         }

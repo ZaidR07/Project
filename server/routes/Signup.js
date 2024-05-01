@@ -62,7 +62,12 @@ Signuprouter.post('/login', async (req, res) => {
                 email: admin.email,
                 password: admin.password,
             });
+        } else if (!admin || admin.password !== password) {
+            return res.json({
+                admin: false,
+            });
         }
+        
 
         // If the provided credentials do not belong to an admin,
         // proceed to regular user authentication
@@ -77,6 +82,8 @@ Signuprouter.post('/login', async (req, res) => {
         if (!validPassword) {
             return res.json({
                 message: "Password is incorrect",
+                userlogin: false,
+
             });
         }
 

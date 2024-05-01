@@ -35,10 +35,10 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <GlobalStyle /> 
         <BrowserRouter>
           <>
-            {isLoggedIn && <Header setIsLoggedIn={setIsLoggedIn} />}
+          {(isLoggedIn || adminLoggedIn) && <Header setIsLoggedIn={setIsLoggedIn}  setAdminLoggedIn={setAdminLoggedIn} />}
             <Routes>
               {adminLoggedIn && (
                 <Route path="/Admin_panel" element={<Admin_panel  setAdminLoggedIn={setAdminLoggedIn} />} />
@@ -52,7 +52,7 @@ function App() {
 
                 </>
               )}
-              {isLoggedIn && (
+              {isLoggedIn || adminLoggedIn ?  (
                 <>
                   <Route path="/Home" element={<Home />} />
                   <Route path="/About" element={<About />} />
@@ -64,9 +64,11 @@ function App() {
                   <Route path="/Profile" element={<Profile />} />
 
                 </>
-              )}
+              ) : null}
             </Routes>
-            {isLoggedIn && <Footer />}
+            {(isLoggedIn || adminLoggedIn) && <Footer />}
+
+            
           </>
         </BrowserRouter>
       </ThemeProvider>
