@@ -64,8 +64,6 @@ Signuprouter.post('/login', async (req, res) => {
     if (!admin) {
         return res.json({
             admin: false,
-            email:admin.email,
-            password:admin.password,
         });
     }
 
@@ -73,7 +71,8 @@ Signuprouter.post('/login', async (req, res) => {
     const user = await SignupModel.findOne({ email });
     if (!user) {
         return res.json({
-            message: "User is not registered"
+            message: "User is not registered",
+            user: true,
         });
     }
 
@@ -81,7 +80,9 @@ Signuprouter.post('/login', async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
     if (user && !validPassword) {
         return res.json({
-            message: "Password is incorrect"
+            message: "Password is incorrect",
+            user: true,
+
         });
     }
 

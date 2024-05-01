@@ -71,6 +71,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                 toast.error("Incorrect Username or password");
             }
             if(response.data.admin){
+                console.log(response.data);
                 setAdminLoggedIn(true);
                 localStorage.setItem('adminLoggedIn', 'true');
                 toast.success("Admin login Successful");

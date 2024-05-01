@@ -46,7 +46,7 @@ function App() {
               {!isLoggedIn && (
                 <>
                   
-                  <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn} />} />
+                  <Route path="/" element={<Login_plus_register setIsLoggedIn={setIsLoggedIn}  setAdminLoggedIn={setAdminLoggedIn}  />} />
                   <Route path="/Forgot_password" element={<Forgot_password />} />
 
 
