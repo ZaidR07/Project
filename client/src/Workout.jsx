@@ -47,7 +47,6 @@ const Workout = () => {
 
     clickedBox.style.width = "calc(60%)";
     clickedBox.style.height = "50vh";
-    clickedBox.style.position = "absolute";
     clickedBox.style.display = "grid";
     clickedBox.style.placeItems = "center";
     clickedBox.style.zIndex = 1;
@@ -170,10 +169,10 @@ const Workout = () => {
             {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
             {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
           </div>
-          <div className="box" onClick={handleboxclick}>
-            
+          {/* <div className="box" onClick={handleboxclick}>
+
           </div>
-          <div className="box" onClick={handleboxclick}></div>
+          <div className="box" onClick={handleboxclick}></div> */}
         </div>
       </div>
     </StyledWorkout>

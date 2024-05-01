@@ -5,9 +5,15 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <StyledFooter className="footer_container">
+      <NavLink to="/Home">
+        <img src="/Resorces/fitpro_logo.png" alt="FitPro Logo" width="30px" id='logo' />
+        <span id='logotxt'>FITNESS365</span><br />
+        
+
+      </NavLink>
       <div className="footer_menu">
         <div className="footer_nav">
-        <h2>Quick Menu</h2><br/>
+          <h2>Quick Menu</h2><br />
           <ul className="footer_navlist">
             <li>
               <NavLink to="/About">
@@ -37,7 +43,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="footer_text">
+      {/* <div className="footer_text">
         <h2>Stay Tuned</h2><br/>
         <p style={{ fontSize: "25px", color: "#575757" }}>
           Subscribe Now and Get Access to{" "}
@@ -70,26 +76,45 @@ const Footer = () => {
           />
           <br/>
         </div>
-      </div>
-      <div className="footer_follow">
-        <h2>Follow Me</h2><br/>
+      </div> */}
+      <div className="terms">
+        <h2>Terms</h2><br />
         <div className="footer_nav">
           <ul className="footer_navlist">
             <li>
               <NavLink to="/Instagram">
-                <span>Instagram</span>
+                <span>Privacy Policy</span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/Facebook">
+                <span>Terms & Conditions</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Youtube">
+                <span>Copyright Policy </span>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer_follow">
+        <h2>Follow Me</h2><br />
+        <div className="footer_nav">
+          <ul className="footer_navlist">
+            <li>
+              <NavLink to="https://www.facebook.com/share/HrvYQDRas9w6yxvk/?mibextid=qi2Omg">
+                <span>Instagram</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="https://www.facebook.com/share/HrvYQDRas9w6yxvk/?mibextid=qi2Omg">
                 <span>Facebook</span>
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/Youtube">
-                <span>Youtube</span>
-              </NavLink>
-            </li> */}
+
           </ul>
         </div>
       </div>
@@ -114,6 +139,28 @@ const StyledFooter = styled.div`
     text-decoration: none;
     list-style: none;
   }
+
+  .companyinfo{
+    width: 20%;
+    color: black;
+  }
+  #logo{
+    margin-left: -5vw;
+    margin-top: -2vh
+  }
+  #logotxt{
+    color: black;
+    
+
+  }
+
+  #tagline{
+    font-size: 12px;
+    margin-left: -5vw;
+
+  }
+
+ 
 `;
 
 export default Footer;
