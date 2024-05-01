@@ -51,16 +51,19 @@ Signuprouter.post('/signup', async (req, res) => {
 
 Signuprouter.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    
+
     // Check if the user is an admin
     const admin = await AdminModel.findOne({ email });
-    if(admin && admin.password === password){
+    if (admin && admin.password === password) {
         return res.json({
             admin: true,
         });
-    }else{
+    }
+    if (!admin) {
         return res.json({
             admin: false,
+            email:admin.email,
+            password:admin.password,
         });
     }
 
@@ -106,14 +109,14 @@ Signuprouter.post('/Forgot_password', async (req, res) => {
             return res.json({ message: "Invalid User" })
         }
 
-       
+
         user.resetPasswordOTP = {
             otp,
-            timestamp: Date.now() 
+            timestamp: Date.now()
         };
         await user.save();
 
-        
+
         setTimeout(async () => {
             user.resetPasswordOTP = undefined;
             await user.save();
@@ -172,14 +175,12 @@ Signuprouter.post('/SetNewpassword', async (req, res) => {
 
             return res.json({ message: "Password updated successfully" });
         }
-        catch (error) 
-        {
+        catch (error) {
             console.error("Error updating password:", error);
             return res.status(500).json({ message: "Internal server error" });
         }
-    } 
-    else 
-    {
+    }
+    else {
         return res.json({ message: "Invalid OTP" });
     }
 });
