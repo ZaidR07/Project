@@ -80,9 +80,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
 
 
             }
-            if(response.data.admin){
-                toast.error("Incorrect Credentials");
-            }
+            
         }
         catch (err) {
             console.log(err);
