@@ -58,6 +58,10 @@ Signuprouter.post('/login', async (req, res) => {
         return res.json({
             admin: true,
         });
+    }else{
+        return res.json({
+            admin: false,
+        });
     }
 
     // Check if the user exists
@@ -70,7 +74,7 @@ Signuprouter.post('/login', async (req, res) => {
 
     // Check if the password is correct
     const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) {
+    if (user && !validPassword) {
         return res.json({
             message: "Password is incorrect"
         });
