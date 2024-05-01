@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -97,10 +97,13 @@ const Home = () => {
         </div>
         <div className="right">
           <div className="text">
-            <h2 style={{ fontSize: '1.2rem', lineHeight: '0px' }}>~My Story</h2>
+            <h2 style={{ fontSize: '1.2rem', lineHeight: '0px' }}>~Our Story</h2>
             <br />
-            <p style={{ color: '#575757' }}>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</p><br />
-            <button className='readmorebtn'>Read More</button><br />
+            <p style={{ color: '#575757',textAlign:'justify'}}>Born from a desire to empower individuals to lead healthier lives, our platform began as a vision to revolutionize the way people approach fitness. With a team of dedicated experts, we've crafted an immersive experience tailored to your needs, helping you unleash your full potential and embrace a lifestyle of vitality and strength.</p><br />
+            <NavLink to="/About#about_container">
+              <button className='readmorebtn'>Read More</button><br />
+            </NavLink>
+
 
           </div>
 
@@ -128,9 +131,7 @@ const Home = () => {
             <h1><span className='motivation_color_heading'>Build</span> Confidence</h1>
           </div><br />
           <div className="motivation_text">
-            <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or
-
-              double click me to add your own content and make changes to the font.</p>
+            <p>Workouts can boost confidence by improving physical strength and appearance, leading to a greater sense of self-assurance and empowerment.</p>
           </div><br /><br />
 
           <div className="partition_line">
@@ -169,7 +170,8 @@ const Home = () => {
             <h1><span className='motivation_color_heading'>Boost Your</span> Mood</h1>
           </div><br />
           <div className="motivation_text">
-            <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</p><br /><br />
+            <p>
+              Exercise has a remarkable ability to enhance mood by releasing endorphins, the body's natural mood lifters, promoting feelings of happiness and well-being.</p><br /><br />
           </div>
           <div className="partition_line">
 
@@ -189,7 +191,8 @@ const Home = () => {
             <h1 style={{ display: 'inline-block', whiteSpace: 'pre' }} className='motivation_color_heading'> Levels</h1>
           </div><br />
           <div className="motivation_text">
-            <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</p><br /><br />
+            <p>
+              Regular exercise can increase energy levels by improving cardiovascular health, enhancing circulation, and boosting metabolism, resulting in more sustained energy throughout the day.</p><br /><br />
           </div>
           <div className="partition_line">
 

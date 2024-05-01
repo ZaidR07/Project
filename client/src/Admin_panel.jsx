@@ -116,7 +116,7 @@ const Admin_panel = () => {
           }
         });
         if (response1.status) {
-          notify()
+          toast.success("Product Updated Successfully")
           // window.location.reload()
           handleLoad();
 
@@ -264,11 +264,11 @@ const Admin_panel = () => {
                 <BsPeopleFill className="icon" /> Workout
               </a>
             </li>
-            <li className="sidebar-list-item">
+            {/* <li className="sidebar-list-item">
               <a href="#green">
                 <BsMenuButtonWideFill className="icon" /> Reports
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="display">
@@ -441,10 +441,10 @@ const Admin_panel = () => {
             <Workout />
 
           </div>
-          <div className="reports_container" id="green">
+          {/* <div className="reports_container" id="green">
             <h1 style={{ color: 'white', fontSize: '3rem' }}>COMING SOON</h1>
 
-          </div>
+          </div> */}
         </div>
       </div>
     </StyleAdmin>
@@ -807,7 +807,7 @@ button.delete-btn:hover {
   border-radius: 10px;
   max-width: 400px;
   width: 100%;
-  height:90vh;
+  height:95vh;
 }
 h3{
   font-size: large;

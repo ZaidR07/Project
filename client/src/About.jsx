@@ -4,7 +4,7 @@ import styled from "styled-components";
 const About = () => {
   return (
     <StyledAbout>
-      <div className="about_container">
+      <div className="about_container" id="about_container">
         <div className="about_heading">
           <h1>
             this is how <br />i made it

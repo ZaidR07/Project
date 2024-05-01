@@ -59,7 +59,6 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 email: loginemail,
                 password: loginpassword,
             });
-            console.log(response.data);
             if (response.data.status) {
                 notify1();
                 setIsLoggedIn(true);
@@ -67,6 +66,9 @@ const Login_plus_register = ({ setIsLoggedIn }) => {
                 localStorage.setItem('userEmail', response.data.user.email);
                 localStorage.setItem('username', response.data.user.username);
                 navigate('/Home');
+            }
+            if(!response.data.status){
+                toast.error("Incorrect Username or password");
             }
         }
         catch (err) {
