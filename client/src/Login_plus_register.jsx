@@ -68,7 +68,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                 localStorage.setItem('username', response.data.user.username);
                 navigate('/Home');
             }
-            if(!response.data.userlogin){
+            if(response.data.status){
                 toast.error("Incorrect Username or password");
             }
             if(response.data.admin){
