@@ -69,7 +69,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                 navigate('/Home');
             }
             if(response.data.status){
-                toast.error("Incorrect Username or password");
+                alert("Incorrect User Credentials");
             }
             if(response.data.admin){
                 console.log(response.data);
