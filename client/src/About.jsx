@@ -7,17 +7,15 @@ const About = () => {
       <div className="about_container" id="about_container">
         <div className="about_heading">
           <h1>
-            this is how <br />i made it
+            this is how <br />We made it!!
           </h1>
           <div className="about_text">
             <p>
-              I'm a paragraph. Click here to add your own text <br/>
-              
-              and edit me. Let your users get to know you.
+            "Transforming Lives, One Rep at a Time."
             </p>
           </div>
         </div>
-       
+
       </div>
       <div className="about_container2">
         <div className="about_img">
@@ -30,13 +28,8 @@ const About = () => {
           />
         </div>
         <div className="about_text2">
-          <p className="about_paragraph">
-            I'm a paragraph. Click here to add your own text <br/>
-            and edit me. It’s easy. Just click “Edit Text” or  <br/>
-            double click me to add your own content and  <br/>
-            make changes to the font. I’m a great place for  <br/>
-            you to tell a story and let your users know a  <br/>
-            little more about you.
+          <p className="about_paragraph" style={{textAlign:'justify' , paddingRight:'5vw'}}>
+            Fitness365 is your go-to destination for personalized diet and workout plans, expert guidance, and motivation. Our user-friendly platform aims to empower individuals of all fitness levels to cultivate long-lasting habits and lead healthier lives. Join us on your journey to a healthier, happier you, 365 days a year!
             <br />
             <br />
             {/* <input
@@ -56,18 +49,16 @@ const About = () => {
         </div>
       </div>
       <div className="about_txt3">
-      
+
         <h1 className="about_paragraph2">
-          “WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE <br/>
+          “WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE <br />
           THEN IS NOT AN ACT BUT A HABIT.”
         </h1>
       </div>
-      <div className="about_txt4">
+      <div className="about_txt4"  style={{paddingLeft:'5vw' , marginTop:'5vh', minHeight:'25vh'}}>
+        <h2>Team Info</h2><br />
         <p>
-          I'm a paragraph. Click here to add your own text and edit me. I’m a
-          great place <br />
-          for you to tell a story and let your users know a little more about
-          you.
+        Meet the dynamic duo behind Fitness365: Zaid Rahman and Kajal Maurya. With their combined expertise in development and management, they are the driving force behind the success of our project. Dedicated to delivering excellence, they ensure that Fitness365 remains at the forefront of innovation, empowering individuals to achieve their fitness goals effortlessly.
         </p>
       </div>
     </StyledAbout>

@@ -70,11 +70,11 @@ const Home = () => {
             </div>
             <div className="card">
               <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
-              <a target='blank' href="https://fktr.in/evmXxrt"><img src="./Resorces/Puma.jpeg"alt="" style={{ marginTop: '-26vh', width: '100%',height:'51vh' }} /></a>
+              <a target='blank' href="https://fktr.in/evmXxrt"><img src="./Resorces/Puma.jpeg" alt="" style={{ marginTop: '-26vh', width: '100%', height: '51vh' }} /></a>
             </div>
             <div className="card">
               <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
-              <a target='blank' href="https://fktr.in/QBzKVh6"><img src="./Resorces/Asics.jpeg"alt="" style={{ marginTop: '-26vh', width: '100%',height:'51vh' }} /></a>
+              <a target='blank' href="https://fktr.in/QBzKVh6"><img src="./Resorces/Asics.jpeg" alt="" style={{ marginTop: '-26vh', width: '100%', height: '51vh' }} /></a>
             </div>
           </div>
         </div>
@@ -190,16 +190,17 @@ const Home = () => {
       </div>
       <div className="gallery">
         <h1 className='gallery_heading'>FOLLOW @FITNESS365</h1><br /><br />
-        <div className="gallery_item">
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img1.webp" alt="img1" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img3.webp" alt="img2" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img11.webp" alt="img3" /></div>
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img7.webp" alt="img4" /></div>
-          <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img5.webp" alt="img5" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img9.webp" alt="img6" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img10.webp" alt="img7" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img12.webp" alt="8" /></div>
-          <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img13.webp" alt="img9" /></div>
+        <NavLink to = "https://www.instagram.com/off_icialfitness365" target='blank'>
+          <div className="gallery_item">
+            <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img1.webp" alt="img1" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img3.webp" alt="img2" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img11.webp" alt="img3" /></div>
+            <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img7.webp" alt="img4" /></div>
+            <div className="item portrait"><img className='portrait' src="../Resorces/gallery_img5.webp" alt="img5" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img9.webp" alt="img6" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img10.webp" alt="img7" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img12.webp" alt="8" /></div>
+            <div className="item landscape"><img className='landscape' src="../Resorces/gallery_img13.webp" alt="img9" /></div>
 
 
 
@@ -209,8 +210,8 @@ const Home = () => {
 
 
 
-        </div>
-
+          </div>
+        </NavLink>
       </div>
       <div className="contact-container">
         <div className="contactleft">
