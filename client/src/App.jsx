@@ -7,6 +7,9 @@ import Contact from "./Contact";
 import Shop from "./Shop";
 import Header from "./Header";
 import Footer from "./Footer";
+import Copyright_policy from './Components/Terms/Copyright_policy';
+import Terms_and_condition from './Components/Terms/Terms_and_condition';
+import Privacy_policy from './Components/Terms/Privacy_policy';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
@@ -62,6 +65,11 @@ function App() {
                   <Route path="/Contact" element={<Contact />} />
                   <Route path="/Survey" element={<Survey />} />
                   <Route path="/Profile" element={<Profile />} />
+                  <Route path="/Copyright" element={<Copyright_policy />} />
+                  <Route path="/Privacy" element={<Privacy_policy />} />
+                  <Route path="/Terms" element={<Terms_and_condition />} />
+
+
 
                 </>
               ) : null}

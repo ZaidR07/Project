@@ -82,17 +82,17 @@ const Footer = () => {
         <div className="footer_nav">
           <ul className="footer_navlist">
             <li>
-              <NavLink to="/Instagram">
+              <NavLink to="/Privacy">
                 <span>Privacy Policy</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/Facebook">
+              <NavLink to="/Terms">
                 <span>Terms & Conditions</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/Youtube">
+              <NavLink to="/Copyright">
                 <span>Copyright Policy </span>
               </NavLink>
             </li>
@@ -105,12 +105,12 @@ const Footer = () => {
         <div className="footer_nav">
           <ul className="footer_navlist">
             <li>
-              <NavLink to="https://www.facebook.com/share/HrvYQDRas9w6yxvk/?mibextid=qi2Omg">
+              <NavLink to="https://www.instagram.com/off_icialfitness365" target="blank">
                 <span>Instagram</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="https://www.facebook.com/share/HrvYQDRas9w6yxvk/?mibextid=qi2Omg">
+              <NavLink to="https://www.facebook.com/share/HrvYQDRas9w6yxvk/?mibextid=qi2Omg" target="blank">
                 <span>Facebook</span>
               </NavLink>
             </li>

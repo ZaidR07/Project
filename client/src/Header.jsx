@@ -13,7 +13,7 @@ const Header = ({ setIsLoggedIn, setAdminLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [username, setUsername] = useState();
   const [barclicked, setBarclicked] = useState(false);
-  const [checklogin , setlogin] = useState(false);
+  const [checklogin, setlogin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,6 +129,7 @@ const Header = ({ setIsLoggedIn, setAdminLoggedIn }) => {
           </div>
           <div className="nav3">
             <FontAwesomeIcon icon={faBell} className='awesomeicons' id='bell' />
+            <span className="coming-soon-text">Coming Soon</span>
             <div style={{ borderRadius: '100%', width: '30px', height: '30px', backgroundColor: '#CC3D00', marginLeft: '1vw' }} className="profile">
               <h4>{username}</h4>
             </div>
@@ -259,6 +260,25 @@ const MainHeader = styled.header`
     color: #E49472;
 
   }
+
+  .coming-soon-text{
+    color: #CC3D00;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 6.5vh;
+    left: -3vw;
+
+  }
+
+  #bell:hover + .coming-soon-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+  
   /* Dropdown.css */
 .dropdown-container {
   position: relative;

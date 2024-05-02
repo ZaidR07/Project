@@ -112,8 +112,6 @@ const Workout = () => {
             {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
             {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
           </div>
-          <div className="box" onClick={handleboxclick}></div>
-          <div className="box" onClick={handleboxclick}></div>
         </div>
       </div>
       <div className="blue">
@@ -140,9 +138,6 @@ const Workout = () => {
             {sessionComplete && <button className='crossbtn'> <FontAwesomeIcon icon={faXmark} className='awesomeicons' id='cross' onClick={handlecrossbtn} /></button>}
             {sessionComplete && <h2 className="session-complete">Session Complete</h2>}
           </div>
-
-          <div className="box" onClick={handleboxclick}></div>
-          <div className="box" onClick={handleboxclick}></div>
         </div>
       </div>
       <div className="green">

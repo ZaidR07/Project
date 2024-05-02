@@ -229,7 +229,9 @@ const Survey = () => {
               id=""
               onChange={(e) => setAgree(e.target.checked)}
             />
-            <label>I have read and agree to terms and conditions</label>
+            <NavLink to = "/Terms" target="blank">
+              <label>I have read and agree to terms and conditions</label>
+            </NavLink>
             <br />
             <input
               type="button"
