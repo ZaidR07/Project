@@ -65,27 +65,16 @@ const Home = () => {
           <div className="cards">
             <div className="card">
               <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
-              {sales.length > 0 && sales.map((sales) => (
-                <div key={sales._id}>
-                  <img
-                    className="Carousel_img"
-                    src={"https://project-d44v.onrender.com/Productimages/" + sales.image}
-                  />
-                  <br />
-                  <button
-                    onClick={() => handleImageClick(sales.link)}
-                    className="order"
-                  >
-                    Order on Flipkart
-                  </button>
-                </div>
-              ))}
+              <a target='blank' href="https://fktr.in/hfExLMn"><img src="./Resorces/Reebok.jpeg" alt="" style={{ marginTop: '-26vh', width: '100%' }} /></a>
+
             </div>
             <div className="card">
               <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
+              <a target='blank' href="https://fktr.in/evmXxrt"><img src="./Resorces/Puma.jpeg"alt="" style={{ marginTop: '-26vh', width: '100%',height:'51vh' }} /></a>
             </div>
             <div className="card">
               <img className='saleimges' src="./Resorces/Sale_strip1.png" alt="" />
+              <a target='blank' href="https://fktr.in/QBzKVh6"><img src="./Resorces/Asics.jpeg"alt="" style={{ marginTop: '-26vh', width: '100%',height:'51vh' }} /></a>
             </div>
           </div>
         </div>
@@ -99,7 +88,7 @@ const Home = () => {
           <div className="text">
             <h2 style={{ fontSize: '1.2rem', lineHeight: '0px' }}>~Our Story</h2>
             <br />
-            <p style={{ color: '#575757',textAlign:'justify'}}>Born from a desire to empower individuals to lead healthier lives, our platform began as a vision to revolutionize the way people approach fitness. With a team of dedicated experts, we've crafted an immersive experience tailored to your needs, helping you unleash your full potential and embrace a lifestyle of vitality and strength.</p><br />
+            <p style={{ color: '#575757', textAlign: 'justify' }}>Born from a desire to empower individuals to lead healthier lives, our platform began as a vision to revolutionize the way people approach fitness. With a team of dedicated experts, we've crafted an immersive experience tailored to your needs, helping you unleash your full potential and embrace a lifestyle of vitality and strength.</p><br />
             <NavLink to="/About#about_container">
               <button className='readmorebtn'>Read More</button><br />
             </NavLink>
@@ -514,6 +503,11 @@ const StyledHome = styled.div`
 .card{
   height: 12vh;
 }
+
+.saleimges{
+  z-index: 1;
+}
+
 
 .blog{
   height: 35vh;
