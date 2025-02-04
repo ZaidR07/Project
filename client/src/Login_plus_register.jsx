@@ -113,7 +113,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                             <NavLink to={'/Forgot_password'}>
                                 Forgot your password?
                             </NavLink><br />
-                            <Components.Button>Sign In</Components.Button>
+                            <Components.SignInButton>Sign In</Components.SignInButton>
                         </Components.Form>
                     </Components.SignInContainer>
 
