@@ -50,8 +50,6 @@ export const SignInContainer = styled.div`
   z-index: 2;
   ${(props) =>
     props.signinIn !== true ? `transform: translateX(100%);` : null}
-
-  
 `;
 
 export const Form = styled.form`
@@ -77,8 +75,6 @@ export const Title = styled.h1`
     font-size: x-large;
     font-weight: 500;
   }
-
-  
 `;
 
 export const Input = styled.input`
@@ -87,7 +83,6 @@ export const Input = styled.input`
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
-
 `;
 
 export const Button = styled.button`
@@ -120,6 +115,7 @@ export const SignInButton = styled.button`
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin-bottom: 5vh;
   &:active {
     transform: scale(0.95);
   }
@@ -128,13 +124,11 @@ export const SignInButton = styled.button`
   }
 
   @media screen and (max-width: 500px) {
-    display: none;
+    ${(props) =>
+      props.signinIn !== true ? `display: block;` : `display: block;`}
+    margin-bottom: 2vh;
   }
-
-
-
 `;
-
 
 export const GhostButton = styled(Button)`
   background-color: transparent;
@@ -189,13 +183,9 @@ export const OverlayPanel = styled.div`
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
 
-
   @media screen and (max-width: 500px) {
     padding: 0 10px;
-
   }
-
-  
 `;
 
 export const LeftOverlayPanel = styled(OverlayPanel)`
@@ -216,10 +206,7 @@ export const Paragraph = styled.p`
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
 
-
   @media screen and (max-width: 500px) {
     font-size: 12px;
-  
-
   }
 `;

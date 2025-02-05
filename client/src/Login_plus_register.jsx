@@ -110,10 +110,11 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
                             <Components.Title>Sign in</Components.Title>
                             <Components.Input type='email' placeholder='Email' onChange={(e) => loginsetEmail(e.target.value)} />
                             <Components.Input type='password' placeholder='Password' onChange={(e) => loginsetPassword(e.target.value)} /> <br />
+                            <Components.SignInButton>Sign In</Components.SignInButton>
                             <NavLink to={'/Forgot_password'}>
                                 Forgot your password?
                             </NavLink><br />
-                            <Components.SignInButton>Sign In</Components.SignInButton>
+                            
                         </Components.Form>
                     </Components.SignInContainer>
 
