@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import styled from "styled-components";
 import axios from "axios";
+import { uri } from "../constant";
 
 const MyCarousel = () => {
   const [supplements, setSupplements] = useState([]);
@@ -14,7 +15,7 @@ const MyCarousel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://fitness365-1iww.onrender.com/Productget");
+        const response = await axios.get(`${uri}Productget`);
         const filteredsupplements = response.data.filter(
           (product) => product.category === "Supplements"
         );

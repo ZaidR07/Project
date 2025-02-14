@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { uri } from "../../constant";
 
 
 const Workout = () => {
@@ -48,7 +49,7 @@ const Workout = () => {
 
     try {
       const response = await axios.post(
-        "https://fitness365-1iww.onrender.com/Workoutadd",
+        `${uri}Workoutadd`,
         formData,
         {
           headers: {
@@ -69,7 +70,7 @@ const Workout = () => {
   const handleLoad = async () => {
     try {
       const response = await axios.get(
-        "https://fitness365-1iww.onrender.com/Workoutget",
+        `${uri}Workoutget`,
         {}
       );
       setWorkout(response.data);

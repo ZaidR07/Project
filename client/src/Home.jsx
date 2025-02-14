@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { uri } from './constant';
 
 
 
@@ -33,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://fitness365-1iww.onrender.com/Productget");
+        const response = await axios.get(`${uri}Productget`);
         const filteredsale = response.data.filter(
           (product) => product.category === "Sale"
         );

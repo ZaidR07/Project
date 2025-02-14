@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { uri } from "../../constant";
 
 const Forgot_password = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const Forgot_password = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://fitness365-1iww.onrender.com/Forgot_password", {
+      const response = await axios.post(`${uri}Forgot_password`, {
         email,
 
       });
@@ -29,7 +30,7 @@ const Forgot_password = () => {
   const handleSubmit1 = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://fitness365-1iww.onrender.com/SetNewpassword", {
+      const response = await axios.post(`${uri}SetNewpassword`, {
         email,
         otp,
         newpass,

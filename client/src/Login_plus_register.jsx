@@ -4,6 +4,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { uri } from './constant';
 
 // const SERVER = process.env.server;
 
@@ -32,7 +33,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("https://fitness365-1iww.onrender.com/signup", {
+            const response = await axios.post(`${uri}signup`, {
                 username: username,
                 email: email,
                 password: password
@@ -55,7 +56,7 @@ const Login_plus_register = ({ setIsLoggedIn , setAdminLoggedIn}) => {
     const handleSubmit1 = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("https://fitness365-1iww.onrender.com/login", {
+            const response = await axios.post(`${uri}login`, {
                 email: loginemail,
                 password: loginpassword,
             });

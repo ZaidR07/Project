@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { uri } from './constant';
 
 
 const Diet = () => {
@@ -13,7 +14,7 @@ const Diet = () => {
     const handleLoad = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail');
-        const response = await axios.post("https://fitness365-1iww.onrender.com/Bmr", {
+        const response = await axios.post(`${uri}Bmr`, {
           email: userEmail,
         });
         setCalory(response.data.calories);

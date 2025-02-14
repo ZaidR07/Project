@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { toast } from "react-toastify";
+import { uri } from "./constant";
 
 
 const Profile = () => {
@@ -23,7 +24,7 @@ const Profile = () => {
     const handleLoad = async () => {
         try {
             const userEmail = localStorage.getItem('userEmail');
-            const customerres = await axios.post("https://fitness365-1iww.onrender.com/profileget", {
+            const customerres = await axios.post(`${uri}profileget`, {
                 email: userEmail,
             });
             setCustomer(customerres.data);
@@ -49,7 +50,7 @@ const Profile = () => {
     const handleUpdate = () => {
         try {
             const userEmail = localStorage.getItem('userEmail');
-            axios.post("https://fitness365-1iww.onrender.com/profileupdate", {
+            axios.post(`${uri}profileupdate`, {
             email: userEmail,
             age: age,
             height: height,

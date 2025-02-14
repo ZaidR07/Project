@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Workout from "./Components/Admin_components/Workout";
 import axios from "axios";
+import { uri } from "./constant";
 import {
   BsFillArchiveFill,
   BsFillGrid3X3GapFill,
@@ -93,7 +94,7 @@ const Admin_panel = () => {
     try {
 
       if (updateid == null) {
-        const response = await axios.post("https://fitness365-1iww.onrender.com/Productadd", formData, {
+        const response = await axios.post(`${uri}Productadd`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -110,7 +111,7 @@ const Admin_panel = () => {
 
 
       if (updateid != null) {
-        const response1 = await axios.post("https://fitness365-1iww.onrender.com/Productupdate", formData1, {
+        const response1 = await axios.post(`${uri}Productupdate`, formData1, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -130,7 +131,7 @@ const Admin_panel = () => {
   }
 
   const handledelete = async () => {
-    const dltresponse = await axios.post("https://fitness365-1iww.onrender.com/Productdlt", {
+    const dltresponse = await axios.post(`${uri}Productdlt`, {
       id: deleteid
     });
     if (dltresponse.status) {
@@ -150,9 +151,9 @@ const Admin_panel = () => {
 
   const handleLoad = async () => {
     try {
-      const response = await axios.get("https://fitness365-1iww.onrender.com/Admin", {});
-      const productres = await axios.get("https://fitness365-1iww.onrender.com/Productget", {});
-      const customerres = await axios.get("https://fitness365-1iww.onrender.com/Customerget", {});
+      const response = await axios.get(`${uri}Admin`, {});
+      const productres = await axios.get(`${uri}Productget`, {});
+      const customerres = await axios.get(`${uri}Customerget`, {});
       setProduct(productres.data);
       setCustomer(customerres.data);
       setTotalusers(response.data.totalusers);

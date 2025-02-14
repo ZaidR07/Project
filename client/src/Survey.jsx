@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { uri } from "./constant";
 
 const Survey = () => {
   const [agree, setAgree] = useState(false);
@@ -21,7 +22,7 @@ const Survey = () => {
     event.preventDefault();
     try {
       const userEmail = localStorage.getItem("userEmail");
-      const response = await axios.post("https://fitness365-1iww.onrender.com/Userinfo", {
+      const response = await axios.post(`${uri}Userinfo`, {
         email: userEmail,
         gender,
         age,

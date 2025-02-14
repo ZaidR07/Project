@@ -3,6 +3,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { uri } from './constant';
 
 const Workout = () => {
   const [Level, setLevel] = useState("");
@@ -18,10 +19,10 @@ const Workout = () => {
     const handleLoad = async () => {
       try {
         const userEmail = localStorage.getItem('userEmail');
-        const response = await axios.post("https://fitness365-1iww.onrender.com/Level", {
+        const response = await axios.post(`${uri}Level`, {
           email: userEmail,
         });
-        const workoutresponse = await axios.get("https://fitness365-1iww.onrender.com/Workoutget");
+        const workoutresponse = await axios.get(`${uri}Workoutget`);
         setLevel(response.data.level);
         setWorkout(workoutresponse.data);
       } catch (error) {
